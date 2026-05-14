@@ -15,8 +15,8 @@ class FacialAnalysisEngine:
                 refine_landmarks=True,
                 min_detection_confidence=0.5
             )
-        except ImportError:
-            print("Warning: MediaPipe not available. Falling back to synthetic score generation.")
+        except Exception as e:
+            print(f"Warning: MediaPipe initialization failed ({e}). Falling back to synthetic score generation.")
 
     def _generate_synthetic_score(self, image_bytes: bytes) -> dict:
         """Fallback deterministic score based on image hash"""

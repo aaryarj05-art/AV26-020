@@ -1,4 +1,3 @@
-import React from 'react';
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import {
@@ -166,7 +165,7 @@ export default function Dashboard() {
                 <div key={region} className="space-y-2">
                   <div className="flex justify-between text-[10px] font-bold text-helix-text uppercase tracking-widest">
                     <span>{region}</span>
-                    <span className="text-helix-accent">Avg: {Math.floor(Object.values(risks).reduce((a:any,b:any)=>a+b,0)/5)}%</span>
+                    <span className="text-helix-accent">Avg: {Math.floor(Number(Object.values(risks).reduce((a:any,b:any)=>a+b,0))/5)}%</span>
                   </div>
                   <div className="flex gap-1 h-2 rounded-full overflow-hidden bg-helix-bg">
                     {Object.entries(risks).map(([disease, score]: any) => (

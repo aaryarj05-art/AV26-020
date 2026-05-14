@@ -1,5 +1,4 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { AreaChart, Area, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts';
 
 export default function StrokeGuard() {
   const [step, setStep] = useState(1);

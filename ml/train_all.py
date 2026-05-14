@@ -8,10 +8,10 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 DATA_PATH = os.path.join(BASE_DIR, 'data', 'processed', 'clean_outbreak_data.parquet')
 
 def train_all():
-    print("🧬 Helix Training Orchestrator starting...")
+    print("[ML] Helix Training Orchestrator starting...")
     
     if not os.path.exists(DATA_PATH):
-        print(f"❌ Processed data not found at {DATA_PATH}. Run pipeline first.")
+        print(f"[ERR] Processed data not found at {DATA_PATH}. Run pipeline first.")
         return
 
     df = pd.read_parquet(DATA_PATH)
@@ -56,7 +56,7 @@ def train_all():
             })
             
     print("\n" + "="*80)
-    print("🧬 HELIX MODEL TRAINING SUMMARY")
+    print("[ML] HELIX MODEL TRAINING SUMMARY")
     print("="*80)
     summary_df = pd.DataFrame(results)
     print(summary_df.to_string(index=False))

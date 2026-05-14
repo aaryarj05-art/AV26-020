@@ -25,7 +25,7 @@ export default function DataFusionPanel() {
   }, []);
 
   if (loading) return <div className="p-8 text-center text-helix-text-muted">Initializing Neural Fusion...</div>;
-  if (!fusionData) return null;
+  if (!fusionData || !fusionData.sources || !fusionData.contribution) return null;
 
   const COLORS = ['#00D4FF', '#10B981', '#F59E0B'];
 

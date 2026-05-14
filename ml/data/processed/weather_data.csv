@@ -1,0 +1,1561 @@
+date,city,region,temperature,humidity,rainfall,aqi
+2023-05-25,Mumbai,Maharashtra,29.2,55,0.4,103
+2023-06-01,Mumbai,Maharashtra,29.5,79,12.2,96
+2023-06-08,Mumbai,Maharashtra,29.1,73,7.9,46
+2023-06-15,Mumbai,Maharashtra,26.8,73,19.7,98
+2023-06-22,Mumbai,Maharashtra,28.2,68,16.1,96
+2023-06-29,Mumbai,Maharashtra,26.3,71,5.2,41
+2023-07-06,Mumbai,Maharashtra,25.8,85,13.4,105
+2023-07-13,Mumbai,Maharashtra,22.3,78,14.6,50
+2023-07-20,Mumbai,Maharashtra,22.4,69,15.4,47
+2023-07-27,Mumbai,Maharashtra,27.6,81,15.4,44
+2023-08-03,Mumbai,Maharashtra,24.4,68,6.6,80
+2023-08-10,Mumbai,Maharashtra,22.0,79,4.3,78
+2023-08-17,Mumbai,Maharashtra,24.8,69,15.9,105
+2023-08-24,Mumbai,Maharashtra,21.4,71,7.9,49
+2023-08-31,Mumbai,Maharashtra,23.2,76,16.6,44
+2023-09-07,Mumbai,Maharashtra,20.2,75,5.3,109
+2023-09-14,Mumbai,Maharashtra,23.2,74,7.2,119
+2023-09-21,Mumbai,Maharashtra,21.3,80,13.1,43
+2023-09-28,Mumbai,Maharashtra,20.2,68,5.1,69
+2023-10-05,Mumbai,Maharashtra,20.8,45,0.2,107
+2023-10-12,Mumbai,Maharashtra,14.9,43,0.4,74
+2023-10-19,Mumbai,Maharashtra,21.1,45,0.4,118
+2023-10-26,Mumbai,Maharashtra,22.7,48,0.4,98
+2023-11-02,Mumbai,Maharashtra,22.4,38,0.6,116
+2023-11-09,Mumbai,Maharashtra,22.9,52,0.9,99
+2023-11-16,Mumbai,Maharashtra,18.0,56,0.5,106
+2023-11-23,Mumbai,Maharashtra,19.0,46,0.9,43
+2023-11-30,Mumbai,Maharashtra,18.4,47,0.5,55
+2023-12-07,Mumbai,Maharashtra,22.0,43,0.8,64
+2023-12-14,Mumbai,Maharashtra,23.8,43,0.2,114
+2023-12-21,Mumbai,Maharashtra,22.0,44,0.3,78
+2023-12-28,Mumbai,Maharashtra,20.6,44,0.1,101
+2024-01-04,Mumbai,Maharashtra,22.9,51,0.9,62
+2024-01-11,Mumbai,Maharashtra,23.9,44,1.0,105
+2024-01-18,Mumbai,Maharashtra,25.6,36,0.1,45
+2024-01-25,Mumbai,Maharashtra,26.5,50,0.2,116
+2024-02-01,Mumbai,Maharashtra,24.1,48,0.1,81
+2024-02-08,Mumbai,Maharashtra,29.0,45,0.3,67
+2024-02-15,Mumbai,Maharashtra,30.4,50,0.2,50
+2024-02-22,Mumbai,Maharashtra,26.3,53,0.6,114
+2024-02-29,Mumbai,Maharashtra,25.1,36,0.8,76
+2024-03-07,Mumbai,Maharashtra,27.1,50,0.2,106
+2024-03-14,Mumbai,Maharashtra,29.4,40,0.3,81
+2024-03-21,Mumbai,Maharashtra,28.8,44,1.0,41
+2024-03-28,Mumbai,Maharashtra,27.4,42,0.0,56
+2024-04-04,Mumbai,Maharashtra,31.9,44,0.1,66
+2024-04-11,Mumbai,Maharashtra,28.8,46,0.3,102
+2024-04-18,Mumbai,Maharashtra,29.2,38,0.3,112
+2024-04-25,Mumbai,Maharashtra,28.1,52,0.9,46
+2024-05-02,Mumbai,Maharashtra,32.5,46,0.2,89
+2024-05-09,Mumbai,Maharashtra,31.8,56,0.7,40
+2024-05-16,Mumbai,Maharashtra,28.1,46,0.2,87
+2024-05-23,Mumbai,Maharashtra,28.2,40,0.6,74
+2024-05-30,Mumbai,Maharashtra,29.2,48,0.5,94
+2024-06-06,Mumbai,Maharashtra,26.3,80,3.7,64
+2024-06-13,Mumbai,Maharashtra,27.6,77,3.4,111
+2024-06-20,Mumbai,Maharashtra,28.0,70,16.4,86
+2024-06-27,Mumbai,Maharashtra,30.9,86,15.6,95
+2024-07-04,Mumbai,Maharashtra,26.5,78,6.5,99
+2024-07-11,Mumbai,Maharashtra,22.8,80,11.9,93
+2024-07-18,Mumbai,Maharashtra,24.6,70,16.7,81
+2024-07-25,Mumbai,Maharashtra,24.8,70,14.2,86
+2024-08-01,Mumbai,Maharashtra,22.4,69,17.4,68
+2024-08-08,Mumbai,Maharashtra,23.0,76,4.9,51
+2024-08-15,Mumbai,Maharashtra,21.3,69,13.1,83
+2024-08-22,Mumbai,Maharashtra,19.3,78,18.0,41
+2024-08-29,Mumbai,Maharashtra,23.7,72,6.2,118
+2024-09-05,Mumbai,Maharashtra,21.6,65,10.0,83
+2024-09-12,Mumbai,Maharashtra,21.3,68,17.4,85
+2024-09-19,Mumbai,Maharashtra,21.9,69,14.5,81
+2024-09-26,Mumbai,Maharashtra,20.6,76,7.1,81
+2024-10-03,Mumbai,Maharashtra,22.9,48,0.3,106
+2024-10-10,Mumbai,Maharashtra,19.3,36,0.2,47
+2024-10-17,Mumbai,Maharashtra,23.6,45,1.0,66
+2024-10-24,Mumbai,Maharashtra,19.0,45,0.6,79
+2024-10-31,Mumbai,Maharashtra,21.8,44,0.5,64
+2024-11-07,Mumbai,Maharashtra,21.7,41,0.2,54
+2024-11-14,Mumbai,Maharashtra,22.1,32,0.7,108
+2024-11-21,Mumbai,Maharashtra,22.1,48,0.6,49
+2024-11-28,Mumbai,Maharashtra,22.2,37,0.9,52
+2024-12-05,Mumbai,Maharashtra,24.0,41,0.1,49
+2024-12-12,Mumbai,Maharashtra,25.7,48,0.8,56
+2024-12-19,Mumbai,Maharashtra,17.8,42,0.2,50
+2024-12-26,Mumbai,Maharashtra,23.8,46,0.1,119
+2025-01-02,Mumbai,Maharashtra,26.5,40,0.3,119
+2025-01-09,Mumbai,Maharashtra,25.6,47,0.5,55
+2025-01-16,Mumbai,Maharashtra,24.5,44,0.4,67
+2025-01-23,Mumbai,Maharashtra,25.6,50,0.6,65
+2025-01-30,Mumbai,Maharashtra,27.8,44,0.9,98
+2025-02-06,Mumbai,Maharashtra,23.9,44,1.0,84
+2025-02-13,Mumbai,Maharashtra,26.2,42,0.7,99
+2025-02-20,Mumbai,Maharashtra,24.6,39,0.5,67
+2025-02-27,Mumbai,Maharashtra,28.9,50,0.7,103
+2025-03-06,Mumbai,Maharashtra,28.2,49,0.9,84
+2025-03-13,Mumbai,Maharashtra,31.1,48,0.4,82
+2025-03-20,Mumbai,Maharashtra,33.5,40,0.1,92
+2025-03-27,Mumbai,Maharashtra,27.3,40,0.9,73
+2025-04-03,Mumbai,Maharashtra,29.6,41,0.0,109
+2025-04-10,Mumbai,Maharashtra,31.9,41,0.7,93
+2025-04-17,Mumbai,Maharashtra,31.0,48,0.4,110
+2025-04-24,Mumbai,Maharashtra,28.1,44,0.6,44
+2025-05-01,Mumbai,Maharashtra,29.9,56,0.8,95
+2025-05-08,Mumbai,Maharashtra,30.9,49,0.5,44
+2025-05-15,Mumbai,Maharashtra,29.8,50,0.6,68
+2025-05-22,Mumbai,Maharashtra,30.9,42,0.1,45
+2025-05-29,Mumbai,Maharashtra,29.6,40,0.8,62
+2025-06-05,Mumbai,Maharashtra,28.2,79,9.8,71
+2025-06-12,Mumbai,Maharashtra,28.0,85,18.1,57
+2025-06-19,Mumbai,Maharashtra,28.5,80,8.4,62
+2025-06-26,Mumbai,Maharashtra,25.2,69,2.4,113
+2025-07-03,Mumbai,Maharashtra,27.8,85,8.4,78
+2025-07-10,Mumbai,Maharashtra,25.0,69,4.3,67
+2025-07-17,Mumbai,Maharashtra,23.5,78,10.2,48
+2025-07-24,Mumbai,Maharashtra,25.3,78,17.5,117
+2025-07-31,Mumbai,Maharashtra,26.2,79,2.8,62
+2025-08-07,Mumbai,Maharashtra,21.5,76,18.0,89
+2025-08-14,Mumbai,Maharashtra,21.6,73,13.6,53
+2025-08-21,Mumbai,Maharashtra,20.6,77,13.6,114
+2025-08-28,Mumbai,Maharashtra,23.1,74,19.8,61
+2025-09-04,Mumbai,Maharashtra,17.7,82,3.0,71
+2025-09-11,Mumbai,Maharashtra,23.5,66,12.3,78
+2025-09-18,Mumbai,Maharashtra,23.4,69,14.6,118
+2025-09-25,Mumbai,Maharashtra,21.6,81,19.0,92
+2025-10-02,Mumbai,Maharashtra,18.2,48,0.0,80
+2025-10-09,Mumbai,Maharashtra,19.4,48,0.0,53
+2025-10-16,Mumbai,Maharashtra,19.9,37,0.7,76
+2025-10-23,Mumbai,Maharashtra,17.6,51,0.2,103
+2025-10-30,Mumbai,Maharashtra,19.1,48,1.0,46
+2025-11-06,Mumbai,Maharashtra,19.9,50,0.9,80
+2025-11-13,Mumbai,Maharashtra,21.9,45,1.0,116
+2025-11-20,Mumbai,Maharashtra,19.5,50,0.5,50
+2025-11-27,Mumbai,Maharashtra,22.9,43,0.3,115
+2025-12-04,Mumbai,Maharashtra,19.6,37,0.7,66
+2025-12-11,Mumbai,Maharashtra,22.3,56,0.1,81
+2025-12-18,Mumbai,Maharashtra,24.3,38,0.3,53
+2025-12-25,Mumbai,Maharashtra,22.3,52,0.6,78
+2026-01-01,Mumbai,Maharashtra,23.9,41,0.0,53
+2026-01-08,Mumbai,Maharashtra,24.0,51,0.0,63
+2026-01-15,Mumbai,Maharashtra,26.1,46,0.5,88
+2026-01-22,Mumbai,Maharashtra,22.3,43,0.3,96
+2026-01-29,Mumbai,Maharashtra,27.3,46,1.0,74
+2026-02-05,Mumbai,Maharashtra,30.4,44,0.6,80
+2026-02-12,Mumbai,Maharashtra,28.6,46,0.6,75
+2026-02-19,Mumbai,Maharashtra,30.3,39,0.6,45
+2026-02-26,Mumbai,Maharashtra,27.8,45,0.6,113
+2026-03-05,Mumbai,Maharashtra,27.1,47,0.2,118
+2026-03-12,Mumbai,Maharashtra,27.9,46,0.8,83
+2026-03-19,Mumbai,Maharashtra,29.1,43,0.5,119
+2026-03-26,Mumbai,Maharashtra,30.3,45,0.7,88
+2026-04-02,Mumbai,Maharashtra,28.1,50,0.3,107
+2026-04-09,Mumbai,Maharashtra,28.8,35,0.8,88
+2026-04-16,Mumbai,Maharashtra,30.4,38,0.4,81
+2026-04-23,Mumbai,Maharashtra,29.4,42,1.0,100
+2026-04-30,Mumbai,Maharashtra,30.3,42,0.3,58
+2026-05-07,Mumbai,Maharashtra,27.0,40,0.4,71
+2026-05-14,Mumbai,Maharashtra,28.2,52,0.7,115
+2023-05-25,Delhi,Delhi,27.3,45,0.9,99
+2023-06-01,Delhi,Delhi,29.6,72,17.3,70
+2023-06-08,Delhi,Delhi,27.8,79,5.4,54
+2023-06-15,Delhi,Delhi,27.1,69,11.1,73
+2023-06-22,Delhi,Delhi,26.2,74,14.1,66
+2023-06-29,Delhi,Delhi,26.4,67,19.2,57
+2023-07-06,Delhi,Delhi,26.3,74,8.4,110
+2023-07-13,Delhi,Delhi,25.4,77,9.4,63
+2023-07-20,Delhi,Delhi,26.3,73,13.8,78
+2023-07-27,Delhi,Delhi,21.5,65,12.4,108
+2023-08-03,Delhi,Delhi,23.2,69,6.3,47
+2023-08-10,Delhi,Delhi,20.6,68,6.1,83
+2023-08-17,Delhi,Delhi,22.4,69,16.0,70
+2023-08-24,Delhi,Delhi,25.0,69,2.7,108
+2023-08-31,Delhi,Delhi,22.8,69,17.7,98
+2023-09-07,Delhi,Delhi,20.8,79,9.6,104
+2023-09-14,Delhi,Delhi,23.0,85,10.6,80
+2023-09-21,Delhi,Delhi,25.0,78,10.2,72
+2023-09-28,Delhi,Delhi,22.8,77,14.7,55
+2023-10-05,Delhi,Delhi,20.7,48,0.1,76
+2023-10-12,Delhi,Delhi,18.5,44,0.9,94
+2023-10-19,Delhi,Delhi,20.1,42,0.3,81
+2023-10-26,Delhi,Delhi,21.3,47,0.4,118
+2023-11-02,Delhi,Delhi,20.4,46,0.5,112
+2023-11-09,Delhi,Delhi,19.9,47,0.3,94
+2023-11-16,Delhi,Delhi,18.5,44,0.2,97
+2023-11-23,Delhi,Delhi,21.7,34,0.9,82
+2023-11-30,Delhi,Delhi,17.7,51,0.1,61
+2023-12-07,Delhi,Delhi,22.5,51,0.6,91
+2023-12-14,Delhi,Delhi,25.6,36,0.9,117
+2023-12-21,Delhi,Delhi,20.9,53,0.4,116
+2023-12-28,Delhi,Delhi,24.0,42,0.7,71
+2024-01-04,Delhi,Delhi,25.3,38,0.5,116
+2024-01-11,Delhi,Delhi,27.6,43,0.9,82
+2024-01-18,Delhi,Delhi,26.2,43,0.3,109
+2024-01-25,Delhi,Delhi,22.6,51,0.3,90
+2024-02-01,Delhi,Delhi,28.2,49,0.7,69
+2024-02-08,Delhi,Delhi,27.9,50,0.7,65
+2024-02-15,Delhi,Delhi,28.1,57,0.6,42
+2024-02-22,Delhi,Delhi,20.0,46,0.7,86
+2024-02-29,Delhi,Delhi,25.5,49,0.7,42
+2024-03-07,Delhi,Delhi,28.7,39,0.3,53
+2024-03-14,Delhi,Delhi,26.6,49,0.6,118
+2024-03-21,Delhi,Delhi,27.5,44,0.4,60
+2024-03-28,Delhi,Delhi,28.6,46,0.9,53
+2024-04-04,Delhi,Delhi,29.7,42,0.7,87
+2024-04-11,Delhi,Delhi,27.7,41,0.5,52
+2024-04-18,Delhi,Delhi,29.8,39,0.0,69
+2024-04-25,Delhi,Delhi,29.9,51,0.1,63
+2024-05-02,Delhi,Delhi,27.0,41,0.8,64
+2024-05-09,Delhi,Delhi,28.3,36,0.7,92
+2024-05-16,Delhi,Delhi,31.6,41,0.1,111
+2024-05-23,Delhi,Delhi,26.8,54,0.7,65
+2024-05-30,Delhi,Delhi,31.4,47,0.7,115
+2024-06-06,Delhi,Delhi,27.4,77,3.1,74
+2024-06-13,Delhi,Delhi,21.6,65,7.7,47
+2024-06-20,Delhi,Delhi,23.2,78,14.9,45
+2024-06-27,Delhi,Delhi,24.7,71,11.1,45
+2024-07-04,Delhi,Delhi,24.0,73,2.9,97
+2024-07-11,Delhi,Delhi,27.3,81,7.4,111
+2024-07-18,Delhi,Delhi,27.4,73,18.9,62
+2024-07-25,Delhi,Delhi,25.1,71,9.6,60
+2024-08-01,Delhi,Delhi,22.8,72,7.1,94
+2024-08-08,Delhi,Delhi,22.0,70,14.9,85
+2024-08-15,Delhi,Delhi,24.8,73,5.8,111
+2024-08-22,Delhi,Delhi,21.9,75,18.4,118
+2024-08-29,Delhi,Delhi,24.5,81,8.3,60
+2024-09-05,Delhi,Delhi,22.3,71,17.0,90
+2024-09-12,Delhi,Delhi,19.1,80,14.8,72
+2024-09-19,Delhi,Delhi,22.5,72,4.9,95
+2024-09-26,Delhi,Delhi,20.4,78,19.9,101
+2024-10-03,Delhi,Delhi,20.7,43,0.3,109
+2024-10-10,Delhi,Delhi,17.4,52,0.3,78
+2024-10-17,Delhi,Delhi,20.0,47,0.9,109
+2024-10-24,Delhi,Delhi,20.3,45,0.3,53
+2024-10-31,Delhi,Delhi,19.5,53,0.4,93
+2024-11-07,Delhi,Delhi,22.1,41,0.3,111
+2024-11-14,Delhi,Delhi,17.2,57,0.2,41
+2024-11-21,Delhi,Delhi,23.8,43,0.9,41
+2024-11-28,Delhi,Delhi,18.1,43,0.5,92
+2024-12-05,Delhi,Delhi,19.8,48,0.8,114
+2024-12-12,Delhi,Delhi,23.2,45,0.7,60
+2024-12-19,Delhi,Delhi,24.1,44,0.2,77
+2024-12-26,Delhi,Delhi,18.4,55,0.3,106
+2025-01-02,Delhi,Delhi,25.1,53,0.3,79
+2025-01-09,Delhi,Delhi,26.2,49,0.1,67
+2025-01-16,Delhi,Delhi,24.1,44,0.2,111
+2025-01-23,Delhi,Delhi,26.5,47,0.7,60
+2025-01-30,Delhi,Delhi,21.6,45,0.6,74
+2025-02-06,Delhi,Delhi,25.9,54,0.4,80
+2025-02-13,Delhi,Delhi,26.6,43,0.4,52
+2025-02-20,Delhi,Delhi,29.8,37,0.7,69
+2025-02-27,Delhi,Delhi,29.1,49,0.5,114
+2025-03-06,Delhi,Delhi,26.7,44,0.5,51
+2025-03-13,Delhi,Delhi,25.8,43,0.5,53
+2025-03-20,Delhi,Delhi,28.4,44,0.5,59
+2025-03-27,Delhi,Delhi,29.6,53,0.9,49
+2025-04-03,Delhi,Delhi,34.2,50,0.7,107
+2025-04-10,Delhi,Delhi,29.1,46,0.0,109
+2025-04-17,Delhi,Delhi,29.7,43,0.5,68
+2025-04-24,Delhi,Delhi,31.3,55,0.7,107
+2025-05-01,Delhi,Delhi,23.7,48,0.6,59
+2025-05-08,Delhi,Delhi,30.8,41,0.4,109
+2025-05-15,Delhi,Delhi,27.8,39,0.0,65
+2025-05-22,Delhi,Delhi,26.2,42,0.7,75
+2025-05-29,Delhi,Delhi,27.9,43,0.5,47
+2025-06-05,Delhi,Delhi,22.9,76,19.0,46
+2025-06-12,Delhi,Delhi,31.9,75,5.8,114
+2025-06-19,Delhi,Delhi,25.8,74,3.1,48
+2025-06-26,Delhi,Delhi,30.1,78,10.0,64
+2025-07-03,Delhi,Delhi,20.9,79,19.5,53
+2025-07-10,Delhi,Delhi,28.1,71,17.0,51
+2025-07-17,Delhi,Delhi,25.1,73,5.2,60
+2025-07-24,Delhi,Delhi,22.5,72,14.9,63
+2025-07-31,Delhi,Delhi,19.5,77,13.9,50
+2025-08-07,Delhi,Delhi,22.6,75,18.0,115
+2025-08-14,Delhi,Delhi,19.2,73,14.2,110
+2025-08-21,Delhi,Delhi,20.6,76,18.1,62
+2025-08-28,Delhi,Delhi,22.7,85,7.2,93
+2025-09-04,Delhi,Delhi,23.3,84,11.8,47
+2025-09-11,Delhi,Delhi,20.6,75,10.9,104
+2025-09-18,Delhi,Delhi,19.1,71,6.5,104
+2025-09-25,Delhi,Delhi,20.5,75,12.9,43
+2025-10-02,Delhi,Delhi,18.5,52,0.1,113
+2025-10-09,Delhi,Delhi,21.0,50,0.3,99
+2025-10-16,Delhi,Delhi,19.6,44,0.9,90
+2025-10-23,Delhi,Delhi,17.4,49,0.6,80
+2025-10-30,Delhi,Delhi,20.8,45,0.2,114
+2025-11-06,Delhi,Delhi,22.3,46,0.3,66
+2025-11-13,Delhi,Delhi,20.2,54,0.4,88
+2025-11-20,Delhi,Delhi,20.2,44,0.6,59
+2025-11-27,Delhi,Delhi,22.1,39,0.7,73
+2025-12-04,Delhi,Delhi,20.1,35,0.4,61
+2025-12-11,Delhi,Delhi,19.7,45,0.3,64
+2025-12-18,Delhi,Delhi,24.7,46,0.9,99
+2025-12-25,Delhi,Delhi,22.8,46,0.6,77
+2026-01-01,Delhi,Delhi,27.2,53,0.3,61
+2026-01-08,Delhi,Delhi,26.8,43,0.5,55
+2026-01-15,Delhi,Delhi,24.4,46,0.4,84
+2026-01-22,Delhi,Delhi,24.2,36,1.0,103
+2026-01-29,Delhi,Delhi,25.9,38,0.6,52
+2026-02-05,Delhi,Delhi,30.3,51,0.8,76
+2026-02-12,Delhi,Delhi,28.9,38,0.4,108
+2026-02-19,Delhi,Delhi,26.2,45,0.6,115
+2026-02-26,Delhi,Delhi,28.5,48,0.8,83
+2026-03-05,Delhi,Delhi,29.7,32,0.1,70
+2026-03-12,Delhi,Delhi,30.7,43,0.6,45
+2026-03-19,Delhi,Delhi,34.9,44,0.9,98
+2026-03-26,Delhi,Delhi,26.6,49,0.5,85
+2026-04-02,Delhi,Delhi,27.6,52,0.6,70
+2026-04-09,Delhi,Delhi,32.5,44,1.0,53
+2026-04-16,Delhi,Delhi,29.6,43,0.9,82
+2026-04-23,Delhi,Delhi,34.4,44,0.4,57
+2026-04-30,Delhi,Delhi,28.9,39,0.9,113
+2026-05-07,Delhi,Delhi,28.4,47,0.4,60
+2026-05-14,Delhi,Delhi,28.2,41,0.3,69
+2023-05-25,Bangalore,Karnataka,28.1,48,0.7,88
+2023-06-01,Bangalore,Karnataka,30.4,64,19.2,51
+2023-06-08,Bangalore,Karnataka,24.7,76,7.7,80
+2023-06-15,Bangalore,Karnataka,29.1,76,7.3,85
+2023-06-22,Bangalore,Karnataka,23.3,63,3.5,79
+2023-06-29,Bangalore,Karnataka,25.1,68,8.1,112
+2023-07-06,Bangalore,Karnataka,25.0,75,9.8,53
+2023-07-13,Bangalore,Karnataka,22.9,82,6.8,102
+2023-07-20,Bangalore,Karnataka,24.5,80,4.2,116
+2023-07-27,Bangalore,Karnataka,26.1,73,10.7,83
+2023-08-03,Bangalore,Karnataka,23.4,72,2.5,70
+2023-08-10,Bangalore,Karnataka,20.4,70,2.5,83
+2023-08-17,Bangalore,Karnataka,20.1,72,15.6,80
+2023-08-24,Bangalore,Karnataka,18.6,76,14.6,104
+2023-08-31,Bangalore,Karnataka,21.4,79,4.8,74
+2023-09-07,Bangalore,Karnataka,19.5,80,4.1,106
+2023-09-14,Bangalore,Karnataka,24.0,76,12.8,112
+2023-09-21,Bangalore,Karnataka,17.2,71,15.1,74
+2023-09-28,Bangalore,Karnataka,21.6,70,5.9,105
+2023-10-05,Bangalore,Karnataka,18.0,40,0.3,78
+2023-10-12,Bangalore,Karnataka,19.7,45,0.5,64
+2023-10-19,Bangalore,Karnataka,20.1,48,0.9,111
+2023-10-26,Bangalore,Karnataka,16.1,47,0.3,50
+2023-11-02,Bangalore,Karnataka,20.9,42,0.9,117
+2023-11-09,Bangalore,Karnataka,22.0,44,0.7,96
+2023-11-16,Bangalore,Karnataka,22.2,41,0.5,117
+2023-11-23,Bangalore,Karnataka,26.7,43,0.1,69
+2023-11-30,Bangalore,Karnataka,19.7,38,0.0,59
+2023-12-07,Bangalore,Karnataka,22.3,41,0.3,89
+2023-12-14,Bangalore,Karnataka,21.7,43,0.2,100
+2023-12-21,Bangalore,Karnataka,22.4,47,0.5,60
+2023-12-28,Bangalore,Karnataka,23.3,51,0.6,115
+2024-01-04,Bangalore,Karnataka,21.1,45,0.9,113
+2024-01-11,Bangalore,Karnataka,20.3,50,0.7,75
+2024-01-18,Bangalore,Karnataka,27.2,38,0.9,115
+2024-01-25,Bangalore,Karnataka,26.5,36,0.7,99
+2024-02-01,Bangalore,Karnataka,28.7,42,0.8,63
+2024-02-08,Bangalore,Karnataka,28.4,47,0.4,56
+2024-02-15,Bangalore,Karnataka,26.6,47,0.2,112
+2024-02-22,Bangalore,Karnataka,22.1,48,0.4,67
+2024-02-29,Bangalore,Karnataka,28.6,49,0.5,95
+2024-03-07,Bangalore,Karnataka,31.3,45,0.9,77
+2024-03-14,Bangalore,Karnataka,28.9,43,0.4,101
+2024-03-21,Bangalore,Karnataka,31.5,47,0.1,96
+2024-03-28,Bangalore,Karnataka,31.1,40,0.6,45
+2024-04-04,Bangalore,Karnataka,27.2,48,0.2,110
+2024-04-11,Bangalore,Karnataka,34.8,44,0.4,93
+2024-04-18,Bangalore,Karnataka,28.0,41,0.8,89
+2024-04-25,Bangalore,Karnataka,31.8,40,0.4,59
+2024-05-02,Bangalore,Karnataka,27.4,40,0.2,101
+2024-05-09,Bangalore,Karnataka,25.4,41,0.3,70
+2024-05-16,Bangalore,Karnataka,28.1,39,0.8,101
+2024-05-23,Bangalore,Karnataka,31.2,43,0.5,67
+2024-05-30,Bangalore,Karnataka,30.2,48,0.2,50
+2024-06-06,Bangalore,Karnataka,28.1,73,19.6,68
+2024-06-13,Bangalore,Karnataka,27.5,83,13.5,119
+2024-06-20,Bangalore,Karnataka,28.3,76,19.4,73
+2024-06-27,Bangalore,Karnataka,30.0,73,7.1,45
+2024-07-04,Bangalore,Karnataka,21.7,72,8.0,71
+2024-07-11,Bangalore,Karnataka,24.3,71,7.0,89
+2024-07-18,Bangalore,Karnataka,20.9,79,4.5,112
+2024-07-25,Bangalore,Karnataka,26.4,70,18.0,114
+2024-08-01,Bangalore,Karnataka,21.9,71,17.5,46
+2024-08-08,Bangalore,Karnataka,24.7,81,17.7,119
+2024-08-15,Bangalore,Karnataka,21.0,68,18.8,111
+2024-08-22,Bangalore,Karnataka,22.5,74,10.2,45
+2024-08-29,Bangalore,Karnataka,19.9,80,17.7,69
+2024-09-05,Bangalore,Karnataka,20.1,71,10.4,59
+2024-09-12,Bangalore,Karnataka,19.6,74,9.2,43
+2024-09-19,Bangalore,Karnataka,20.9,75,8.3,117
+2024-09-26,Bangalore,Karnataka,20.1,74,14.3,76
+2024-10-03,Bangalore,Karnataka,18.6,45,0.6,113
+2024-10-10,Bangalore,Karnataka,21.5,41,0.1,105
+2024-10-17,Bangalore,Karnataka,17.9,48,0.7,79
+2024-10-24,Bangalore,Karnataka,15.6,45,0.9,68
+2024-10-31,Bangalore,Karnataka,22.6,40,0.4,85
+2024-11-07,Bangalore,Karnataka,22.2,59,0.6,49
+2024-11-14,Bangalore,Karnataka,22.5,48,0.1,75
+2024-11-21,Bangalore,Karnataka,20.5,56,0.4,72
+2024-11-28,Bangalore,Karnataka,21.8,52,0.6,74
+2024-12-05,Bangalore,Karnataka,24.4,45,0.1,50
+2024-12-12,Bangalore,Karnataka,22.5,40,0.8,56
+2024-12-19,Bangalore,Karnataka,20.8,42,0.1,118
+2024-12-26,Bangalore,Karnataka,27.1,33,0.4,60
+2025-01-02,Bangalore,Karnataka,26.4,43,0.1,100
+2025-01-09,Bangalore,Karnataka,21.2,45,0.7,41
+2025-01-16,Bangalore,Karnataka,25.7,49,0.3,114
+2025-01-23,Bangalore,Karnataka,22.6,45,0.4,64
+2025-01-30,Bangalore,Karnataka,25.3,41,0.8,42
+2025-02-06,Bangalore,Karnataka,27.3,47,0.6,68
+2025-02-13,Bangalore,Karnataka,26.1,43,0.8,66
+2025-02-20,Bangalore,Karnataka,24.9,42,0.2,108
+2025-02-27,Bangalore,Karnataka,26.0,40,0.3,66
+2025-03-06,Bangalore,Karnataka,30.4,46,0.7,47
+2025-03-13,Bangalore,Karnataka,28.7,47,0.1,59
+2025-03-20,Bangalore,Karnataka,30.4,45,0.5,95
+2025-03-27,Bangalore,Karnataka,24.9,46,0.2,78
+2025-04-03,Bangalore,Karnataka,31.3,40,0.6,74
+2025-04-10,Bangalore,Karnataka,29.6,41,0.3,80
+2025-04-17,Bangalore,Karnataka,31.6,43,0.5,79
+2025-04-24,Bangalore,Karnataka,30.9,42,0.5,114
+2025-05-01,Bangalore,Karnataka,28.9,41,0.1,71
+2025-05-08,Bangalore,Karnataka,26.9,46,0.6,87
+2025-05-15,Bangalore,Karnataka,30.6,43,0.1,72
+2025-05-22,Bangalore,Karnataka,28.9,44,0.7,65
+2025-05-29,Bangalore,Karnataka,28.9,49,0.3,70
+2025-06-05,Bangalore,Karnataka,28.3,73,4.6,105
+2025-06-12,Bangalore,Karnataka,24.6,76,5.6,68
+2025-06-19,Bangalore,Karnataka,26.8,77,17.6,88
+2025-06-26,Bangalore,Karnataka,23.3,75,16.4,101
+2025-07-03,Bangalore,Karnataka,21.3,73,13.1,73
+2025-07-10,Bangalore,Karnataka,24.8,72,4.7,98
+2025-07-17,Bangalore,Karnataka,26.8,77,18.3,107
+2025-07-24,Bangalore,Karnataka,25.4,75,17.8,107
+2025-07-31,Bangalore,Karnataka,24.1,70,2.0,40
+2025-08-07,Bangalore,Karnataka,22.0,81,9.1,96
+2025-08-14,Bangalore,Karnataka,20.9,80,10.0,56
+2025-08-21,Bangalore,Karnataka,23.2,68,2.6,69
+2025-08-28,Bangalore,Karnataka,19.6,84,18.5,75
+2025-09-04,Bangalore,Karnataka,22.3,75,16.8,104
+2025-09-11,Bangalore,Karnataka,22.7,71,14.9,103
+2025-09-18,Bangalore,Karnataka,18.8,72,8.8,60
+2025-09-25,Bangalore,Karnataka,18.9,73,11.2,116
+2025-10-02,Bangalore,Karnataka,19.0,42,0.3,97
+2025-10-09,Bangalore,Karnataka,20.9,46,0.3,80
+2025-10-16,Bangalore,Karnataka,16.7,41,0.5,65
+2025-10-23,Bangalore,Karnataka,18.6,42,0.1,78
+2025-10-30,Bangalore,Karnataka,22.6,44,1.0,83
+2025-11-06,Bangalore,Karnataka,20.5,47,0.3,115
+2025-11-13,Bangalore,Karnataka,17.9,39,0.1,51
+2025-11-20,Bangalore,Karnataka,19.6,44,0.2,66
+2025-11-27,Bangalore,Karnataka,17.1,42,0.9,68
+2025-12-04,Bangalore,Karnataka,22.5,33,0.4,83
+2025-12-11,Bangalore,Karnataka,22.5,52,1.0,100
+2025-12-18,Bangalore,Karnataka,22.8,36,0.2,84
+2025-12-25,Bangalore,Karnataka,21.2,41,0.3,51
+2026-01-01,Bangalore,Karnataka,24.7,40,0.7,95
+2026-01-08,Bangalore,Karnataka,20.5,43,0.1,70
+2026-01-15,Bangalore,Karnataka,27.9,43,0.0,85
+2026-01-22,Bangalore,Karnataka,25.9,44,0.5,119
+2026-01-29,Bangalore,Karnataka,25.3,55,0.6,106
+2026-02-05,Bangalore,Karnataka,28.3,47,1.0,83
+2026-02-12,Bangalore,Karnataka,21.5,47,0.2,87
+2026-02-19,Bangalore,Karnataka,29.6,40,0.8,40
+2026-02-26,Bangalore,Karnataka,21.6,41,0.8,106
+2026-03-05,Bangalore,Karnataka,27.1,44,0.5,84
+2026-03-12,Bangalore,Karnataka,28.3,54,0.1,40
+2026-03-19,Bangalore,Karnataka,31.7,46,0.9,60
+2026-03-26,Bangalore,Karnataka,29.1,44,0.7,102
+2026-04-02,Bangalore,Karnataka,28.5,51,0.3,81
+2026-04-09,Bangalore,Karnataka,29.4,50,0.3,58
+2026-04-16,Bangalore,Karnataka,31.6,46,0.0,51
+2026-04-23,Bangalore,Karnataka,26.7,45,0.3,55
+2026-04-30,Bangalore,Karnataka,29.0,49,0.9,119
+2026-05-07,Bangalore,Karnataka,31.4,40,0.4,110
+2026-05-14,Bangalore,Karnataka,30.3,38,0.7,59
+2023-05-25,Chennai,Tamil Nadu,28.7,38,0.4,43
+2023-06-01,Chennai,Tamil Nadu,27.8,71,8.6,97
+2023-06-08,Chennai,Tamil Nadu,27.1,74,7.0,97
+2023-06-15,Chennai,Tamil Nadu,30.5,78,12.6,50
+2023-06-22,Chennai,Tamil Nadu,24.9,78,14.0,40
+2023-06-29,Chennai,Tamil Nadu,30.2,79,16.8,74
+2023-07-06,Chennai,Tamil Nadu,23.4,84,13.4,96
+2023-07-13,Chennai,Tamil Nadu,26.3,75,6.3,74
+2023-07-20,Chennai,Tamil Nadu,28.1,73,15.2,109
+2023-07-27,Chennai,Tamil Nadu,26.3,79,11.0,85
+2023-08-03,Chennai,Tamil Nadu,21.2,70,17.9,83
+2023-08-10,Chennai,Tamil Nadu,21.3,73,7.1,73
+2023-08-17,Chennai,Tamil Nadu,23.0,78,8.0,71
+2023-08-24,Chennai,Tamil Nadu,18.2,75,8.6,72
+2023-08-31,Chennai,Tamil Nadu,26.2,71,3.6,100
+2023-09-07,Chennai,Tamil Nadu,20.2,76,9.4,115
+2023-09-14,Chennai,Tamil Nadu,20.9,73,19.1,72
+2023-09-21,Chennai,Tamil Nadu,20.1,73,16.4,72
+2023-09-28,Chennai,Tamil Nadu,22.1,69,7.0,70
+2023-10-05,Chennai,Tamil Nadu,17.7,43,0.8,101
+2023-10-12,Chennai,Tamil Nadu,19.1,41,0.6,40
+2023-10-19,Chennai,Tamil Nadu,18.6,45,0.7,54
+2023-10-26,Chennai,Tamil Nadu,21.9,49,0.0,79
+2023-11-02,Chennai,Tamil Nadu,19.3,49,0.0,56
+2023-11-09,Chennai,Tamil Nadu,23.1,47,0.5,96
+2023-11-16,Chennai,Tamil Nadu,16.8,35,0.8,41
+2023-11-23,Chennai,Tamil Nadu,18.2,46,0.9,42
+2023-11-30,Chennai,Tamil Nadu,20.5,38,0.3,112
+2023-12-07,Chennai,Tamil Nadu,21.1,43,1.0,41
+2023-12-14,Chennai,Tamil Nadu,25.5,37,0.0,57
+2023-12-21,Chennai,Tamil Nadu,24.9,38,0.8,111
+2023-12-28,Chennai,Tamil Nadu,22.2,37,0.6,87
+2024-01-04,Chennai,Tamil Nadu,21.2,48,0.4,105
+2024-01-11,Chennai,Tamil Nadu,25.9,42,0.1,81
+2024-01-18,Chennai,Tamil Nadu,27.9,42,1.0,92
+2024-01-25,Chennai,Tamil Nadu,26.6,40,0.2,41
+2024-02-01,Chennai,Tamil Nadu,31.9,38,0.4,111
+2024-02-08,Chennai,Tamil Nadu,24.8,48,1.0,102
+2024-02-15,Chennai,Tamil Nadu,26.0,42,0.5,59
+2024-02-22,Chennai,Tamil Nadu,28.3,52,0.5,85
+2024-02-29,Chennai,Tamil Nadu,27.3,43,0.9,83
+2024-03-07,Chennai,Tamil Nadu,29.6,43,0.5,107
+2024-03-14,Chennai,Tamil Nadu,26.7,37,0.8,93
+2024-03-21,Chennai,Tamil Nadu,30.6,55,0.1,78
+2024-03-28,Chennai,Tamil Nadu,30.5,47,0.5,89
+2024-04-04,Chennai,Tamil Nadu,32.7,49,0.2,90
+2024-04-11,Chennai,Tamil Nadu,25.6,42,0.8,111
+2024-04-18,Chennai,Tamil Nadu,30.6,45,0.3,99
+2024-04-25,Chennai,Tamil Nadu,31.0,42,0.1,78
+2024-05-02,Chennai,Tamil Nadu,28.4,40,0.1,116
+2024-05-09,Chennai,Tamil Nadu,30.2,41,0.9,71
+2024-05-16,Chennai,Tamil Nadu,30.8,44,0.2,106
+2024-05-23,Chennai,Tamil Nadu,32.5,40,0.1,80
+2024-05-30,Chennai,Tamil Nadu,29.2,52,0.8,62
+2024-06-06,Chennai,Tamil Nadu,26.4,70,2.2,82
+2024-06-13,Chennai,Tamil Nadu,27.4,80,9.9,45
+2024-06-20,Chennai,Tamil Nadu,26.9,74,13.2,114
+2024-06-27,Chennai,Tamil Nadu,27.0,66,16.5,41
+2024-07-04,Chennai,Tamil Nadu,24.1,85,5.4,80
+2024-07-11,Chennai,Tamil Nadu,21.5,77,6.8,64
+2024-07-18,Chennai,Tamil Nadu,27.8,75,3.1,105
+2024-07-25,Chennai,Tamil Nadu,24.7,82,8.8,42
+2024-08-01,Chennai,Tamil Nadu,23.4,69,7.5,67
+2024-08-08,Chennai,Tamil Nadu,19.9,74,16.5,47
+2024-08-15,Chennai,Tamil Nadu,22.6,73,19.8,112
+2024-08-22,Chennai,Tamil Nadu,19.3,68,7.2,43
+2024-08-29,Chennai,Tamil Nadu,23.0,65,17.1,52
+2024-09-05,Chennai,Tamil Nadu,22.0,75,4.1,76
+2024-09-12,Chennai,Tamil Nadu,16.3,72,7.4,54
+2024-09-19,Chennai,Tamil Nadu,21.8,68,6.1,45
+2024-09-26,Chennai,Tamil Nadu,20.3,78,20.0,54
+2024-10-03,Chennai,Tamil Nadu,21.1,51,0.2,59
+2024-10-10,Chennai,Tamil Nadu,20.7,46,0.8,108
+2024-10-17,Chennai,Tamil Nadu,17.3,44,0.1,105
+2024-10-24,Chennai,Tamil Nadu,20.3,55,0.6,104
+2024-10-31,Chennai,Tamil Nadu,18.0,42,0.9,69
+2024-11-07,Chennai,Tamil Nadu,21.9,41,0.4,119
+2024-11-14,Chennai,Tamil Nadu,21.3,46,0.9,58
+2024-11-21,Chennai,Tamil Nadu,19.2,46,0.3,60
+2024-11-28,Chennai,Tamil Nadu,21.0,50,0.2,83
+2024-12-05,Chennai,Tamil Nadu,21.2,42,0.6,117
+2024-12-12,Chennai,Tamil Nadu,20.7,40,0.7,55
+2024-12-19,Chennai,Tamil Nadu,24.1,43,0.9,62
+2024-12-26,Chennai,Tamil Nadu,23.2,37,0.6,84
+2025-01-02,Chennai,Tamil Nadu,24.2,35,0.8,74
+2025-01-09,Chennai,Tamil Nadu,22.8,41,0.3,71
+2025-01-16,Chennai,Tamil Nadu,27.3,36,0.2,44
+2025-01-23,Chennai,Tamil Nadu,24.5,43,0.4,118
+2025-01-30,Chennai,Tamil Nadu,25.4,45,0.9,84
+2025-02-06,Chennai,Tamil Nadu,28.1,51,0.9,86
+2025-02-13,Chennai,Tamil Nadu,24.4,36,0.7,95
+2025-02-20,Chennai,Tamil Nadu,23.5,50,0.4,48
+2025-02-27,Chennai,Tamil Nadu,29.3,47,0.7,88
+2025-03-06,Chennai,Tamil Nadu,33.3,40,0.5,78
+2025-03-13,Chennai,Tamil Nadu,28.6,48,1.0,105
+2025-03-20,Chennai,Tamil Nadu,29.5,35,0.4,63
+2025-03-27,Chennai,Tamil Nadu,30.6,49,0.1,116
+2025-04-03,Chennai,Tamil Nadu,27.4,51,0.2,104
+2025-04-10,Chennai,Tamil Nadu,32.2,41,0.4,68
+2025-04-17,Chennai,Tamil Nadu,31.6,41,0.1,55
+2025-04-24,Chennai,Tamil Nadu,30.0,38,0.3,107
+2025-05-01,Chennai,Tamil Nadu,27.3,52,0.6,76
+2025-05-08,Chennai,Tamil Nadu,30.6,34,0.9,91
+2025-05-15,Chennai,Tamil Nadu,26.8,42,0.4,49
+2025-05-22,Chennai,Tamil Nadu,29.8,48,0.4,62
+2025-05-29,Chennai,Tamil Nadu,29.9,49,0.4,78
+2025-06-05,Chennai,Tamil Nadu,26.0,80,16.4,73
+2025-06-12,Chennai,Tamil Nadu,25.0,67,5.6,88
+2025-06-19,Chennai,Tamil Nadu,28.8,71,4.6,62
+2025-06-26,Chennai,Tamil Nadu,27.5,72,13.5,66
+2025-07-03,Chennai,Tamil Nadu,25.5,75,5.5,44
+2025-07-10,Chennai,Tamil Nadu,26.5,73,13.0,52
+2025-07-17,Chennai,Tamil Nadu,24.8,70,19.9,40
+2025-07-24,Chennai,Tamil Nadu,23.7,77,17.6,98
+2025-07-31,Chennai,Tamil Nadu,23.9,71,16.4,68
+2025-08-07,Chennai,Tamil Nadu,19.9,85,9.9,78
+2025-08-14,Chennai,Tamil Nadu,18.6,76,14.7,42
+2025-08-21,Chennai,Tamil Nadu,23.0,66,6.4,91
+2025-08-28,Chennai,Tamil Nadu,22.6,71,15.5,104
+2025-09-04,Chennai,Tamil Nadu,21.3,73,5.6,88
+2025-09-11,Chennai,Tamil Nadu,20.7,73,18.4,102
+2025-09-18,Chennai,Tamil Nadu,25.6,75,7.9,77
+2025-09-25,Chennai,Tamil Nadu,25.2,68,8.6,104
+2025-10-02,Chennai,Tamil Nadu,20.5,46,0.2,116
+2025-10-09,Chennai,Tamil Nadu,19.5,40,0.3,68
+2025-10-16,Chennai,Tamil Nadu,18.8,49,0.1,119
+2025-10-23,Chennai,Tamil Nadu,23.4,52,0.3,102
+2025-10-30,Chennai,Tamil Nadu,21.7,47,0.9,77
+2025-11-06,Chennai,Tamil Nadu,20.2,49,0.8,86
+2025-11-13,Chennai,Tamil Nadu,18.7,40,0.9,79
+2025-11-20,Chennai,Tamil Nadu,17.8,47,0.8,98
+2025-11-27,Chennai,Tamil Nadu,20.4,38,1.0,77
+2025-12-04,Chennai,Tamil Nadu,23.1,41,0.5,52
+2025-12-11,Chennai,Tamil Nadu,20.7,49,0.2,68
+2025-12-18,Chennai,Tamil Nadu,23.8,56,0.5,114
+2025-12-25,Chennai,Tamil Nadu,24.0,46,1.0,94
+2026-01-01,Chennai,Tamil Nadu,23.7,42,0.6,96
+2026-01-08,Chennai,Tamil Nadu,26.3,44,0.8,52
+2026-01-15,Chennai,Tamil Nadu,26.7,53,1.0,93
+2026-01-22,Chennai,Tamil Nadu,25.9,51,0.9,65
+2026-01-29,Chennai,Tamil Nadu,27.1,47,0.7,99
+2026-02-05,Chennai,Tamil Nadu,27.1,49,0.8,86
+2026-02-12,Chennai,Tamil Nadu,26.2,40,0.8,105
+2026-02-19,Chennai,Tamil Nadu,27.9,41,0.6,77
+2026-02-26,Chennai,Tamil Nadu,28.3,47,0.6,107
+2026-03-05,Chennai,Tamil Nadu,27.7,39,0.7,62
+2026-03-12,Chennai,Tamil Nadu,33.6,42,0.7,50
+2026-03-19,Chennai,Tamil Nadu,28.5,42,0.1,83
+2026-03-26,Chennai,Tamil Nadu,31.4,46,0.9,78
+2026-04-02,Chennai,Tamil Nadu,25.0,44,0.1,86
+2026-04-09,Chennai,Tamil Nadu,27.3,33,0.2,119
+2026-04-16,Chennai,Tamil Nadu,31.9,33,0.3,99
+2026-04-23,Chennai,Tamil Nadu,28.3,48,0.9,98
+2026-04-30,Chennai,Tamil Nadu,34.2,37,0.6,64
+2026-05-07,Chennai,Tamil Nadu,31.9,42,0.1,66
+2026-05-14,Chennai,Tamil Nadu,29.6,46,0.9,52
+2023-05-25,Kochi,Kerala,29.1,45,1.0,73
+2023-06-01,Kochi,Kerala,28.8,67,8.3,50
+2023-06-08,Kochi,Kerala,28.3,76,10.3,85
+2023-06-15,Kochi,Kerala,29.0,80,16.7,119
+2023-06-22,Kochi,Kerala,28.1,68,17.2,66
+2023-06-29,Kochi,Kerala,31.8,84,4.9,110
+2023-07-06,Kochi,Kerala,24.5,70,4.6,59
+2023-07-13,Kochi,Kerala,24.1,72,13.0,104
+2023-07-20,Kochi,Kerala,21.4,75,14.0,62
+2023-07-27,Kochi,Kerala,22.8,81,2.2,90
+2023-08-03,Kochi,Kerala,22.6,68,8.7,94
+2023-08-10,Kochi,Kerala,21.0,76,14.8,95
+2023-08-17,Kochi,Kerala,23.4,78,18.5,115
+2023-08-24,Kochi,Kerala,19.4,81,8.1,47
+2023-08-31,Kochi,Kerala,24.1,80,9.9,109
+2023-09-07,Kochi,Kerala,20.5,78,18.1,92
+2023-09-14,Kochi,Kerala,21.3,72,16.0,116
+2023-09-21,Kochi,Kerala,17.4,80,4.7,93
+2023-09-28,Kochi,Kerala,21.5,83,3.1,72
+2023-10-05,Kochi,Kerala,20.6,49,0.2,61
+2023-10-12,Kochi,Kerala,18.2,47,0.6,43
+2023-10-19,Kochi,Kerala,23.7,50,0.6,108
+2023-10-26,Kochi,Kerala,23.1,47,0.6,88
+2023-11-02,Kochi,Kerala,14.4,39,0.3,76
+2023-11-09,Kochi,Kerala,23.5,41,0.3,113
+2023-11-16,Kochi,Kerala,22.3,54,1.0,105
+2023-11-23,Kochi,Kerala,20.7,42,0.4,84
+2023-11-30,Kochi,Kerala,19.5,50,0.5,58
+2023-12-07,Kochi,Kerala,21.6,46,0.4,118
+2023-12-14,Kochi,Kerala,24.0,32,0.9,58
+2023-12-21,Kochi,Kerala,25.0,43,0.8,103
+2023-12-28,Kochi,Kerala,19.7,44,0.3,67
+2024-01-04,Kochi,Kerala,22.6,43,0.2,41
+2024-01-11,Kochi,Kerala,21.6,42,0.2,96
+2024-01-18,Kochi,Kerala,24.8,47,0.4,74
+2024-01-25,Kochi,Kerala,23.5,43,0.7,67
+2024-02-01,Kochi,Kerala,27.2,49,0.9,40
+2024-02-08,Kochi,Kerala,28.9,44,0.2,99
+2024-02-15,Kochi,Kerala,26.3,48,0.0,60
+2024-02-22,Kochi,Kerala,26.4,48,0.1,73
+2024-02-29,Kochi,Kerala,23.2,41,1.0,55
+2024-03-07,Kochi,Kerala,27.4,37,0.6,108
+2024-03-14,Kochi,Kerala,27.8,44,0.9,68
+2024-03-21,Kochi,Kerala,31.6,52,0.9,49
+2024-03-28,Kochi,Kerala,28.0,34,0.4,90
+2024-04-04,Kochi,Kerala,28.5,46,0.7,116
+2024-04-11,Kochi,Kerala,28.2,44,0.0,103
+2024-04-18,Kochi,Kerala,28.3,44,0.6,91
+2024-04-25,Kochi,Kerala,31.3,41,0.7,60
+2024-05-02,Kochi,Kerala,29.5,53,0.0,50
+2024-05-09,Kochi,Kerala,28.2,49,0.5,52
+2024-05-16,Kochi,Kerala,30.9,46,0.6,110
+2024-05-23,Kochi,Kerala,28.4,41,0.6,59
+2024-05-30,Kochi,Kerala,29.6,52,0.9,64
+2024-06-06,Kochi,Kerala,28.5,71,17.2,66
+2024-06-13,Kochi,Kerala,26.6,76,8.0,90
+2024-06-20,Kochi,Kerala,25.9,70,15.1,78
+2024-06-27,Kochi,Kerala,25.0,80,9.6,47
+2024-07-04,Kochi,Kerala,25.0,81,18.0,115
+2024-07-11,Kochi,Kerala,26.0,70,10.2,60
+2024-07-18,Kochi,Kerala,23.1,72,2.0,100
+2024-07-25,Kochi,Kerala,25.9,68,18.1,66
+2024-08-01,Kochi,Kerala,22.6,71,9.1,56
+2024-08-08,Kochi,Kerala,21.7,75,16.8,42
+2024-08-15,Kochi,Kerala,22.5,78,13.2,114
+2024-08-22,Kochi,Kerala,22.8,74,13.7,40
+2024-08-29,Kochi,Kerala,20.3,74,9.4,96
+2024-09-05,Kochi,Kerala,19.0,62,13.8,93
+2024-09-12,Kochi,Kerala,17.6,72,2.2,101
+2024-09-19,Kochi,Kerala,20.4,71,18.3,94
+2024-09-26,Kochi,Kerala,19.1,76,12.0,108
+2024-10-03,Kochi,Kerala,19.1,48,0.8,109
+2024-10-10,Kochi,Kerala,19.3,48,0.2,99
+2024-10-17,Kochi,Kerala,22.1,50,0.6,98
+2024-10-24,Kochi,Kerala,20.7,33,0.8,114
+2024-10-31,Kochi,Kerala,19.4,31,0.5,49
+2024-11-07,Kochi,Kerala,16.3,48,0.9,94
+2024-11-14,Kochi,Kerala,21.9,41,0.6,83
+2024-11-21,Kochi,Kerala,19.8,52,0.7,115
+2024-11-28,Kochi,Kerala,19.7,46,0.8,101
+2024-12-05,Kochi,Kerala,20.8,44,0.2,86
+2024-12-12,Kochi,Kerala,21.4,50,0.4,58
+2024-12-19,Kochi,Kerala,22.2,40,0.6,57
+2024-12-26,Kochi,Kerala,24.4,43,0.8,108
+2025-01-02,Kochi,Kerala,26.9,43,1.0,43
+2025-01-09,Kochi,Kerala,19.9,43,0.4,118
+2025-01-16,Kochi,Kerala,22.1,45,0.8,75
+2025-01-23,Kochi,Kerala,27.0,52,0.6,40
+2025-01-30,Kochi,Kerala,23.2,41,0.9,75
+2025-02-06,Kochi,Kerala,24.8,40,0.9,42
+2025-02-13,Kochi,Kerala,28.8,44,0.5,91
+2025-02-20,Kochi,Kerala,25.9,48,0.5,118
+2025-02-27,Kochi,Kerala,27.9,54,0.8,114
+2025-03-06,Kochi,Kerala,28.6,54,0.6,96
+2025-03-13,Kochi,Kerala,29.2,44,0.9,75
+2025-03-20,Kochi,Kerala,32.7,45,0.7,93
+2025-03-27,Kochi,Kerala,27.9,49,0.0,91
+2025-04-03,Kochi,Kerala,29.2,45,0.7,91
+2025-04-10,Kochi,Kerala,29.9,44,0.2,42
+2025-04-17,Kochi,Kerala,34.7,40,0.3,56
+2025-04-24,Kochi,Kerala,30.6,37,0.1,77
+2025-05-01,Kochi,Kerala,29.1,50,0.6,64
+2025-05-08,Kochi,Kerala,31.5,43,0.8,80
+2025-05-15,Kochi,Kerala,29.5,42,0.3,49
+2025-05-22,Kochi,Kerala,28.8,43,0.7,94
+2025-05-29,Kochi,Kerala,29.3,51,0.8,96
+2025-06-05,Kochi,Kerala,26.5,76,7.9,88
+2025-06-12,Kochi,Kerala,29.0,74,6.1,102
+2025-06-19,Kochi,Kerala,28.3,73,6.5,119
+2025-06-26,Kochi,Kerala,29.9,77,14.6,68
+2025-07-03,Kochi,Kerala,25.3,73,15.7,78
+2025-07-10,Kochi,Kerala,27.1,70,8.0,114
+2025-07-17,Kochi,Kerala,24.4,85,12.1,101
+2025-07-24,Kochi,Kerala,24.5,73,19.7,76
+2025-07-31,Kochi,Kerala,25.2,72,14.6,86
+2025-08-07,Kochi,Kerala,21.6,83,12.7,100
+2025-08-14,Kochi,Kerala,22.1,81,11.8,62
+2025-08-21,Kochi,Kerala,23.4,69,3.4,100
+2025-08-28,Kochi,Kerala,26.6,74,19.0,42
+2025-09-04,Kochi,Kerala,20.6,62,9.6,98
+2025-09-11,Kochi,Kerala,17.6,72,12.1,60
+2025-09-18,Kochi,Kerala,21.1,79,13.6,47
+2025-09-25,Kochi,Kerala,20.8,72,6.5,72
+2025-10-02,Kochi,Kerala,17.3,39,0.2,47
+2025-10-09,Kochi,Kerala,21.1,52,0.0,72
+2025-10-16,Kochi,Kerala,19.5,44,0.2,75
+2025-10-23,Kochi,Kerala,19.9,37,0.4,72
+2025-10-30,Kochi,Kerala,20.3,42,0.2,59
+2025-11-06,Kochi,Kerala,19.1,48,0.1,116
+2025-11-13,Kochi,Kerala,21.7,56,0.3,109
+2025-11-20,Kochi,Kerala,20.0,41,0.6,112
+2025-11-27,Kochi,Kerala,23.0,42,0.6,54
+2025-12-04,Kochi,Kerala,22.1,50,0.2,58
+2025-12-11,Kochi,Kerala,21.4,53,0.1,93
+2025-12-18,Kochi,Kerala,20.5,42,0.8,99
+2025-12-25,Kochi,Kerala,23.0,33,0.5,115
+2026-01-01,Kochi,Kerala,22.8,49,0.2,68
+2026-01-08,Kochi,Kerala,23.0,36,0.7,48
+2026-01-15,Kochi,Kerala,25.5,44,1.0,50
+2026-01-22,Kochi,Kerala,23.3,47,0.5,45
+2026-01-29,Kochi,Kerala,26.0,50,0.0,119
+2026-02-05,Kochi,Kerala,29.5,59,0.1,74
+2026-02-12,Kochi,Kerala,24.6,37,0.4,97
+2026-02-19,Kochi,Kerala,28.6,49,0.9,85
+2026-02-26,Kochi,Kerala,27.3,50,0.7,117
+2026-03-05,Kochi,Kerala,25.8,45,0.4,72
+2026-03-12,Kochi,Kerala,30.5,39,0.1,54
+2026-03-19,Kochi,Kerala,33.3,48,0.3,98
+2026-03-26,Kochi,Kerala,30.7,45,0.4,89
+2026-04-02,Kochi,Kerala,32.9,46,0.7,76
+2026-04-09,Kochi,Kerala,29.9,40,0.8,82
+2026-04-16,Kochi,Kerala,31.9,45,0.6,79
+2026-04-23,Kochi,Kerala,29.9,52,0.2,53
+2026-04-30,Kochi,Kerala,29.1,49,0.9,94
+2026-05-07,Kochi,Kerala,25.9,48,0.7,81
+2026-05-14,Kochi,Kerala,30.5,47,0.0,94
+2023-05-25,Kolkata,West Bengal,27.9,47,0.0,52
+2023-06-01,Kolkata,West Bengal,30.2,73,18.6,41
+2023-06-08,Kolkata,West Bengal,25.6,69,5.1,42
+2023-06-15,Kolkata,West Bengal,27.6,70,16.1,102
+2023-06-22,Kolkata,West Bengal,32.6,81,18.7,98
+2023-06-29,Kolkata,West Bengal,25.9,81,2.6,91
+2023-07-06,Kolkata,West Bengal,22.3,84,12.9,113
+2023-07-13,Kolkata,West Bengal,25.7,70,13.0,40
+2023-07-20,Kolkata,West Bengal,24.3,66,12.2,117
+2023-07-27,Kolkata,West Bengal,24.9,77,8.7,55
+2023-08-03,Kolkata,West Bengal,23.2,81,11.9,59
+2023-08-10,Kolkata,West Bengal,22.1,78,10.8,51
+2023-08-17,Kolkata,West Bengal,22.0,72,19.2,74
+2023-08-24,Kolkata,West Bengal,20.1,68,4.0,57
+2023-08-31,Kolkata,West Bengal,22.5,73,19.8,92
+2023-09-07,Kolkata,West Bengal,20.5,74,16.4,97
+2023-09-14,Kolkata,West Bengal,23.0,71,7.7,75
+2023-09-21,Kolkata,West Bengal,21.4,70,3.4,46
+2023-09-28,Kolkata,West Bengal,18.9,71,3.3,53
+2023-10-05,Kolkata,West Bengal,19.4,40,0.2,48
+2023-10-12,Kolkata,West Bengal,16.9,45,0.7,89
+2023-10-19,Kolkata,West Bengal,22.4,41,0.6,64
+2023-10-26,Kolkata,West Bengal,20.3,44,0.9,105
+2023-11-02,Kolkata,West Bengal,19.1,45,0.6,111
+2023-11-09,Kolkata,West Bengal,24.2,40,0.3,45
+2023-11-16,Kolkata,West Bengal,21.2,45,0.1,114
+2023-11-23,Kolkata,West Bengal,18.7,45,0.0,113
+2023-11-30,Kolkata,West Bengal,15.4,50,0.9,72
+2023-12-07,Kolkata,West Bengal,21.4,50,0.3,76
+2023-12-14,Kolkata,West Bengal,21.5,46,0.9,84
+2023-12-21,Kolkata,West Bengal,25.3,53,0.1,117
+2023-12-28,Kolkata,West Bengal,22.7,36,0.5,68
+2024-01-04,Kolkata,West Bengal,22.8,49,0.4,79
+2024-01-11,Kolkata,West Bengal,22.1,48,0.9,116
+2024-01-18,Kolkata,West Bengal,24.7,49,0.7,76
+2024-01-25,Kolkata,West Bengal,23.6,48,0.6,57
+2024-02-01,Kolkata,West Bengal,26.9,44,0.1,61
+2024-02-08,Kolkata,West Bengal,24.9,36,0.4,89
+2024-02-15,Kolkata,West Bengal,27.8,46,0.5,111
+2024-02-22,Kolkata,West Bengal,28.0,42,0.8,59
+2024-02-29,Kolkata,West Bengal,29.9,41,0.9,80
+2024-03-07,Kolkata,West Bengal,30.7,54,1.0,100
+2024-03-14,Kolkata,West Bengal,30.0,37,0.1,60
+2024-03-21,Kolkata,West Bengal,27.8,39,0.8,90
+2024-03-28,Kolkata,West Bengal,29.0,45,0.6,106
+2024-04-04,Kolkata,West Bengal,26.2,44,0.0,113
+2024-04-11,Kolkata,West Bengal,26.5,51,0.5,79
+2024-04-18,Kolkata,West Bengal,28.0,43,0.4,97
+2024-04-25,Kolkata,West Bengal,30.3,40,0.0,45
+2024-05-02,Kolkata,West Bengal,31.2,36,0.7,91
+2024-05-09,Kolkata,West Bengal,30.8,43,0.5,94
+2024-05-16,Kolkata,West Bengal,27.7,41,0.8,98
+2024-05-23,Kolkata,West Bengal,32.6,46,0.1,106
+2024-05-30,Kolkata,West Bengal,27.4,40,0.2,66
+2024-06-06,Kolkata,West Bengal,29.4,73,8.7,89
+2024-06-13,Kolkata,West Bengal,27.7,69,3.8,68
+2024-06-20,Kolkata,West Bengal,26.9,81,2.9,65
+2024-06-27,Kolkata,West Bengal,29.8,67,19.3,75
+2024-07-04,Kolkata,West Bengal,24.8,72,14.5,51
+2024-07-11,Kolkata,West Bengal,27.0,84,15.5,42
+2024-07-18,Kolkata,West Bengal,23.4,85,4.3,65
+2024-07-25,Kolkata,West Bengal,24.3,71,18.9,106
+2024-08-01,Kolkata,West Bengal,23.4,71,15.1,89
+2024-08-08,Kolkata,West Bengal,21.7,75,13.7,90
+2024-08-15,Kolkata,West Bengal,28.2,73,14.4,107
+2024-08-22,Kolkata,West Bengal,19.3,77,8.6,86
+2024-08-29,Kolkata,West Bengal,18.9,74,17.6,89
+2024-09-05,Kolkata,West Bengal,19.6,72,17.1,41
+2024-09-12,Kolkata,West Bengal,21.6,77,4.1,86
+2024-09-19,Kolkata,West Bengal,20.6,76,4.5,104
+2024-09-26,Kolkata,West Bengal,21.3,72,15.2,117
+2024-10-03,Kolkata,West Bengal,20.8,43,0.5,106
+2024-10-10,Kolkata,West Bengal,19.0,47,0.5,99
+2024-10-17,Kolkata,West Bengal,21.5,37,0.0,119
+2024-10-24,Kolkata,West Bengal,18.1,40,0.1,58
+2024-10-31,Kolkata,West Bengal,21.9,43,0.2,62
+2024-11-07,Kolkata,West Bengal,17.9,45,0.0,103
+2024-11-14,Kolkata,West Bengal,20.5,43,0.3,42
+2024-11-21,Kolkata,West Bengal,21.1,41,0.5,105
+2024-11-28,Kolkata,West Bengal,22.1,61,0.7,66
+2024-12-05,Kolkata,West Bengal,22.9,44,0.3,77
+2024-12-12,Kolkata,West Bengal,23.7,50,0.1,60
+2024-12-19,Kolkata,West Bengal,22.6,50,0.4,41
+2024-12-26,Kolkata,West Bengal,22.9,50,0.7,70
+2025-01-02,Kolkata,West Bengal,26.6,54,0.2,80
+2025-01-09,Kolkata,West Bengal,21.9,44,0.7,80
+2025-01-16,Kolkata,West Bengal,23.9,53,0.1,70
+2025-01-23,Kolkata,West Bengal,24.8,44,0.3,65
+2025-01-30,Kolkata,West Bengal,21.3,52,1.0,95
+2025-02-06,Kolkata,West Bengal,23.2,52,0.6,56
+2025-02-13,Kolkata,West Bengal,27.3,38,0.9,48
+2025-02-20,Kolkata,West Bengal,27.9,51,0.1,108
+2025-02-27,Kolkata,West Bengal,28.9,45,0.8,88
+2025-03-06,Kolkata,West Bengal,28.9,46,1.0,100
+2025-03-13,Kolkata,West Bengal,29.0,46,0.7,42
+2025-03-20,Kolkata,West Bengal,28.3,44,0.3,50
+2025-03-27,Kolkata,West Bengal,30.0,47,0.0,87
+2025-04-03,Kolkata,West Bengal,30.0,52,0.6,96
+2025-04-10,Kolkata,West Bengal,32.3,53,0.7,63
+2025-04-17,Kolkata,West Bengal,31.1,51,0.5,61
+2025-04-24,Kolkata,West Bengal,27.1,41,0.5,71
+2025-05-01,Kolkata,West Bengal,28.9,44,0.8,105
+2025-05-08,Kolkata,West Bengal,34.6,51,0.4,80
+2025-05-15,Kolkata,West Bengal,29.1,47,0.7,65
+2025-05-22,Kolkata,West Bengal,31.5,39,0.5,90
+2025-05-29,Kolkata,West Bengal,27.9,36,0.6,70
+2025-06-05,Kolkata,West Bengal,25.6,89,3.3,94
+2025-06-12,Kolkata,West Bengal,27.4,81,13.9,111
+2025-06-19,Kolkata,West Bengal,32.4,72,13.9,53
+2025-06-26,Kolkata,West Bengal,26.6,74,9.7,101
+2025-07-03,Kolkata,West Bengal,26.5,77,11.1,113
+2025-07-10,Kolkata,West Bengal,26.0,71,11.6,91
+2025-07-17,Kolkata,West Bengal,23.1,78,3.6,114
+2025-07-24,Kolkata,West Bengal,25.2,70,10.2,85
+2025-07-31,Kolkata,West Bengal,25.1,76,10.1,105
+2025-08-07,Kolkata,West Bengal,23.4,80,14.8,102
+2025-08-14,Kolkata,West Bengal,18.9,71,8.5,63
+2025-08-21,Kolkata,West Bengal,24.6,76,12.9,118
+2025-08-28,Kolkata,West Bengal,22.7,71,7.1,63
+2025-09-04,Kolkata,West Bengal,19.7,73,4.8,43
+2025-09-11,Kolkata,West Bengal,17.6,77,10.5,45
+2025-09-18,Kolkata,West Bengal,20.4,76,19.3,103
+2025-09-25,Kolkata,West Bengal,20.7,72,16.9,110
+2025-10-02,Kolkata,West Bengal,21.9,34,0.0,56
+2025-10-09,Kolkata,West Bengal,19.9,43,0.9,102
+2025-10-16,Kolkata,West Bengal,21.3,37,0.2,74
+2025-10-23,Kolkata,West Bengal,20.7,45,0.1,69
+2025-10-30,Kolkata,West Bengal,19.5,42,0.4,114
+2025-11-06,Kolkata,West Bengal,20.7,38,0.5,58
+2025-11-13,Kolkata,West Bengal,19.8,42,0.9,79
+2025-11-20,Kolkata,West Bengal,19.8,47,0.4,114
+2025-11-27,Kolkata,West Bengal,21.1,50,0.1,99
+2025-12-04,Kolkata,West Bengal,22.5,39,0.3,97
+2025-12-11,Kolkata,West Bengal,19.4,49,0.2,45
+2025-12-18,Kolkata,West Bengal,23.8,42,0.3,41
+2025-12-25,Kolkata,West Bengal,20.7,55,1.0,49
+2026-01-01,Kolkata,West Bengal,21.7,41,0.5,105
+2026-01-08,Kolkata,West Bengal,24.6,37,0.8,76
+2026-01-15,Kolkata,West Bengal,24.6,41,0.4,103
+2026-01-22,Kolkata,West Bengal,26.4,38,0.5,43
+2026-01-29,Kolkata,West Bengal,24.6,39,0.6,104
+2026-02-05,Kolkata,West Bengal,27.8,46,1.0,52
+2026-02-12,Kolkata,West Bengal,27.5,42,0.9,106
+2026-02-19,Kolkata,West Bengal,24.3,40,0.7,111
+2026-02-26,Kolkata,West Bengal,29.3,40,0.6,111
+2026-03-05,Kolkata,West Bengal,25.8,54,0.3,99
+2026-03-12,Kolkata,West Bengal,27.0,51,0.7,43
+2026-03-19,Kolkata,West Bengal,28.2,45,0.1,71
+2026-03-26,Kolkata,West Bengal,29.5,41,0.6,94
+2026-04-02,Kolkata,West Bengal,31.7,56,0.7,59
+2026-04-09,Kolkata,West Bengal,30.3,45,0.5,119
+2026-04-16,Kolkata,West Bengal,27.9,46,1.0,66
+2026-04-23,Kolkata,West Bengal,33.2,42,0.1,69
+2026-04-30,Kolkata,West Bengal,31.7,58,0.9,79
+2026-05-07,Kolkata,West Bengal,28.4,48,0.9,69
+2026-05-14,Kolkata,West Bengal,30.2,46,0.5,40
+2023-05-25,Hyderabad,Telangana,28.0,43,0.5,102
+2023-06-01,Hyderabad,Telangana,26.9,78,9.0,54
+2023-06-08,Hyderabad,Telangana,23.6,76,7.2,55
+2023-06-15,Hyderabad,Telangana,25.1,81,18.0,51
+2023-06-22,Hyderabad,Telangana,24.3,77,2.5,40
+2023-06-29,Hyderabad,Telangana,30.5,71,7.2,117
+2023-07-06,Hyderabad,Telangana,24.7,70,14.7,45
+2023-07-13,Hyderabad,Telangana,23.7,73,11.8,88
+2023-07-20,Hyderabad,Telangana,21.6,69,12.6,109
+2023-07-27,Hyderabad,Telangana,30.0,65,13.8,91
+2023-08-03,Hyderabad,Telangana,25.7,77,19.8,73
+2023-08-10,Hyderabad,Telangana,24.9,73,2.4,94
+2023-08-17,Hyderabad,Telangana,24.5,69,3.6,104
+2023-08-24,Hyderabad,Telangana,24.2,70,5.3,42
+2023-08-31,Hyderabad,Telangana,24.0,73,4.6,52
+2023-09-07,Hyderabad,Telangana,21.9,64,19.8,111
+2023-09-14,Hyderabad,Telangana,20.2,72,15.5,52
+2023-09-21,Hyderabad,Telangana,21.2,88,16.2,107
+2023-09-28,Hyderabad,Telangana,19.0,64,18.6,108
+2023-10-05,Hyderabad,Telangana,20.9,44,0.4,46
+2023-10-12,Hyderabad,Telangana,22.6,36,0.8,107
+2023-10-19,Hyderabad,Telangana,20.0,48,1.0,117
+2023-10-26,Hyderabad,Telangana,18.3,44,0.8,99
+2023-11-02,Hyderabad,Telangana,22.7,47,0.3,66
+2023-11-09,Hyderabad,Telangana,21.2,50,0.7,93
+2023-11-16,Hyderabad,Telangana,19.0,37,0.6,119
+2023-11-23,Hyderabad,Telangana,18.7,42,0.2,56
+2023-11-30,Hyderabad,Telangana,20.8,39,0.4,83
+2023-12-07,Hyderabad,Telangana,22.5,55,0.3,104
+2023-12-14,Hyderabad,Telangana,19.4,42,0.5,73
+2023-12-21,Hyderabad,Telangana,23.7,41,0.4,105
+2023-12-28,Hyderabad,Telangana,20.4,40,0.2,44
+2024-01-04,Hyderabad,Telangana,25.4,40,0.7,116
+2024-01-11,Hyderabad,Telangana,25.2,48,0.8,90
+2024-01-18,Hyderabad,Telangana,24.2,42,1.0,115
+2024-01-25,Hyderabad,Telangana,25.3,38,0.3,86
+2024-02-01,Hyderabad,Telangana,23.2,49,0.8,72
+2024-02-08,Hyderabad,Telangana,29.8,41,0.4,115
+2024-02-15,Hyderabad,Telangana,24.7,36,0.4,77
+2024-02-22,Hyderabad,Telangana,26.2,46,0.1,100
+2024-02-29,Hyderabad,Telangana,28.5,39,0.0,52
+2024-03-07,Hyderabad,Telangana,26.3,43,0.6,111
+2024-03-14,Hyderabad,Telangana,31.7,37,1.0,106
+2024-03-21,Hyderabad,Telangana,32.5,38,0.4,50
+2024-03-28,Hyderabad,Telangana,30.7,35,0.9,41
+2024-04-04,Hyderabad,Telangana,30.3,50,0.2,75
+2024-04-11,Hyderabad,Telangana,29.9,46,0.8,86
+2024-04-18,Hyderabad,Telangana,31.9,43,0.4,91
+2024-04-25,Hyderabad,Telangana,29.5,43,0.1,81
+2024-05-02,Hyderabad,Telangana,29.0,49,0.4,75
+2024-05-09,Hyderabad,Telangana,21.8,50,0.4,62
+2024-05-16,Hyderabad,Telangana,29.9,40,0.6,91
+2024-05-23,Hyderabad,Telangana,30.7,46,0.8,40
+2024-05-30,Hyderabad,Telangana,25.6,45,1.0,74
+2024-06-06,Hyderabad,Telangana,28.2,64,7.5,103
+2024-06-13,Hyderabad,Telangana,26.7,73,4.7,50
+2024-06-20,Hyderabad,Telangana,26.6,70,19.5,60
+2024-06-27,Hyderabad,Telangana,27.9,65,9.8,42
+2024-07-04,Hyderabad,Telangana,22.1,85,10.4,45
+2024-07-11,Hyderabad,Telangana,22.7,78,10.5,112
+2024-07-18,Hyderabad,Telangana,26.6,71,7.0,55
+2024-07-25,Hyderabad,Telangana,27.5,68,19.2,98
+2024-08-01,Hyderabad,Telangana,27.0,75,7.1,82
+2024-08-08,Hyderabad,Telangana,22.0,64,17.0,40
+2024-08-15,Hyderabad,Telangana,24.0,73,12.1,40
+2024-08-22,Hyderabad,Telangana,22.3,83,3.5,40
+2024-08-29,Hyderabad,Telangana,21.8,73,14.6,55
+2024-09-05,Hyderabad,Telangana,20.4,71,2.2,104
+2024-09-12,Hyderabad,Telangana,18.2,75,11.2,76
+2024-09-19,Hyderabad,Telangana,20.4,76,13.0,89
+2024-09-26,Hyderabad,Telangana,22.7,77,7.2,80
+2024-10-03,Hyderabad,Telangana,19.6,34,0.8,76
+2024-10-10,Hyderabad,Telangana,18.9,42,0.6,112
+2024-10-17,Hyderabad,Telangana,18.0,49,0.6,70
+2024-10-24,Hyderabad,Telangana,18.0,48,1.0,98
+2024-10-31,Hyderabad,Telangana,19.2,49,0.6,65
+2024-11-07,Hyderabad,Telangana,21.8,43,0.2,47
+2024-11-14,Hyderabad,Telangana,20.5,38,0.7,102
+2024-11-21,Hyderabad,Telangana,21.0,48,0.7,80
+2024-11-28,Hyderabad,Telangana,24.9,41,0.7,104
+2024-12-05,Hyderabad,Telangana,18.6,45,0.1,94
+2024-12-12,Hyderabad,Telangana,23.4,42,0.4,55
+2024-12-19,Hyderabad,Telangana,20.1,45,0.1,86
+2024-12-26,Hyderabad,Telangana,24.7,41,0.2,55
+2025-01-02,Hyderabad,Telangana,24.7,42,0.1,90
+2025-01-09,Hyderabad,Telangana,23.9,45,1.0,53
+2025-01-16,Hyderabad,Telangana,22.9,48,0.3,56
+2025-01-23,Hyderabad,Telangana,27.5,39,0.8,85
+2025-01-30,Hyderabad,Telangana,23.8,35,0.0,57
+2025-02-06,Hyderabad,Telangana,29.9,52,0.9,66
+2025-02-13,Hyderabad,Telangana,25.1,42,0.1,113
+2025-02-20,Hyderabad,Telangana,29.4,51,0.1,96
+2025-02-27,Hyderabad,Telangana,26.4,35,1.0,92
+2025-03-06,Hyderabad,Telangana,29.4,39,0.0,81
+2025-03-13,Hyderabad,Telangana,26.6,52,0.1,70
+2025-03-20,Hyderabad,Telangana,32.3,46,0.8,96
+2025-03-27,Hyderabad,Telangana,29.8,42,0.4,81
+2025-04-03,Hyderabad,Telangana,33.8,46,0.4,47
+2025-04-10,Hyderabad,Telangana,29.2,44,0.7,70
+2025-04-17,Hyderabad,Telangana,31.7,36,0.9,42
+2025-04-24,Hyderabad,Telangana,34.6,43,0.9,46
+2025-05-01,Hyderabad,Telangana,30.4,35,0.4,96
+2025-05-08,Hyderabad,Telangana,30.9,40,1.0,65
+2025-05-15,Hyderabad,Telangana,30.5,35,0.7,115
+2025-05-22,Hyderabad,Telangana,28.5,45,0.0,101
+2025-05-29,Hyderabad,Telangana,30.8,48,0.3,103
+2025-06-05,Hyderabad,Telangana,25.2,72,9.2,81
+2025-06-12,Hyderabad,Telangana,30.4,63,13.5,43
+2025-06-19,Hyderabad,Telangana,28.6,73,12.0,82
+2025-06-26,Hyderabad,Telangana,23.9,73,11.0,111
+2025-07-03,Hyderabad,Telangana,25.1,75,12.4,57
+2025-07-10,Hyderabad,Telangana,26.9,78,5.6,103
+2025-07-17,Hyderabad,Telangana,25.8,71,15.3,49
+2025-07-24,Hyderabad,Telangana,26.4,74,13.4,42
+2025-07-31,Hyderabad,Telangana,26.7,72,4.7,57
+2025-08-07,Hyderabad,Telangana,24.5,79,18.3,105
+2025-08-14,Hyderabad,Telangana,17.5,69,8.9,54
+2025-08-21,Hyderabad,Telangana,18.4,71,9.5,97
+2025-08-28,Hyderabad,Telangana,22.4,67,13.3,41
+2025-09-04,Hyderabad,Telangana,19.1,75,13.6,102
+2025-09-11,Hyderabad,Telangana,17.4,77,13.0,40
+2025-09-18,Hyderabad,Telangana,19.3,78,10.5,67
+2025-09-25,Hyderabad,Telangana,22.4,68,18.3,106
+2025-10-02,Hyderabad,Telangana,17.2,44,0.7,57
+2025-10-09,Hyderabad,Telangana,22.3,39,1.0,73
+2025-10-16,Hyderabad,Telangana,19.5,49,0.3,94
+2025-10-23,Hyderabad,Telangana,21.6,36,0.1,91
+2025-10-30,Hyderabad,Telangana,17.4,41,0.7,50
+2025-11-06,Hyderabad,Telangana,21.2,47,0.8,118
+2025-11-13,Hyderabad,Telangana,20.2,42,0.8,81
+2025-11-20,Hyderabad,Telangana,20.5,46,0.1,74
+2025-11-27,Hyderabad,Telangana,19.5,36,0.6,75
+2025-12-04,Hyderabad,Telangana,18.9,51,0.5,42
+2025-12-11,Hyderabad,Telangana,23.9,37,0.9,56
+2025-12-18,Hyderabad,Telangana,19.1,46,0.5,48
+2025-12-25,Hyderabad,Telangana,24.5,47,0.6,107
+2026-01-01,Hyderabad,Telangana,23.3,40,0.5,42
+2026-01-08,Hyderabad,Telangana,24.7,51,0.7,42
+2026-01-15,Hyderabad,Telangana,25.3,47,0.0,40
+2026-01-22,Hyderabad,Telangana,29.1,47,0.7,69
+2026-01-29,Hyderabad,Telangana,23.5,39,0.1,54
+2026-02-05,Hyderabad,Telangana,24.8,48,0.5,89
+2026-02-12,Hyderabad,Telangana,25.1,46,0.7,107
+2026-02-19,Hyderabad,Telangana,28.2,46,1.0,86
+2026-02-26,Hyderabad,Telangana,24.9,49,0.0,85
+2026-03-05,Hyderabad,Telangana,33.2,51,0.5,66
+2026-03-12,Hyderabad,Telangana,30.4,38,0.9,109
+2026-03-19,Hyderabad,Telangana,30.1,47,0.2,106
+2026-03-26,Hyderabad,Telangana,31.3,41,0.2,74
+2026-04-02,Hyderabad,Telangana,31.0,45,0.3,76
+2026-04-09,Hyderabad,Telangana,26.8,46,0.2,80
+2026-04-16,Hyderabad,Telangana,29.6,48,0.6,79
+2026-04-23,Hyderabad,Telangana,25.8,51,0.6,111
+2026-04-30,Hyderabad,Telangana,27.8,43,0.9,50
+2026-05-07,Hyderabad,Telangana,32.9,39,0.9,105
+2026-05-14,Hyderabad,Telangana,28.1,52,1.0,101
+2023-05-25,Pune,Maharashtra,27.1,42,0.6,88
+2023-06-01,Pune,Maharashtra,27.4,72,13.7,95
+2023-06-08,Pune,Maharashtra,28.1,72,8.1,78
+2023-06-15,Pune,Maharashtra,26.7,75,6.4,107
+2023-06-22,Pune,Maharashtra,26.9,78,2.1,118
+2023-06-29,Pune,Maharashtra,28.4,69,12.5,108
+2023-07-06,Pune,Maharashtra,26.3,73,3.6,54
+2023-07-13,Pune,Maharashtra,26.6,67,3.9,89
+2023-07-20,Pune,Maharashtra,31.3,72,6.2,74
+2023-07-27,Pune,Maharashtra,24.3,76,9.0,107
+2023-08-03,Pune,Maharashtra,26.5,77,11.8,90
+2023-08-10,Pune,Maharashtra,24.8,75,11.6,97
+2023-08-17,Pune,Maharashtra,21.1,75,19.0,92
+2023-08-24,Pune,Maharashtra,25.1,83,18.0,54
+2023-08-31,Pune,Maharashtra,23.9,75,4.5,110
+2023-09-07,Pune,Maharashtra,19.3,73,6.1,97
+2023-09-14,Pune,Maharashtra,19.6,78,6.5,81
+2023-09-21,Pune,Maharashtra,19.8,72,9.7,108
+2023-09-28,Pune,Maharashtra,21.3,79,5.1,111
+2023-10-05,Pune,Maharashtra,17.8,49,0.9,48
+2023-10-12,Pune,Maharashtra,18.3,45,0.8,61
+2023-10-19,Pune,Maharashtra,23.2,47,1.0,70
+2023-10-26,Pune,Maharashtra,21.1,39,0.7,108
+2023-11-02,Pune,Maharashtra,19.8,37,1.0,96
+2023-11-09,Pune,Maharashtra,19.6,45,0.8,76
+2023-11-16,Pune,Maharashtra,20.6,43,0.8,105
+2023-11-23,Pune,Maharashtra,21.2,47,0.2,111
+2023-11-30,Pune,Maharashtra,22.1,50,0.3,113
+2023-12-07,Pune,Maharashtra,21.2,40,0.3,81
+2023-12-14,Pune,Maharashtra,21.0,41,0.6,73
+2023-12-21,Pune,Maharashtra,21.9,47,0.8,55
+2023-12-28,Pune,Maharashtra,22.3,42,0.7,86
+2024-01-04,Pune,Maharashtra,20.6,47,0.2,110
+2024-01-11,Pune,Maharashtra,25.2,52,1.0,114
+2024-01-18,Pune,Maharashtra,23.6,46,0.4,85
+2024-01-25,Pune,Maharashtra,24.9,35,0.5,63
+2024-02-01,Pune,Maharashtra,29.9,48,0.6,82
+2024-02-08,Pune,Maharashtra,25.2,48,0.4,110
+2024-02-15,Pune,Maharashtra,28.3,38,0.9,41
+2024-02-22,Pune,Maharashtra,27.7,48,0.8,103
+2024-02-29,Pune,Maharashtra,23.6,46,0.0,69
+2024-03-07,Pune,Maharashtra,29.3,55,0.6,65
+2024-03-14,Pune,Maharashtra,28.8,43,1.0,58
+2024-03-21,Pune,Maharashtra,30.5,44,0.4,51
+2024-03-28,Pune,Maharashtra,30.8,53,0.7,46
+2024-04-04,Pune,Maharashtra,32.7,43,0.4,113
+2024-04-11,Pune,Maharashtra,31.0,41,0.2,81
+2024-04-18,Pune,Maharashtra,31.3,41,0.6,118
+2024-04-25,Pune,Maharashtra,29.4,44,0.7,54
+2024-05-02,Pune,Maharashtra,25.3,43,0.5,65
+2024-05-09,Pune,Maharashtra,28.2,61,0.9,93
+2024-05-16,Pune,Maharashtra,27.8,48,0.0,97
+2024-05-23,Pune,Maharashtra,30.4,47,0.9,91
+2024-05-30,Pune,Maharashtra,25.8,38,0.9,83
+2024-06-06,Pune,Maharashtra,27.5,77,14.8,117
+2024-06-13,Pune,Maharashtra,29.1,70,5.9,47
+2024-06-20,Pune,Maharashtra,26.5,63,12.5,108
+2024-06-27,Pune,Maharashtra,27.2,84,3.1,68
+2024-07-04,Pune,Maharashtra,28.7,68,7.1,92
+2024-07-11,Pune,Maharashtra,26.1,76,18.9,111
+2024-07-18,Pune,Maharashtra,24.6,72,18.4,72
+2024-07-25,Pune,Maharashtra,22.6,80,16.9,97
+2024-08-01,Pune,Maharashtra,24.1,74,4.8,53
+2024-08-08,Pune,Maharashtra,22.7,79,3.2,58
+2024-08-15,Pune,Maharashtra,21.3,64,15.4,83
+2024-08-22,Pune,Maharashtra,20.1,66,17.7,92
+2024-08-29,Pune,Maharashtra,21.1,69,5.8,43
+2024-09-05,Pune,Maharashtra,21.7,76,17.3,49
+2024-09-12,Pune,Maharashtra,21.5,77,6.2,53
+2024-09-19,Pune,Maharashtra,19.6,78,14.9,116
+2024-09-26,Pune,Maharashtra,21.3,67,6.9,85
+2024-10-03,Pune,Maharashtra,23.4,47,0.1,67
+2024-10-10,Pune,Maharashtra,21.2,52,0.4,107
+2024-10-17,Pune,Maharashtra,21.5,44,0.8,51
+2024-10-24,Pune,Maharashtra,20.3,48,0.4,107
+2024-10-31,Pune,Maharashtra,18.6,39,0.0,113
+2024-11-07,Pune,Maharashtra,21.3,45,0.7,94
+2024-11-14,Pune,Maharashtra,23.6,41,0.9,66
+2024-11-21,Pune,Maharashtra,20.6,36,0.2,54
+2024-11-28,Pune,Maharashtra,20.4,48,0.1,41
+2024-12-05,Pune,Maharashtra,21.6,44,0.7,90
+2024-12-12,Pune,Maharashtra,23.5,42,0.7,83
+2024-12-19,Pune,Maharashtra,20.4,39,0.7,48
+2024-12-26,Pune,Maharashtra,24.0,49,1.0,98
+2025-01-02,Pune,Maharashtra,25.2,40,0.3,80
+2025-01-09,Pune,Maharashtra,24.5,44,0.6,75
+2025-01-16,Pune,Maharashtra,26.8,35,0.5,82
+2025-01-23,Pune,Maharashtra,23.6,38,0.7,53
+2025-01-30,Pune,Maharashtra,25.5,53,0.6,112
+2025-02-06,Pune,Maharashtra,30.2,45,0.2,106
+2025-02-13,Pune,Maharashtra,27.5,45,0.3,55
+2025-02-20,Pune,Maharashtra,31.2,45,0.7,80
+2025-02-27,Pune,Maharashtra,22.8,42,0.7,81
+2025-03-06,Pune,Maharashtra,28.3,43,0.6,110
+2025-03-13,Pune,Maharashtra,31.8,48,0.8,101
+2025-03-20,Pune,Maharashtra,29.3,41,0.4,109
+2025-03-27,Pune,Maharashtra,30.9,41,0.8,75
+2025-04-03,Pune,Maharashtra,29.9,48,0.5,50
+2025-04-10,Pune,Maharashtra,27.4,41,0.8,113
+2025-04-17,Pune,Maharashtra,28.7,45,0.5,41
+2025-04-24,Pune,Maharashtra,29.5,39,0.7,114
+2025-05-01,Pune,Maharashtra,27.5,43,0.5,47
+2025-05-08,Pune,Maharashtra,25.3,44,0.9,91
+2025-05-15,Pune,Maharashtra,28.0,47,0.8,53
+2025-05-22,Pune,Maharashtra,30.4,51,0.9,98
+2025-05-29,Pune,Maharashtra,30.6,47,0.6,96
+2025-06-05,Pune,Maharashtra,28.9,75,11.7,105
+2025-06-12,Pune,Maharashtra,27.3,78,5.9,97
+2025-06-19,Pune,Maharashtra,23.7,77,18.0,41
+2025-06-26,Pune,Maharashtra,27.9,81,11.0,92
+2025-07-03,Pune,Maharashtra,23.1,81,7.0,45
+2025-07-10,Pune,Maharashtra,24.6,73,10.5,51
+2025-07-17,Pune,Maharashtra,23.9,69,18.6,113
+2025-07-24,Pune,Maharashtra,23.1,71,13.4,85
+2025-07-31,Pune,Maharashtra,26.3,85,15.0,91
+2025-08-07,Pune,Maharashtra,23.3,75,15.3,67
+2025-08-14,Pune,Maharashtra,22.4,83,10.5,96
+2025-08-21,Pune,Maharashtra,23.8,78,13.9,49
+2025-08-28,Pune,Maharashtra,18.9,75,10.9,42
+2025-09-04,Pune,Maharashtra,20.9,72,9.5,82
+2025-09-11,Pune,Maharashtra,22.9,67,18.8,42
+2025-09-18,Pune,Maharashtra,19.1,76,16.4,91
+2025-09-25,Pune,Maharashtra,17.8,78,7.3,97
+2025-10-02,Pune,Maharashtra,19.2,40,0.4,112
+2025-10-09,Pune,Maharashtra,19.0,37,0.5,94
+2025-10-16,Pune,Maharashtra,19.9,41,0.7,93
+2025-10-23,Pune,Maharashtra,18.7,46,0.4,77
+2025-10-30,Pune,Maharashtra,20.9,38,0.8,61
+2025-11-06,Pune,Maharashtra,18.1,46,0.1,101
+2025-11-13,Pune,Maharashtra,20.7,45,0.8,92
+2025-11-20,Pune,Maharashtra,21.0,49,0.4,89
+2025-11-27,Pune,Maharashtra,20.9,40,0.1,107
+2025-12-04,Pune,Maharashtra,20.6,39,0.4,56
+2025-12-11,Pune,Maharashtra,24.5,42,0.6,109
+2025-12-18,Pune,Maharashtra,21.6,52,0.9,97
+2025-12-25,Pune,Maharashtra,20.2,36,0.3,46
+2026-01-01,Pune,Maharashtra,23.8,38,0.1,45
+2026-01-08,Pune,Maharashtra,22.6,44,0.9,71
+2026-01-15,Pune,Maharashtra,25.0,47,0.1,109
+2026-01-22,Pune,Maharashtra,22.3,45,1.0,61
+2026-01-29,Pune,Maharashtra,25.7,41,0.9,96
+2026-02-05,Pune,Maharashtra,29.1,50,0.1,67
+2026-02-12,Pune,Maharashtra,25.6,40,0.0,83
+2026-02-19,Pune,Maharashtra,25.7,46,0.2,42
+2026-02-26,Pune,Maharashtra,26.2,46,0.6,48
+2026-03-05,Pune,Maharashtra,30.7,50,0.1,70
+2026-03-12,Pune,Maharashtra,28.1,45,0.3,41
+2026-03-19,Pune,Maharashtra,31.3,34,0.0,64
+2026-03-26,Pune,Maharashtra,27.3,57,0.8,49
+2026-04-02,Pune,Maharashtra,27.7,53,0.1,86
+2026-04-09,Pune,Maharashtra,30.8,44,1.0,79
+2026-04-16,Pune,Maharashtra,31.6,46,0.0,81
+2026-04-23,Pune,Maharashtra,30.5,39,0.1,68
+2026-04-30,Pune,Maharashtra,32.2,35,0.0,94
+2026-05-07,Pune,Maharashtra,26.0,39,0.8,119
+2026-05-14,Pune,Maharashtra,29.4,39,0.6,111
+2023-05-25,Jaipur,Rajasthan,32.0,41,1.0,90
+2023-06-01,Jaipur,Rajasthan,27.1,78,18.5,80
+2023-06-08,Jaipur,Rajasthan,27.7,71,14.9,47
+2023-06-15,Jaipur,Rajasthan,26.0,72,3.7,116
+2023-06-22,Jaipur,Rajasthan,26.3,85,19.8,108
+2023-06-29,Jaipur,Rajasthan,26.0,75,8.2,105
+2023-07-06,Jaipur,Rajasthan,27.5,73,9.9,70
+2023-07-13,Jaipur,Rajasthan,16.7,71,16.7,63
+2023-07-20,Jaipur,Rajasthan,24.5,79,13.6,92
+2023-07-27,Jaipur,Rajasthan,25.5,76,6.0,113
+2023-08-03,Jaipur,Rajasthan,24.1,67,16.5,92
+2023-08-10,Jaipur,Rajasthan,25.2,75,17.1,44
+2023-08-17,Jaipur,Rajasthan,19.8,79,15.3,97
+2023-08-24,Jaipur,Rajasthan,20.3,68,9.1,53
+2023-08-31,Jaipur,Rajasthan,20.5,73,12.8,119
+2023-09-07,Jaipur,Rajasthan,21.6,73,10.7,71
+2023-09-14,Jaipur,Rajasthan,15.8,70,17.8,50
+2023-09-21,Jaipur,Rajasthan,18.4,65,18.8,74
+2023-09-28,Jaipur,Rajasthan,16.9,75,14.7,105
+2023-10-05,Jaipur,Rajasthan,18.3,48,0.3,113
+2023-10-12,Jaipur,Rajasthan,22.0,48,0.5,60
+2023-10-19,Jaipur,Rajasthan,18.0,35,0.1,66
+2023-10-26,Jaipur,Rajasthan,20.8,49,0.7,101
+2023-11-02,Jaipur,Rajasthan,25.2,46,0.5,43
+2023-11-09,Jaipur,Rajasthan,22.0,57,0.5,62
+2023-11-16,Jaipur,Rajasthan,19.6,45,0.7,99
+2023-11-23,Jaipur,Rajasthan,22.8,49,0.2,101
+2023-11-30,Jaipur,Rajasthan,18.5,39,0.4,73
+2023-12-07,Jaipur,Rajasthan,25.9,50,0.3,64
+2023-12-14,Jaipur,Rajasthan,25.3,47,1.0,47
+2023-12-21,Jaipur,Rajasthan,25.1,37,0.2,53
+2023-12-28,Jaipur,Rajasthan,25.4,46,0.7,47
+2024-01-04,Jaipur,Rajasthan,22.4,50,0.3,99
+2024-01-11,Jaipur,Rajasthan,26.0,43,0.8,50
+2024-01-18,Jaipur,Rajasthan,24.4,37,0.2,111
+2024-01-25,Jaipur,Rajasthan,24.2,50,0.8,100
+2024-02-01,Jaipur,Rajasthan,23.9,52,1.0,43
+2024-02-08,Jaipur,Rajasthan,30.2,36,0.8,113
+2024-02-15,Jaipur,Rajasthan,32.9,41,0.6,58
+2024-02-22,Jaipur,Rajasthan,27.4,42,0.9,52
+2024-02-29,Jaipur,Rajasthan,26.7,44,0.7,101
+2024-03-07,Jaipur,Rajasthan,32.4,40,0.4,49
+2024-03-14,Jaipur,Rajasthan,27.7,43,0.4,48
+2024-03-21,Jaipur,Rajasthan,29.7,45,0.3,88
+2024-03-28,Jaipur,Rajasthan,28.8,55,0.4,40
+2024-04-04,Jaipur,Rajasthan,29.3,37,0.4,96
+2024-04-11,Jaipur,Rajasthan,32.9,40,0.7,43
+2024-04-18,Jaipur,Rajasthan,29.8,44,0.7,106
+2024-04-25,Jaipur,Rajasthan,28.0,42,0.7,74
+2024-05-02,Jaipur,Rajasthan,28.0,40,0.9,49
+2024-05-09,Jaipur,Rajasthan,32.5,52,0.9,76
+2024-05-16,Jaipur,Rajasthan,25.0,42,0.0,114
+2024-05-23,Jaipur,Rajasthan,31.0,48,0.9,55
+2024-05-30,Jaipur,Rajasthan,29.0,44,0.8,54
+2024-06-06,Jaipur,Rajasthan,27.6,69,16.4,100
+2024-06-13,Jaipur,Rajasthan,28.4,77,16.5,92
+2024-06-20,Jaipur,Rajasthan,31.4,75,14.4,50
+2024-06-27,Jaipur,Rajasthan,29.7,68,10.9,74
+2024-07-04,Jaipur,Rajasthan,23.8,74,13.0,86
+2024-07-11,Jaipur,Rajasthan,27.1,65,13.9,70
+2024-07-18,Jaipur,Rajasthan,21.1,61,18.9,41
+2024-07-25,Jaipur,Rajasthan,27.4,68,18.6,117
+2024-08-01,Jaipur,Rajasthan,21.6,77,16.5,76
+2024-08-08,Jaipur,Rajasthan,23.8,77,18.7,116
+2024-08-15,Jaipur,Rajasthan,22.8,76,18.9,64
+2024-08-22,Jaipur,Rajasthan,20.4,71,9.2,94
+2024-08-29,Jaipur,Rajasthan,20.7,75,18.1,63
+2024-09-05,Jaipur,Rajasthan,20.1,80,2.8,97
+2024-09-12,Jaipur,Rajasthan,20.5,69,3.1,67
+2024-09-19,Jaipur,Rajasthan,19.5,77,6.2,98
+2024-09-26,Jaipur,Rajasthan,22.4,81,12.1,59
+2024-10-03,Jaipur,Rajasthan,23.3,48,0.4,104
+2024-10-10,Jaipur,Rajasthan,18.1,47,0.8,77
+2024-10-17,Jaipur,Rajasthan,19.7,45,0.8,112
+2024-10-24,Jaipur,Rajasthan,22.6,39,0.7,49
+2024-10-31,Jaipur,Rajasthan,21.4,41,1.0,62
+2024-11-07,Jaipur,Rajasthan,20.0,42,0.5,91
+2024-11-14,Jaipur,Rajasthan,20.9,43,0.4,62
+2024-11-21,Jaipur,Rajasthan,24.7,35,0.9,66
+2024-11-28,Jaipur,Rajasthan,22.8,46,0.3,41
+2024-12-05,Jaipur,Rajasthan,19.7,49,0.2,79
+2024-12-12,Jaipur,Rajasthan,25.4,40,0.4,57
+2024-12-19,Jaipur,Rajasthan,22.8,42,0.6,61
+2024-12-26,Jaipur,Rajasthan,22.6,46,0.3,41
+2025-01-02,Jaipur,Rajasthan,25.9,46,0.6,63
+2025-01-09,Jaipur,Rajasthan,25.2,44,0.9,105
+2025-01-16,Jaipur,Rajasthan,21.6,35,0.5,58
+2025-01-23,Jaipur,Rajasthan,24.2,38,0.0,88
+2025-01-30,Jaipur,Rajasthan,26.8,40,1.0,57
+2025-02-06,Jaipur,Rajasthan,25.8,46,0.3,85
+2025-02-13,Jaipur,Rajasthan,28.7,49,0.6,95
+2025-02-20,Jaipur,Rajasthan,23.7,48,0.9,48
+2025-02-27,Jaipur,Rajasthan,30.4,42,0.5,85
+2025-03-06,Jaipur,Rajasthan,27.4,46,0.8,44
+2025-03-13,Jaipur,Rajasthan,29.6,51,0.2,98
+2025-03-20,Jaipur,Rajasthan,29.6,44,0.0,62
+2025-03-27,Jaipur,Rajasthan,27.8,49,0.5,59
+2025-04-03,Jaipur,Rajasthan,28.7,40,0.8,108
+2025-04-10,Jaipur,Rajasthan,30.9,49,0.3,88
+2025-04-17,Jaipur,Rajasthan,30.6,45,0.4,55
+2025-04-24,Jaipur,Rajasthan,30.8,52,0.9,113
+2025-05-01,Jaipur,Rajasthan,25.9,40,0.6,72
+2025-05-08,Jaipur,Rajasthan,30.3,37,0.1,116
+2025-05-15,Jaipur,Rajasthan,31.5,46,0.6,58
+2025-05-22,Jaipur,Rajasthan,29.9,46,0.3,72
+2025-05-29,Jaipur,Rajasthan,28.0,43,0.7,73
+2025-06-05,Jaipur,Rajasthan,28.6,78,5.3,50
+2025-06-12,Jaipur,Rajasthan,25.8,78,13.4,95
+2025-06-19,Jaipur,Rajasthan,29.7,76,4.7,62
+2025-06-26,Jaipur,Rajasthan,29.9,78,17.7,82
+2025-07-03,Jaipur,Rajasthan,27.0,60,15.3,48
+2025-07-10,Jaipur,Rajasthan,23.3,80,8.2,73
+2025-07-17,Jaipur,Rajasthan,23.8,83,3.4,98
+2025-07-24,Jaipur,Rajasthan,23.3,73,15.6,118
+2025-07-31,Jaipur,Rajasthan,26.4,82,4.7,75
+2025-08-07,Jaipur,Rajasthan,19.1,72,4.6,109
+2025-08-14,Jaipur,Rajasthan,24.2,73,8.9,57
+2025-08-21,Jaipur,Rajasthan,23.1,77,4.3,63
+2025-08-28,Jaipur,Rajasthan,24.2,88,5.9,110
+2025-09-04,Jaipur,Rajasthan,19.3,76,4.9,99
+2025-09-11,Jaipur,Rajasthan,20.9,70,14.3,110
+2025-09-18,Jaipur,Rajasthan,21.6,76,6.2,106
+2025-09-25,Jaipur,Rajasthan,23.3,75,3.0,80
+2025-10-02,Jaipur,Rajasthan,18.2,48,0.7,54
+2025-10-09,Jaipur,Rajasthan,19.8,48,0.3,48
+2025-10-16,Jaipur,Rajasthan,19.5,36,0.8,82
+2025-10-23,Jaipur,Rajasthan,17.6,47,0.8,96
+2025-10-30,Jaipur,Rajasthan,22.4,46,0.8,75
+2025-11-06,Jaipur,Rajasthan,23.4,48,0.3,117
+2025-11-13,Jaipur,Rajasthan,17.2,39,0.5,54
+2025-11-20,Jaipur,Rajasthan,20.3,45,0.4,55
+2025-11-27,Jaipur,Rajasthan,22.8,30,0.7,119
+2025-12-04,Jaipur,Rajasthan,22.5,43,1.0,95
+2025-12-11,Jaipur,Rajasthan,23.7,46,0.7,106
+2025-12-18,Jaipur,Rajasthan,22.2,41,0.7,83
+2025-12-25,Jaipur,Rajasthan,20.0,46,0.6,78
+2026-01-01,Jaipur,Rajasthan,22.4,42,0.8,83
+2026-01-08,Jaipur,Rajasthan,25.7,46,0.5,59
+2026-01-15,Jaipur,Rajasthan,26.7,48,0.7,70
+2026-01-22,Jaipur,Rajasthan,24.0,51,0.9,83
+2026-01-29,Jaipur,Rajasthan,27.4,39,0.4,113
+2026-02-05,Jaipur,Rajasthan,29.3,35,0.2,117
+2026-02-12,Jaipur,Rajasthan,27.6,53,0.5,49
+2026-02-19,Jaipur,Rajasthan,28.9,43,0.9,50
+2026-02-26,Jaipur,Rajasthan,27.6,57,0.0,117
+2026-03-05,Jaipur,Rajasthan,29.6,46,0.1,76
+2026-03-12,Jaipur,Rajasthan,29.5,50,0.1,50
+2026-03-19,Jaipur,Rajasthan,27.3,51,0.8,44
+2026-03-26,Jaipur,Rajasthan,29.7,49,0.6,85
+2026-04-02,Jaipur,Rajasthan,28.8,52,0.9,101
+2026-04-09,Jaipur,Rajasthan,33.6,53,0.2,62
+2026-04-16,Jaipur,Rajasthan,28.5,34,1.0,114
+2026-04-23,Jaipur,Rajasthan,26.0,43,0.6,42
+2026-04-30,Jaipur,Rajasthan,32.6,50,0.1,75
+2026-05-07,Jaipur,Rajasthan,34.1,53,0.5,119
+2026-05-14,Jaipur,Rajasthan,28.5,44,0.6,115
+2023-05-25,Lucknow,Uttar Pradesh,31.0,52,0.6,55
+2023-06-01,Lucknow,Uttar Pradesh,24.4,76,13.5,114
+2023-06-08,Lucknow,Uttar Pradesh,27.0,76,5.8,44
+2023-06-15,Lucknow,Uttar Pradesh,23.6,85,12.0,87
+2023-06-22,Lucknow,Uttar Pradesh,28.9,63,13.8,89
+2023-06-29,Lucknow,Uttar Pradesh,29.9,71,15.3,56
+2023-07-06,Lucknow,Uttar Pradesh,23.9,75,17.3,68
+2023-07-13,Lucknow,Uttar Pradesh,25.2,81,18.6,89
+2023-07-20,Lucknow,Uttar Pradesh,23.5,76,2.9,106
+2023-07-27,Lucknow,Uttar Pradesh,24.5,79,13.5,115
+2023-08-03,Lucknow,Uttar Pradesh,21.1,78,2.4,43
+2023-08-10,Lucknow,Uttar Pradesh,26.0,87,2.2,49
+2023-08-17,Lucknow,Uttar Pradesh,24.9,69,10.1,53
+2023-08-24,Lucknow,Uttar Pradesh,19.8,77,3.5,46
+2023-08-31,Lucknow,Uttar Pradesh,22.2,70,16.0,102
+2023-09-07,Lucknow,Uttar Pradesh,22.1,78,2.2,40
+2023-09-14,Lucknow,Uttar Pradesh,18.7,80,2.2,83
+2023-09-21,Lucknow,Uttar Pradesh,20.8,61,3.1,47
+2023-09-28,Lucknow,Uttar Pradesh,20.3,66,6.2,70
+2023-10-05,Lucknow,Uttar Pradesh,19.7,51,0.8,82
+2023-10-12,Lucknow,Uttar Pradesh,19.2,51,0.6,112
+2023-10-19,Lucknow,Uttar Pradesh,19.5,54,1.0,96
+2023-10-26,Lucknow,Uttar Pradesh,19.3,31,0.4,44
+2023-11-02,Lucknow,Uttar Pradesh,22.5,50,0.2,118
+2023-11-09,Lucknow,Uttar Pradesh,17.7,41,0.9,62
+2023-11-16,Lucknow,Uttar Pradesh,21.5,51,0.4,57
+2023-11-23,Lucknow,Uttar Pradesh,20.3,44,0.2,116
+2023-11-30,Lucknow,Uttar Pradesh,22.1,52,0.4,40
+2023-12-07,Lucknow,Uttar Pradesh,20.3,50,0.6,99
+2023-12-14,Lucknow,Uttar Pradesh,22.8,49,0.4,80
+2023-12-21,Lucknow,Uttar Pradesh,22.6,43,0.1,70
+2023-12-28,Lucknow,Uttar Pradesh,22.2,37,0.7,41
+2024-01-04,Lucknow,Uttar Pradesh,23.8,48,0.3,113
+2024-01-11,Lucknow,Uttar Pradesh,23.9,40,0.8,54
+2024-01-18,Lucknow,Uttar Pradesh,22.1,50,0.8,90
+2024-01-25,Lucknow,Uttar Pradesh,26.2,40,0.4,78
+2024-02-01,Lucknow,Uttar Pradesh,27.4,44,0.3,95
+2024-02-08,Lucknow,Uttar Pradesh,29.4,46,0.6,44
+2024-02-15,Lucknow,Uttar Pradesh,26.4,49,0.1,113
+2024-02-22,Lucknow,Uttar Pradesh,26.5,42,0.4,63
+2024-02-29,Lucknow,Uttar Pradesh,30.0,40,0.2,76
+2024-03-07,Lucknow,Uttar Pradesh,35.2,44,0.4,108
+2024-03-14,Lucknow,Uttar Pradesh,31.1,46,0.3,111
+2024-03-21,Lucknow,Uttar Pradesh,26.9,45,0.5,90
+2024-03-28,Lucknow,Uttar Pradesh,32.8,49,0.0,118
+2024-04-04,Lucknow,Uttar Pradesh,31.5,44,0.4,86
+2024-04-11,Lucknow,Uttar Pradesh,30.6,43,0.3,101
+2024-04-18,Lucknow,Uttar Pradesh,29.4,42,0.7,103
+2024-04-25,Lucknow,Uttar Pradesh,29.7,47,0.5,60
+2024-05-02,Lucknow,Uttar Pradesh,29.6,48,0.3,96
+2024-05-09,Lucknow,Uttar Pradesh,29.4,41,0.3,67
+2024-05-16,Lucknow,Uttar Pradesh,24.4,40,0.3,87
+2024-05-23,Lucknow,Uttar Pradesh,29.8,39,1.0,77
+2024-05-30,Lucknow,Uttar Pradesh,28.3,45,0.9,72
+2024-06-06,Lucknow,Uttar Pradesh,25.2,73,9.9,82
+2024-06-13,Lucknow,Uttar Pradesh,28.6,70,19.4,92
+2024-06-20,Lucknow,Uttar Pradesh,26.0,81,4.3,117
+2024-06-27,Lucknow,Uttar Pradesh,26.4,77,18.5,111
+2024-07-04,Lucknow,Uttar Pradesh,25.0,72,3.8,40
+2024-07-11,Lucknow,Uttar Pradesh,24.4,75,12.4,83
+2024-07-18,Lucknow,Uttar Pradesh,26.1,76,5.2,112
+2024-07-25,Lucknow,Uttar Pradesh,23.7,68,16.0,47
+2024-08-01,Lucknow,Uttar Pradesh,23.2,72,6.8,94
+2024-08-08,Lucknow,Uttar Pradesh,22.8,69,4.9,112
+2024-08-15,Lucknow,Uttar Pradesh,20.0,73,8.3,66
+2024-08-22,Lucknow,Uttar Pradesh,23.7,69,17.4,108
+2024-08-29,Lucknow,Uttar Pradesh,24.9,73,17.3,84
+2024-09-05,Lucknow,Uttar Pradesh,19.8,84,10.0,70
+2024-09-12,Lucknow,Uttar Pradesh,20.2,73,14.0,91
+2024-09-19,Lucknow,Uttar Pradesh,18.1,71,17.7,104
+2024-09-26,Lucknow,Uttar Pradesh,21.8,80,16.4,107
+2024-10-03,Lucknow,Uttar Pradesh,19.8,37,0.4,85
+2024-10-10,Lucknow,Uttar Pradesh,21.0,48,0.1,73
+2024-10-17,Lucknow,Uttar Pradesh,17.4,49,0.5,118
+2024-10-24,Lucknow,Uttar Pradesh,21.8,47,0.1,53
+2024-10-31,Lucknow,Uttar Pradesh,17.4,47,0.2,90
+2024-11-07,Lucknow,Uttar Pradesh,18.9,41,0.7,103
+2024-11-14,Lucknow,Uttar Pradesh,24.0,44,0.3,57
+2024-11-21,Lucknow,Uttar Pradesh,20.1,49,0.0,68
+2024-11-28,Lucknow,Uttar Pradesh,19.7,37,0.7,110
+2024-12-05,Lucknow,Uttar Pradesh,19.2,41,0.4,63
+2024-12-12,Lucknow,Uttar Pradesh,21.1,50,0.3,85
+2024-12-19,Lucknow,Uttar Pradesh,22.7,40,0.6,42
+2024-12-26,Lucknow,Uttar Pradesh,22.9,48,0.9,74
+2025-01-02,Lucknow,Uttar Pradesh,22.4,40,0.9,98
+2025-01-09,Lucknow,Uttar Pradesh,26.2,48,0.3,61
+2025-01-16,Lucknow,Uttar Pradesh,23.8,46,0.5,43
+2025-01-23,Lucknow,Uttar Pradesh,27.3,46,0.4,103
+2025-01-30,Lucknow,Uttar Pradesh,27.3,45,0.5,92
+2025-02-06,Lucknow,Uttar Pradesh,30.1,47,0.8,106
+2025-02-13,Lucknow,Uttar Pradesh,23.9,49,0.8,110
+2025-02-20,Lucknow,Uttar Pradesh,28.6,53,0.8,74
+2025-02-27,Lucknow,Uttar Pradesh,22.9,45,0.1,106
+2025-03-06,Lucknow,Uttar Pradesh,29.7,37,0.2,87
+2025-03-13,Lucknow,Uttar Pradesh,28.7,46,0.4,59
+2025-03-20,Lucknow,Uttar Pradesh,28.3,34,1.0,53
+2025-03-27,Lucknow,Uttar Pradesh,28.0,38,0.9,45
+2025-04-03,Lucknow,Uttar Pradesh,29.2,48,0.9,71
+2025-04-10,Lucknow,Uttar Pradesh,29.6,34,0.9,48
+2025-04-17,Lucknow,Uttar Pradesh,31.3,41,0.6,107
+2025-04-24,Lucknow,Uttar Pradesh,30.5,47,0.5,57
+2025-05-01,Lucknow,Uttar Pradesh,27.0,46,0.3,62
+2025-05-08,Lucknow,Uttar Pradesh,27.5,44,0.6,107
+2025-05-15,Lucknow,Uttar Pradesh,27.9,43,0.9,112
+2025-05-22,Lucknow,Uttar Pradesh,26.2,47,0.9,74
+2025-05-29,Lucknow,Uttar Pradesh,31.4,45,0.1,74
+2025-06-05,Lucknow,Uttar Pradesh,25.4,81,13.1,115
+2025-06-12,Lucknow,Uttar Pradesh,25.1,72,18.7,40
+2025-06-19,Lucknow,Uttar Pradesh,27.2,72,18.4,90
+2025-06-26,Lucknow,Uttar Pradesh,25.4,80,8.1,76
+2025-07-03,Lucknow,Uttar Pradesh,27.3,85,9.0,59
+2025-07-10,Lucknow,Uttar Pradesh,26.2,76,8.5,41
+2025-07-17,Lucknow,Uttar Pradesh,25.5,71,10.9,106
+2025-07-24,Lucknow,Uttar Pradesh,25.1,84,15.6,77
+2025-07-31,Lucknow,Uttar Pradesh,25.8,77,17.8,51
+2025-08-07,Lucknow,Uttar Pradesh,20.8,77,12.5,104
+2025-08-14,Lucknow,Uttar Pradesh,22.5,75,19.0,40
+2025-08-21,Lucknow,Uttar Pradesh,24.8,78,19.4,84
+2025-08-28,Lucknow,Uttar Pradesh,23.0,76,16.0,111
+2025-09-04,Lucknow,Uttar Pradesh,20.8,77,3.1,112
+2025-09-11,Lucknow,Uttar Pradesh,21.9,76,6.6,60
+2025-09-18,Lucknow,Uttar Pradesh,18.6,71,10.8,82
+2025-09-25,Lucknow,Uttar Pradesh,21.7,64,10.3,111
+2025-10-02,Lucknow,Uttar Pradesh,19.1,43,0.7,41
+2025-10-09,Lucknow,Uttar Pradesh,23.9,44,0.2,108
+2025-10-16,Lucknow,Uttar Pradesh,17.6,60,0.9,47
+2025-10-23,Lucknow,Uttar Pradesh,20.4,45,0.5,91
+2025-10-30,Lucknow,Uttar Pradesh,21.8,42,0.9,51
+2025-11-06,Lucknow,Uttar Pradesh,22.0,44,0.7,99
+2025-11-13,Lucknow,Uttar Pradesh,19.0,45,0.9,52
+2025-11-20,Lucknow,Uttar Pradesh,17.6,42,0.3,60
+2025-11-27,Lucknow,Uttar Pradesh,19.5,50,0.8,117
+2025-12-04,Lucknow,Uttar Pradesh,20.4,45,0.1,87
+2025-12-11,Lucknow,Uttar Pradesh,22.9,47,0.2,46
+2025-12-18,Lucknow,Uttar Pradesh,19.6,51,0.4,55
+2025-12-25,Lucknow,Uttar Pradesh,19.0,41,0.1,79
+2026-01-01,Lucknow,Uttar Pradesh,21.0,47,0.5,48
+2026-01-08,Lucknow,Uttar Pradesh,27.0,50,0.3,84
+2026-01-15,Lucknow,Uttar Pradesh,25.3,45,0.7,59
+2026-01-22,Lucknow,Uttar Pradesh,26.7,52,1.0,53
+2026-01-29,Lucknow,Uttar Pradesh,26.2,53,0.9,115
+2026-02-05,Lucknow,Uttar Pradesh,28.6,43,0.3,75
+2026-02-12,Lucknow,Uttar Pradesh,25.8,50,0.8,119
+2026-02-19,Lucknow,Uttar Pradesh,27.3,43,0.5,64
+2026-02-26,Lucknow,Uttar Pradesh,25.9,44,0.1,65
+2026-03-05,Lucknow,Uttar Pradesh,29.3,38,0.0,53
+2026-03-12,Lucknow,Uttar Pradesh,29.0,57,0.4,83
+2026-03-19,Lucknow,Uttar Pradesh,28.2,46,0.3,101
+2026-03-26,Lucknow,Uttar Pradesh,28.1,50,0.3,63
+2026-04-02,Lucknow,Uttar Pradesh,26.1,53,0.4,112
+2026-04-09,Lucknow,Uttar Pradesh,28.8,37,1.0,86
+2026-04-16,Lucknow,Uttar Pradesh,31.5,46,0.2,63
+2026-04-23,Lucknow,Uttar Pradesh,30.6,52,0.3,71
+2026-04-30,Lucknow,Uttar Pradesh,28.5,47,0.2,79
+2026-05-07,Lucknow,Uttar Pradesh,28.8,46,0.9,115
+2026-05-14,Lucknow,Uttar Pradesh,27.7,40,0.1,110

@@ -25,11 +25,11 @@ class PersonalRiskService:
                 break
 
     def train_and_save_all(self):
-        print("🧬 Training Personal Risk Models...")
+        print("[ML] Training Personal Risk Models...")
         self._train_diabetes()
         self._train_heart()
         self._train_stroke()
-        print("✅ Personal Risk Models trained and saved.")
+        print("[OK] Personal Risk Models trained and saved.")
 
     def _train_diabetes(self):
         # Features: age, BMI, glucose_level, blood_pressure, skin_thickness, insulin, family_history (0/1), physical_activity
