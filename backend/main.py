@@ -22,6 +22,20 @@ from app.api.fusion import router as fusion_router
 from app.api.strokeguard import router as strokeguard_router
 from app.api.map import router as map_router
 from app.api.demo import router as demo_router
+from app.api.kpi import router as kpi_router
+from app.api.operations import router as operations_router
+from app.api.impact import router as impact_router
+from app.api.simulation import router as simulation_router
+from app.api.resources import router as resources_router
+from app.api.reports import router as reports_router
+from app.api.teleconsult import router as teleconsult_router
+from app.api.diet import router as diet_router
+from app.api.mental_health import router as mental_health_router
+from app.api.passport import router as passport_router
+from app.api.learning import router as learning_router
+from app.api.insurance import router as insurance_router
+from app.api.hospital import router as hospital_router
+from app.api.drug_discovery import router as drug_discovery_router
 
 from app.services.alert_engine import AlertEngine
 from app.database import SessionLocal
@@ -57,6 +71,20 @@ app.include_router(fusion_router)
 app.include_router(strokeguard_router)
 app.include_router(map_router)
 app.include_router(demo_router)
+app.include_router(kpi_router)
+app.include_router(operations_router)
+app.include_router(impact_router)
+app.include_router(simulation_router)
+app.include_router(resources_router)
+app.include_router(reports_router)
+app.include_router(teleconsult_router)
+app.include_router(diet_router)
+app.include_router(mental_health_router)
+app.include_router(passport_router)
+app.include_router(learning_router)
+app.include_router(insurance_router)
+app.include_router(hospital_router)
+app.include_router(drug_discovery_router)
 
 # Background Monitoring Task
 async def run_alert_scanner():

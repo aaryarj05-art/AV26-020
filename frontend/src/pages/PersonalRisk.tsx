@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import WhyThisPrediction from '../components/WhyThisPrediction';
 
 const RiskGauge = ({ value, label, category, condition, userData }: { value: number; label: string; category: string; condition: string; userData: any }) => {
@@ -338,16 +339,31 @@ export default function PersonalRisk() {
                 </div>
               </div>
 
-              <div className="flex flex-col sm:flex-row gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                 <button 
                   onClick={() => setStep(1)}
-                  className="flex-1 p-4 rounded-xl border border-helix-border text-xs font-bold uppercase tracking-widest text-helix-text hover:bg-helix-surface-light"
+                  className="p-4 rounded-xl border border-helix-border text-[10px] font-bold uppercase tracking-widest text-helix-text hover:bg-helix-surface-light"
                 >
-                  Retake Assessment
+                  Retake
                 </button>
-                <button className="flex-1 bg-helix-accent text-helix-bg p-4 rounded-xl text-xs font-bold uppercase tracking-widest shadow-lg shadow-helix-accent/20">
-                  Export PDF Report
-                </button>
+                <Link 
+                  to="/teleconsult"
+                  className="bg-helix-surface border border-helix-border text-helix-text p-4 rounded-xl text-[10px] font-bold uppercase tracking-widest text-center hover:bg-helix-surface-light transition-all"
+                >
+                  Doctor
+                </Link>
+                <Link 
+                  to="/diet-planner"
+                  className="bg-helix-surface border border-helix-border text-helix-text p-4 rounded-xl text-[10px] font-bold uppercase tracking-widest text-center hover:bg-helix-surface-light transition-all"
+                >
+                  Diet Plan
+                </Link>
+                <Link 
+                  to="/passport"
+                  className="bg-helix-accent text-helix-bg p-4 rounded-xl text-[10px] font-bold uppercase tracking-widest text-center shadow-lg shadow-helix-accent/20 hover:scale-[1.02] active:scale-[0.98] transition-all"
+                >
+                  Save to Passport
+                </Link>
               </div>
             </div>
           )}

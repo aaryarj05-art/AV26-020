@@ -3,6 +3,7 @@ import DataStatus from './DataStatus'
 
 const navItems = [
   { to: '/alert-demo', label: 'Live Demo', icon: '⚡' },
+  { to: '/command-center', label: 'Command Center', icon: '🎖️' },
   { to: '/dashboard', label: 'Dashboard', icon: '📊' },
   { to: '/outbreak-map', label: 'Outbreak Map', icon: '🗺️' },
   { to: '/alerts', label: 'Alerts', icon: '🚨' },
@@ -13,6 +14,21 @@ const navItems = [
   { to: '/validation', label: 'Model Validation', icon: '✅' },
   { to: '/data-sources', label: 'Data Sources', icon: '🔌' },
   { to: '/stroke-guard', label: 'Stroke Guard CV', icon: '📷' },
+  { to: '/about', label: 'About Helix', icon: '💡' },
+  { to: '/architecture', label: 'Architecture', icon: '⚙️' },
+  { to: '/impact', label: 'Impact Analytics', icon: '📈' },
+  { to: '/roadmap', label: 'Feasibility Roadmap', icon: '🚀' },
+  { to: '/simulation', label: 'SIR/SEIR Simulation', icon: '🧬' },
+  { to: '/resources', label: 'Resource Planner', icon: '🏥' },
+  { to: '/reports', label: 'Briefing Reports', icon: '📄' },
+  { to: '/teleconsult', label: 'Teleconsultation', icon: '🩺' },
+  { to: '/diet-planner', label: 'AI Diet Planner', icon: '🥗' },
+  { to: '/mental-health', label: 'Mental Wellness', icon: '🧠' },
+  { to: '/passport', label: 'Health Passport', icon: '🪪' },
+  { to: '/learning-center', label: 'Learning Center', icon: '🤖' },
+  { to: '/insurance', label: 'Insurance Analytics', icon: '🛡️' },
+  { to: '/hospital-signals', label: 'Hospital Signals', icon: '🏥' },
+  { to: '/drug-discovery', label: 'Drug Discovery', icon: '🧪' },
 ]
 
 export default function Sidebar() {

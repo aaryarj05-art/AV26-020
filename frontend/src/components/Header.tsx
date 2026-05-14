@@ -7,6 +7,9 @@ export default function Header() {
         <h2 className="text-sm font-semibold text-helix-text-muted uppercase tracking-wider">
           Public Health Intelligence
         </h2>
+        <div className="px-2 py-0.5 rounded text-[10px] font-bold tracking-widest uppercase bg-indigo-500/20 text-indigo-400 border border-indigo-500/30">
+          Innovation Build
+        </div>
       </div>
       <div className="flex items-center gap-6">
         <NotificationBell />

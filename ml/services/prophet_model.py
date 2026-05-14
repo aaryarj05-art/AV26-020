@@ -33,9 +33,9 @@ class ProphetForecast:
             w_df_lagged['date'] = w_df_lagged['date'] + pd.Timedelta(weeks=2)
             
             df_filtered = pd.merge(df_filtered, w_df_lagged, on=['date', 'region'], how='left')
-            # Fill missing values (due to lag) with mean
-            df_filtered['rainfall'] = df_filtered['rainfall'].fillna(df_filtered['rainfall'].mean())
-            df_filtered['humidity'] = df_filtered['humidity'].fillna(df_filtered['humidity'].mean())
+            # Fill missing values (due to lag) with mean, or absolute default if mean is NaN
+            df_filtered['rainfall'] = df_filtered['rainfall'].fillna(df_filtered['rainfall'].mean()).fillna(0.0)
+            df_filtered['humidity'] = df_filtered['humidity'].fillna(df_filtered['humidity'].mean()).fillna(50.0)
         
         # Prophet expects 'ds' and 'y' columns
         prophet_df = df_filtered[['date', 'cases', 'rainfall', 'humidity']].copy()

@@ -1,257 +1,83 @@
-# 🧬 CONTEXT.md — Helix
+# 🧬 CONTEXT.md — Helix (FINAL)
 
-> **Living document.** This file is the single source of truth for the Helix project context.  
-> Every phase must read this first and update it last.
-
----
-
-## Project
-
-| Field          | Value                                                        |
-| -------------- | ------------------------------------------------------------ |
-| **Name**       | Helix                                                        |
-| **Tagline**    | Predictive Biomedical & Public Health Intelligence Platform   |
-| **Repo**       | https://github.com/aaryarj05-art/AV26-020                   |
-| **Team**       | AV26-020                                                     |
+> **PLATFORM STATUS: 100% COMPLETE | DEMO READY**
+> This is the final state of the Helix Intelligence Platform.
 
 ---
 
-## Tech Stack
-
-| Layer        | Technology                         | Port   |
-| ------------ | ---------------------------------- | ------ |
-| Frontend     | React 19 + Vite + Tailwind CSS v4  | :5173  |
-| Backend API  | FastAPI + SQLAlchemy + Pydantic    | :8000  |
-| ML Service   | FastAPI + scikit-learn + TensorFlow | :8001  |
-| Database     | SQLite (hackathon)                 | —      |
-| Language     | TypeScript (FE), Python 3.10+ (BE) | —      |
+## Project Summary
+- **Name**: Helix
+- **Tagline**: Predictive Biomedical & Public Health Intelligence Platform
+- **Mission**: To save lives through predictive epidemiological surveillance and proactive personalized medicine.
 
 ---
 
-## Project Structure
-
-```
-helix/
-├── backend/                # FastAPI core API
-│   ├── main.py             # App entrypoint, CORS, /health
-│   ├── requirements.txt
-│   ├── .env.example
-│   └── app/
-│       ├── api/            # Route handlers
-│       ├── models/         # SQLAlchemy models
-│       └── services/       # Business logic
-├── frontend/               # React + Vite + Tailwind
-│   ├── index.html
-│   ├── vite.config.ts
-│   └── src/
-│       ├── main.tsx
-│       ├── App.tsx          # Router: Landing → Layout shell
-│       ├── index.css        # Tailwind + Helix design system
-│       ├── components/
-│       │   ├── Sidebar.tsx
-│       │   ├── Header.tsx
-│       │   └── Layout.tsx
-│       └── pages/
-│           ├── Landing.tsx  # Splash + "Launch Dashboard" CTA
-│           └── Dashboard.tsx
-├── ml/                     # ML prediction service
-│   ├── main.py             # App entrypoint, /health
-│   ├── requirements.txt
-│   ├── models/             # Trained model artifacts
-│   ├── data/               # Datasets
-│   └── services/           # ML pipelines
-├── start.sh                # Launch all 3 services
-├── CONTEXT.md              # ← You are here
-└── README.md
-```
+## Final Tech Stack
+- **Frontend**: React 19 + Vite + Tailwind CSS v4 + Recharts + Leaflet
+- **Backend Core**: FastAPI + SQLAlchemy + SQLite
+- **ML Intelligence**: FastAPI + scikit-learn + TensorFlow + Prophet + ARIMA
+- **Security**: Fernet Encryption + DP Noise Injection + Hashed Attribution
 
 ---
 
-## Key Decisions
-
-| #  | Decision                                    | Rationale                                      |
-| -- | ------------------------------------------- | ---------------------------------------------- |
-| 1  | **No Docker** — run with `start.sh`         | Hackathon speed; minimal setup friction         |
-| 2  | **Dark theme:** `#0A0F1E` bg, `#00D4FF` accent | Premium biomedical aesthetic; high contrast  |
-| 3  | **Tailwind CSS v4** (Vite plugin, `@theme`) | Latest CSS-first config; no `tailwind.config`   |
-| 4  | **SQLite** for database                      | Zero-config for hackathon; swap to PG later    |
-| 5  | **Separate ML service** on `:8001`          | Isolate heavy ML deps from core API            |
-| 6  | **Inter font** from Google Fonts            | Clean, modern, highly readable                 |
-| 7  | **Parquet storage** for processed ML data     | Efficient storage/retrieval for analytics      |
-| 8  | **Anonymization Layer** (hash + ±2% noise)  | Privacy-preserving biomedical intelligence     |
-| 9  | **Synthetic Fallback Data** (7.8k records)   | Ensures development consistency without API    |
-| 10 | **ARIMA & Prophet Ensemble**                 | Hybrid forecasting for robust outbreak trends  |
-| 11 | **Backend Prediction Proxy**                 | Transparent communication between FE and ML    |
-| 12 | **Weighted Ensemble** (30/30/40)             | Optimized weighting: ARIMA, Prophet, LSTM      |
-| 13 | **LSTM Deep Learning Layer**                 | Captures complex temporal dependencies         |
-| 14 | **Environmental Regressors**                 | Weather drivers (Rain, Humid) in Prophet       |
-| 15 | **Weather Risk Multiplier**                  | 0.5-2.0 dynamic risk modifier based on climate |
-| 16 | **Anonymized Symptom Reporting**             | Privacy-first crowdsourced data collection     |
-| 17 | **DBSCAN Clustering**                        | Detects abnormal groups of similar symptoms    |
-| 18 | **Z-Score Spike Detection**                  | Real-time alerts for symptom volume anomalies  |
-| 19 | **Bio-Spatial Map** (Leaflet)                | Interactive dark-theme risk heatmap            |
-| 20 | **Central Intelligence Dashboard**           | Real-time KPIs with 30s auto-sync              |
-| 21 | **Autonomous Alert Engine**                  | Multi-modal trigger logic (Risk/Spikes/Cases)  |
-| 22 | **Notification Bridge**                      | In-app alerts + mock email delivery system     |
-| 23 | **Background Surveillance Task**             | 5-min interval scanning across all regions     |
-| 24 | **Chronic Risk Classifiers**                 | Diabetes (LR), Heart (RF), Stroke (GBM) models |
-| 25 | **Clinical Triage Engine**                   | Rule-based urgency scoring (Critical-SelfCare) |
-| 26 | **Health Twin Simulator**                    | Longitudinal what-if modeling & projections    |
-| 27 | **Stroke Guard Neural Engine**               | Multimodal risk synthesis (Bio+CV+NLP)         |
-| 28 | **Wearable Telemetry Pipeline**              | Real-time ingest for HeartRate/SpO2/Steps      |
-| 29 | **Full Core Integration Suite**              | Comprehensive test_integration.py validation   |
+## Implementation Phases (1-30)
+| Phase | Module                                      | Status      |
+| ----- | ------------------------------------------- | ----------- |
+| 1–20  | Core Intelligence, XAI, Simulation, Resource | ✅ Complete |
+| 21    | SIR/SEIR Simulation                          | ✅ Complete |
+| 22    | Predictive Resource Planner                  | ✅ Complete |
+| 23    | Authority PDF Reports                        | ✅ Complete |
+| 24    | Teleconsultation Module                      | ✅ Complete |
+| 25    | AI Diet Planner                              | ✅ Complete |
+| 26    | Mental Health Support                        | ✅ Complete |
+| 27    | Emergency Health Passport                    | ✅ Complete |
+| 28    | Continuous Learning Loop                     | ✅ Complete |
+| 29    | Insurance Analytics + Hospital Signals       | ✅ Complete |
+| 30    | Final Polish + Drug Discovery                | ✅ Complete |
 
 ---
 
-## Design Tokens
-
-```
-Background:      #0A0F1E
-Surface:         #111827
-Surface Light:   #1F2937
-Accent:          #00D4FF
-Accent Dim:      #00A3CC
-Text:            #FFFFFF
-Text Muted:      #9CA3AF
-Border:          #1F2937
-Danger:          #EF4444
-Warning:         #F59E0B
-Success:         #10B981
-Font:            Inter (300–900)
-```
-
----
-
-## Phases
-
-| Phase | Description                                  | Status      |
-| ----- | -------------------------------------------- | ----------- |
-| 1     | Monorepo scaffold + dark UI shell            | ✅ Complete |
-| 2     | Historical Data Pipeline + Privacy Layer     | ✅ Complete |
-| 3     | ARIMA & Prophet Forecasting Models           | ✅ Complete |
-| 4     | LSTM Model & Deep Learning Pipeline          | ✅ Complete |
-| 5     | Environmental Correlation Engine             | ✅ Complete |
-| 6     | Symptom Input + Clustering Engine            | ✅ Complete |
-| 7     | Geo-Spatial Heatmaps + Dashboard             | ✅ Complete |
-| 8     | Early Warning Alert System                   | ✅ Complete |
-| 9     | Personal Risk Prediction + AI Symptom Checker| ✅ Complete |
-| 10    | Digital Health Twin + Wearable Integration   | ✅ Complete |
-| 11    | XAI Model Explainability (SHAP/LIME)         | ✅ Complete |
-| 12    | Validated Accuracy Metrics Dashboard         | ✅ Complete |
-| 13    | Multi-Source Data Fusion Engine              | ✅ Complete |
-| 14    | Stroke Guard Neural Engine Enhanced          | ✅ Complete |
-| 15    | Live Interactive Map Polish                  | ✅ Complete |
-| 16    | End-to-End Alert Demo                        | ✅ Complete |
-| 17    | KPI Dashboard + Resource Widgets             | 🔜 Next     |
-| 18–30 | See implementation plan                      | ⏳ Pending  |
+## Available Pages
+- **Dashboard**: Central KPIs and real-time alerts.
+- **Outbreak Map**: Interactive risk heatmap with 30-day replay.
+- **Alerts**: Autonomous early warning notification center.
+- **Symptom Checker**: Crowdsourced triage and cluster detection.
+- **Personal Risk**: ML-driven chronic disease classification.
+- **Health Twin**: Longitudinal simulation and what-if modeling.
+- **Stroke Guard**: Facial asymmetry and speech slurring detection.
+- **Simulation**: SEIR compartmental modeling and intervention testing.
+- **Resource Planner**: Supply chain and bed demand forecasting.
+- **Reports**: Authority-grade PDF briefing generator.
+- **Teleconsult**: AI-matched specialist network and booking.
+- **Diet Planner**: Risk-optimized nutritional intelligence.
+- **Mental Health**: PHQ-4 screener and cinematic wellness player.
+- **Health Passport**: Scannable QR emergency medical summary.
+- **Learning Center**: Model drift monitor and auto-retrainer.
+- **Insurance**: Risk-based premium calculator and actuarial dash.
+- **Hospital Signals**: Bed occupancy and ER volume telemetry.
+- **Drug Discovery**: Treatment protocol simulation engine.
+- **About/Architecture/Impact/Roadmap**: Business and technical narrative.
 
 ---
 
-## How to Run
+## Machine Learning Inventory
+- **Epidemiological**: Weighted Ensemble (ARIMA, Prophet, LSTM).
+- **Personal Risk**: Random Forest (Heart), XGBoost (Stroke), Logistic (Diabetes).
+- **Computer Vision**: MediaPipe-based facial asymmetry scoring.
+- **Simulators**: SEIR Pathogen Spread, 5-Year Wellness Twin.
+- **Maintenance**: PSI-based Drift Detection, Shadow A/B Testing.
 
+---
+
+## Demo Launch Command
 ```bash
-# Install all dependencies
-cd backend && pip install -r requirements.txt && cd ..
-cd ml && pip install -r requirements.txt && cd ..
-cd frontend && npm install && cd ..
+# 1. Seed high-fidelity demo data
+python backend/seed_final_demo.py
 
-# Start everything
+# 2. Start all services
 bash start.sh
-
-# Or individually:
-cd backend  && uvicorn main:app --reload --port 8000
-cd ml       && uvicorn main:app --reload --port 8001
-cd frontend && npm run dev
 ```
 
 ---
 
-## Data Pipeline Summary
-- **Datasets**: WHO Global Health Observatory (Indicators), Synthetic Outbreak Data (7,800 records).
-- **Schema**: SQLite DB with `outbreak_records`, `environmental_data`, `alert_logs`, `user_symptom_reports`.
-- **Pipeline**: Raw CSV → Normalization → Anonymization (Hashing/Noise) → Feature Engineering (Rolling Avgs) → Parquet.
-
-## ML Architecture (Phase 3)
-- **ARIMA**: Auto-selected (p,d,q) using `pmdarima`, seasonal m=52 (weekly).
-- **Prophet**: Additive model with Indian holiday integration and uncertainty intervals.
-- **Ensemble**: Weighted average (ARIMA: 30%, Prophet: 30%, LSTM: 40%) with combined risk scoring.
-
-## Deep Learning Pipeline (Phase 4)
-- **LSTM Architecture**: 2-layer stacked LSTM (64, 32 units) with 20% Dropout.
-- **Sequence Length**: 12 weeks of historical context per prediction.
-- **Features**: `cases`, `rolling_avg`, `week_of_year`, `is_monsoon_season`.
-- **Training**: `train_all.py` orchestrator for automated cross-validation and model persistence.
-
-## Environmental Correlation Engine (Phase 5)
-- **Integration**: OpenWeatherMap API (Current) + Synthetic Seasonal Fallback (Historical).
-- **Correlations**: Pearson/Spearman analysis with 0-4 week lags for early warning.
-- **Rules Engine**: Disease-specific weather risk logic (e.g., Dengue ~ Rainfall/Humidity).
-- **Prophet Regressors**: Added `rainfall` and `humidity` as external indicators.
-
-## Symptom Intelligence (Phase 6)
-- **Input System**: Multi-step symptom checker with region-specific risk assessment.
-- **Anonymization**: Zero-PII storage (only region, timestamp, symptoms, severity, age group).
-- **Clustering**: DBSCAN engine to identify spatial clusters of similar symptom profiles.
-- **Anomalies**: Z-score spike detection (>2.0σ) for early outbreak warnings.
-- **Classification**: Rule-based engine mapping symptoms (Fever, Rash, etc.) to likely diseases.
-
-## Geo-Spatial Intelligence (Phase 7)
-- **Interactive Mapping**: Leaflet-based Outbreak Map with CartoDB Dark Matter tiles.
-- **Risk Visualization**: Pulsing CircleMarkers with radius scaled to case volume and colors mapped to risk scores.
-- **Real-Time Dash**: High-fidelity dashboard with auto-refreshing KPIs (Active Cases, High-Risk Zones, Accuracy).
-- **Matrix Views**: Regional risk matrix allowing comparison of multiple diseases across cities.
-
-## Early Warning Alert System (Phase 8)
-- **Engine Logic**: 4-tier severity levels (Critical, High, Medium, Low) based on hybrid triggers.
-- **Triggers**: Triggered by Risk Score (>85%), Case Counts (>500), or Symptom Spikes (Z-Score > 3).
-- **Background Monitor**: Async scanner running every 5 minutes across 50 region-pathogen pairs.
-- **Notifications**: Integrated notification bell with pulsing unread indicators and mock email logging.
-- **Workflow**: Structured recommended actions (e.g., "Activate Emergency Protocol") for each severity.
-
-## Digital Twin & Wearable Core (Phase 10) - SET 1 COMPLETE
-- **Digital Health Twin**: Personalized longitudinal simulation model with a 5-year projection window.
-- **What-If Simulator**: Interactive interface for modeling the impact of weight loss, exercise, and smoking cessation.
-- **Stroke Guard™**: Neural engine synthesizing multi-source data for acute neurological event prevention.
-- **Wearable Ingest**: Real-time telemetry pipeline for live vitals monitoring (HR, SpO2, Steps) with sparkline visualizations.
-- **Verification**: `test_integration.py` validates all core API surfaces across Backend and ML services.
-
-## XAI & Model Interpretability (Phase 11) - SET 2 BEGINS
-- **SHAP Integration**: `ExplainabilityService` using SHAP tree algorithms to generate feature importance.
-- **Why This Prediction**: Reusable collapsible panel added to outbreak and personal risk visualizations.
-- **Narrative Generation**: Automated plain-English summaries explaining complex model logic to stakeholders.
-- **XAI Dashboard Widget**: Identifies top global predictors (e.g., Rainfall) across the entire platform.
-- **Model Intelligence View**: Full-page `XAIView.tsx` with SHAP waterfall charts and correlation matrices.
-
-## Model Validation & Accuracy Metrics (Phase 12)
-- **Metrics Engine**: `MetricsService` computing RMSE, MAE, F1, and AUC scores across models.
-- **Validation Dashboard**: Full-page `ModelValidation.tsx` presenting empirical accuracy and precision metrics.
-- **Visualizations**: Recharts integration for ROC Curves and Prediction vs Actual scatter plots.
-- **Performance Overview**: Summary tables for all 7 models alongside Confusion Matrix for alert classification.
-- **Confidence Banner**: Production confidence indicators on the Dashboard and Validation views.
-
-## Multi-Source Data Fusion Engine (Phase 13)
-- **Engine Logic**: `DataFusionEngine` merges Historical (50%), Environmental (30%), and Real-time Symptom (20%) data arrays.
-- **Dynamic Weighting**: Automatic weight shifting and gap detection (e.g., if telemetry drops, reliance shifts to historical).
-- **Fusion UI Panel**: Added `DataFusionPanel.tsx` detailing live ingestion status, an interactive donut chart of contribution ratios, and a 6-hour ingestion timeline.
-- **Traceability**: All predictions now explicitly cite their underlying data sources within the XAI `WhyThisPrediction` intelligence layers.
-
-## Stroke Guard Neural Engine Enhanced (Phase 14)
-- **Computer Vision**: Integrated `mediapipe.solutions.face_mesh` for live facial landmark detection to compute asymmetry scores (Eye openness, Mouth droop). Includes robust fallback if CV fails.
-- **Speech NLP**: Implemented text-based fluency and confusion marker detection to identify slurred or struggling speech patterns.
-- **Multimodal Fusion**: Upgraded `StrokeGuardEngine` to fuse ML risk (40%), Facial Asymmetry (30%), Speech Fluency (20%), and Vitals (10%).
-- **Interactive UI**: Added a 3-step `StrokeGuard.tsx` wizard featuring live webcam capture, multipart image upload, text input, and a final FAST-aligned risk report with an emergency 112 trigger.
-
-## Live Interactive Map Polish (Phase 15)
-- **Animated Risk Zones**: Overhauled `OutbreakMap.tsx` with proportional, color-coded CircleMarkers featuring a CSS pulse animation for "Critical" regions.
-- **Rich Popups**: Interactive Leaflet popups displaying active cases, 7-day trends, and dynamic progress bars for regional risk scores.
-- **Control & Legend**: Added a left-side control panel for toggling Risk Zones, Heatmaps, and 2-week Forecast Mode. Integrated a fixed bottom-right map legend.
-- **Outbreak Animation**: Built a playback timeline scrubber with 30-day historical replay functionality (2 fps animation loop).
-- **Region Slide-in Panel**: Developed a detailed right-hand slide-in panel showing 30-day case trajectory charts, disease breakdown donuts, and local environmental modifiers upon clicking a city.
-
-## End-to-End Alert Demo (Phase 16)
-- **Outbreak Simulator (`/api/demo/trigger-outbreak`)**: Added an API endpoint to mock an outbreak escalation over a 15-second timeline. 
-- **Real-time SSE Logs**: Implemented Server-Sent Events (`EventSourceResponse`) in FastAPI to stream step-by-step logs from the backend to the React frontend as the simulation progresses.
-- **Cinematic UI**: Built `AlertDemo.tsx`, a striking interface with a glowing trigger button, a live sub-system telemetry feed, and dynamic alert tier badging.
-- **Mock Email Modal**: Added a highly realistic email payload visualization that pops up when the outbreak reaches the CRITICAL alerting tier, demonstrating what Health Authorities would receive.
-
-*Last updated: Phase 16 — 2026-05-14*
+*Last updated: Phase 30 — THE CULMINATION — 2026-05-15*

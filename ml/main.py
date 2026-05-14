@@ -24,6 +24,15 @@ from services.stroke_guard import StrokeGuardEngine
 from services.explainability_service import ExplainabilityService
 from services.metrics_service import MetricsService
 from services.fusion_engine import DataFusionEngine
+from services.seir_simulation import SEIRSimulation
+from services.resource_planner import ResourcePlanner
+from services.diet_engine import DietEngine
+from services.mental_health_engine import MentalHealthEngine
+from services.model_monitor import ModelMonitor
+from services.retrainer import Retrainer
+from scheduler import LearningScheduler
+from services.insurance_engine import InsuranceEngine
+from services.drug_discovery import DrugDiscoveryEngine
 
 app = FastAPI(
     title="Helix ML Service",
@@ -49,6 +58,15 @@ stroke_guard_engine = StrokeGuardEngine()
 explain_service = ExplainabilityService()
 metrics_service = MetricsService()
 fusion_engine = DataFusionEngine()
+simulation_engine = SEIRSimulation()
+resource_planner = ResourcePlanner()
+diet_engine = DietEngine()
+mental_health_engine = MentalHealthEngine()
+model_monitor = ModelMonitor()
+retrainer = Retrainer(model_monitor)
+scheduler = LearningScheduler(model_monitor, retrainer)
+insurance_engine = InsuranceEngine()
+drug_discovery_engine = DrugDiscoveryEngine()
 
 # Region to City mapping
 REGION_CITY_MAP = {
@@ -64,6 +82,21 @@ class PredictionRequest(BaseModel):
     region: str
     model: str = "ensemble" # arima, prophet, lstm, ensemble
     steps: int = 12
+
+class SimulationRequest(BaseModel):
+    disease: Optional[str] = "Dengue"
+    population: int
+    R0: float
+    gamma: float
+    days: int = 180
+    model: str = "SEIR"
+    interventions: Optional[List[Dict]] = []
+
+class ResourcePlanRequest(BaseModel):
+    disease: str
+    region: str
+    predicted_cases: int
+    days: int = 14
 
 class SymptomClassifyRequest(BaseModel):
     symptoms: List[str]
@@ -86,10 +119,43 @@ class ExplainRequest(BaseModel):
     user_data: Optional[Dict] = None
     prediction_value: Optional[float] = 0.0
 
+class DietPlanRequest(BaseModel):
+    risk_profile: Dict
+    preferences: Optional[Dict] = None
+
+class MealScoreRequest(BaseModel):
+    meal_name: str
+    risk_profile: Dict
+
+class MentalHealthAssessRequest(BaseModel):
+    responses: List[int]
+
+class MoodLogRequest(BaseModel):
+    user_session_id: str
+    mood_score: int
+    stress_score: int
+    notes: Optional[str] = None
+
+class InsurancePremiumRequest(BaseModel):
+    user_profile: Dict
+    region_risk_score: float
+
+class DrugSimulationRequest(BaseModel):
+    disease: str
+    protocol: Dict
+
 @app.get("/health")
 async def health_check():
     """Health check endpoint."""
     return {"status": "ok", "service": "helix-ml"}
+
+@app.on_event("startup")
+async def startup_event():
+    scheduler.start()
+
+@app.on_event("shutdown")
+async def shutdown_event():
+    scheduler.shutdown()
 
 @app.post("/api/predict/outbreak")
 async def predict_outbreak(request: PredictionRequest):
@@ -248,6 +314,172 @@ async def stroke_guard_full(
         image_bytes=img_bytes,
         speech_text=speech_text
     )
+
+# Phase 21 Simulation Endpoints
+@app.get("/api/simulation/presets")
+async def get_simulation_presets():
+    return simulation_engine.get_presets()
+
+@app.post("/api/simulation/seir")
+async def run_simulation(req: SimulationRequest):
+    return simulation_engine.run(
+        N=req.population,
+        R0=req.R0,
+        gamma=req.gamma,
+        days=req.days,
+        model=req.model,
+        interventions=req.interventions
+    )
+
+# Phase 22 Resource Planner Endpoints
+@app.post("/api/resources/plan")
+async def get_resource_plan(req: ResourcePlanRequest):
+    return resource_planner.calculate_resource_needs(req.disease, req.region, req.predicted_cases, req.days)
+
+@app.get("/api/resources/current-inventory")
+async def get_inventory(region: str):
+    import random
+    return {
+        "region": region,
+        "beds": random.randint(10, 500),
+        "medicine_units": random.randint(100, 5000),
+        "personnel": random.randint(5, 50)
+    }
+
+@app.get("/api/resources/gap-analysis")
+async def get_gap_analysis(disease: str, region: str, predicted_cases: int):
+    return resource_planner.gap_analysis(region, disease, predicted_cases)
+
+@app.get("/api/resources/full-report")
+async def get_full_report(disease: str):
+    regions = ["Maharashtra", "Delhi", "Karnataka"]
+    report = []
+    import random
+    for r in regions:
+        cases = random.randint(100, 5000)
+        gap = resource_planner.gap_analysis(r, disease, cases)
+        procurement = resource_planner.generate_procurement_plan(r, disease, 30)
+        report.append({
+            "region": r,
+            "predicted_cases": cases,
+            "gap_analysis": gap,
+            "procurement_plan": procurement
+        })
+    transfers = resource_planner.optimize_distribution({}, regions, {})
+    return {
+        "disease": disease,
+        "regional_reports": report,
+        "transfers": transfers["transfers"]
+    }
+
+# Phase 25 Diet Planner Endpoints
+@app.post("/api/diet/generate-plan")
+async def generate_diet_plan(req: DietPlanRequest):
+    return diet_engine.generate_plan(req.risk_profile, req.preferences)
+
+@app.get("/api/diet/meals")
+async def get_meals(category: Optional[str] = None, disease: Optional[str] = None, max_calories: Optional[int] = None):
+    meals = diet_engine.meals
+    if category:
+        meals = [m for m in meals if m["category"] == category]
+    if max_calories:
+        meals = [m for m in meals if m["calories"] <= max_calories]
+    if disease:
+        # Filter meals that score well for this disease
+        mock_profile = {disease: 80}
+        meals = [m for m in meals if diet_engine.score_meal(m["name"], mock_profile) >= 70]
+    return meals
+
+@app.post("/api/diet/score-meal")
+async def score_meal(req: MealScoreRequest):
+    return {"score": diet_engine.score_meal(req.meal_name, req.risk_profile)}
+
+@app.get("/api/diet/supplements")
+async def get_supplements(risk_profile: str = Query(...)):
+    import json
+    profile = json.loads(risk_profile)
+    return diet_engine.recommend_supplements(profile)
+
+# Phase 26 Mental Health Endpoints
+@app.post("/api/mental-health/assess")
+async def assess_mental_health(req: MentalHealthAssessRequest, region_risk: float = 0, personal_risk: float = 0):
+    assessment = mental_health_engine.assess_stress(req.responses)
+    anxiety_index = mental_health_engine.compute_outbreak_anxiety_index(region_risk, personal_risk)
+    recommendations = mental_health_engine.recommend_exercises(assessment["level"])
+    crisis = mental_health_engine.crisis_flag(assessment["score"])
+    
+    return {
+        "assessment": assessment,
+        "anxiety_index": anxiety_index,
+        "recommendations": recommendations,
+        "crisis": crisis
+    }
+
+@app.get("/api/mental-health/exercises")
+async def get_exercises(max_duration: Optional[int] = None, stress_level: str = "Normal"):
+    return mental_health_engine.recommend_exercises(stress_level, max_duration)
+
+@app.get("/api/mental-health/mood-trend")
+async def get_mood_trend(history: str = Query(...)): # comma separated scores
+    scores = [int(s) for s in history.split(",")]
+    return {"trend": mental_health_engine.track_mood_trend(scores)}
+
+@app.get("/api/mental-health/resources")
+async def get_crisis_resources():
+    return mental_health_engine.crisis_flag(10)["resources"]
+
+# Phase 28 Continuous Learning Endpoints
+@app.get("/api/learning/status")
+async def get_learning_status():
+    import random
+    models = ["Dengue LSTM", "Malaria Prophet", "Influenza ARIMA", "Stroke Guard", "Personal Risk RF"]
+    status = []
+    for m in models:
+        drift = model_monitor.compute_drift(m)
+        status.append({
+            "model_name": m,
+            "last_trained": (datetime.utcnow() - timedelta(days=random.randint(1, 10))).isoformat(),
+            "current_rmse": round(random.uniform(30, 60), 2),
+            "drift_score": drift,
+            "retrain_due": drift > 0.7 or random.random() > 0.8
+        })
+    return status
+
+@app.post("/api/learning/trigger-retrain/{model_name}")
+async def trigger_retrain(model_name: str):
+    return retrainer.retrain_model(model_name, "Manual Trigger")
+
+@app.get("/api/learning/performance-log")
+async def get_performance_log(model: Optional[str] = None):
+    return model_monitor.get_logs(model)
+
+@app.get("/api/learning/improvements")
+async def get_improvements():
+    if not os.path.exists(retrainer.improvement_log):
+        return []
+    with open(retrainer.improvement_log, "r") as f:
+        return json.load(f)
+
+# Phase 29 Insurance Analytics Endpoints
+@app.post("/api/insurance/premium")
+async def calculate_premium(req: InsurancePremiumRequest):
+    return insurance_engine.compute_risk_premium(req.user_profile, req.region_risk_score)
+
+@app.get("/api/insurance/portfolio-risk")
+async def get_portfolio_risk(region: str, disease_risk_avg: float):
+    return insurance_engine.portfolio_risk_analysis(region, disease_risk_avg)
+
+@app.get("/api/insurance/outbreak-liability")
+async def get_liability(predicted_cases: int):
+    return insurance_engine.outbreak_liability_estimate(predicted_cases)
+
+# Phase 30 Drug Discovery Endpoints
+@app.post("/api/drug-discovery/simulate")
+async def simulate_drug(req: DrugSimulationRequest):
+    sim_res = drug_discovery_engine.simulate_treatment(req.disease, req.protocol)
+    # Mock impact calculation
+    impact = drug_discovery_engine.population_impact(req.disease, 5000, sim_res["efficacy_pct"])
+    return {**sim_res, "impact": impact}
 
 if __name__ == "__main__":
     import uvicorn

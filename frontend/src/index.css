@@ -16,6 +16,23 @@
   --color-helix-warning: #F59E0B;
   --color-helix-success: #10B981;
   --font-family-sans: 'Inter', system-ui, -apple-system, sans-serif;
+
+  --animate-fade-in: fade-in 0.8s ease-out;
+  --animate-scale-in: scale-in 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  --animate-float: float 6s ease-in-out infinite;
+
+  @keyframes fade-in {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes scale-in {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
 }
 
 /* ─── Base ─── */
@@ -89,6 +106,25 @@ body {
 
 .animate-pulse-glow {
   animation: pulse-glow 2s ease-in-out infinite;
+}
+
+@layer components {
+  .helix-card {
+    @apply bg-helix-surface border border-helix-accent/10 rounded-2xl shadow-xl hover:border-helix-accent/30 transition-all duration-300;
+  }
+  
+  .helix-glass {
+    @apply bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl;
+  }
+
+  .helix-hero-gradient {
+    background: radial-gradient(circle at top right, rgba(0, 212, 255, 0.08), transparent 40%),
+                radial-gradient(circle at bottom left, rgba(0, 212, 255, 0.05), transparent 40%);
+  }
+
+  .skeleton-box {
+    @apply bg-helix-surface-light animate-pulse rounded-lg;
+  }
 }
 
 /* ─── Leaflet Dark Theme Overrides ─── */

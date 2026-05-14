@@ -1,91 +1,80 @@
 # 🧬 Helix
 
-**Predictive Biomedical & Public Health Intelligence Platform**
+### Predictive Biomedical & Public Health Intelligence Platform
 
-Helix is a full-stack AI-powered platform for real-time disease surveillance, outbreak prediction, personal health risk scoring, and public health decision support.
+Helix is a state-of-the-art intelligence suite built for the 2026 Global Health Tech Hackathon. It fuses epidemiological modeling, personalized digital health twins, and operational resource planning into a single cinematic platform.
 
 ---
 
-## 🏗️ Architecture
+## 🚀 Quick Start (Demo Ready)
 
-| Layer      | Technology                  | Port   |
-| ---------- | --------------------------- | ------ |
-| Frontend   | React + Vite + Tailwind CSS | :5173  |
-| Backend    | FastAPI + SQLAlchemy         | :8000  |
-| ML Service | FastAPI + scikit-learn / TF  | :8001  |
-| Database   | SQLite (hackathon)          | —      |
+1. **Clone & Install**:
+   ```bash
+   # Clone the repository
+   git clone https://github.com/aaryarj05-art/AV26-020.git
+   cd AV26-020
+   
+   # Install dependencies
+   cd backend && pip install -r requirements.txt && cd ..
+   cd ml      && pip install -r requirements.txt && cd ..
+   cd frontend && npm install && cd ..
+   ```
 
-## 📁 Project Structure
+2. **Seed the Demo**:
+   ```bash
+   # Populates high-fidelity data for judges
+   python backend/seed_final_demo.py
+   ```
 
-```
-helix/
-├── backend/           # FastAPI core API
-│   ├── main.py
-│   └── app/
-│       ├── api/       # Route handlers
-│       ├── models/    # SQLAlchemy models
-│       └── services/  # Business logic
-├── frontend/          # React + Vite + Tailwind
-│   └── src/
-│       └── components/
-├── ml/                # ML prediction service
-│   ├── main.py
-│   ├── models/        # Trained model artifacts
-│   ├── data/          # Datasets
-│   └── services/      # ML pipelines
-├── start.sh           # Launch all services
-├── CONTEXT.md         # Living project context
-└── README.md          # ← You are here
-```
+3. **Launch Platform**:
+   ```bash
+   bash start.sh
+   ```
+   *Dashboard available at http://localhost:5173*
 
-## 🚀 Quick Start
+---
 
-### Prerequisites
+## 🛠️ Tech Stack
 
-- Python 3.10+
-- Node.js 18+
-- npm 9+
+- **Frontend**: React 19, Vite, Tailwind CSS v4, Recharts, Leaflet.
+- **Backend Core**: FastAPI, SQLAlchemy (SQLite), Pydantic.
+- **ML Intelligence**: FastAPI, scikit-learn, TensorFlow, Prophet, ARIMA, SHAP.
+- **Security**: Fernet Symmetric Encryption (Health Passports), Anonymization Layer.
 
-### Run All Services
+---
 
-```bash
-# 1. Install backend deps
-cd backend && pip install -r requirements.txt && cd ..
+## ✨ Core Features (Phase 1-30)
 
-# 2. Install ML deps
-cd ml && pip install -r requirements.txt && cd ..
+### 📊 Public Health Intelligence
+- **Hybrid Outbreak Forecasting**: Ensemble (ARIMA + Prophet + LSTM) predicting cases across 50 regions.
+- **Bio-Spatial Map**: Interactive dark-theme heatmap with 30-day historical replay.
+- **SEIR Simulation**: Pathogen spread modeling with interactive intervention controls.
+- **Predictive Resource Planner**: Automated bed/med/staff allocation based on forecast demand.
 
-# 3. Install frontend deps
-cd frontend && npm install && cd ..
+### 👤 Personalized Biomedical Core
+- **Digital Health Twin**: Longitudinal 5-year wellness projections and what-if simulations.
+- **Stroke Guard™**: Multimodal CV+NLP neural engine for acute stroke risk detection.
+- **AI Symptom Checker**: Privacy-first triage mapping crowdsourced data to outbreak clusters.
+- **Emergency Health Passport**: Encrypted, scannable QR medical summaries for first responders.
 
-# 4. Launch everything
-bash start.sh
-```
+### 🏥 Operational & Financial Resilience
+- **Teleconsultation Suite**: AI-matched specialist booking with integrated video consults.
+- **Insurance Analytics**: Risk-based premium modeling and regional liability forecasting.
+- **Hospital Signals**: Real-time bed occupancy telemetry and surge detection.
+- **Drug Discovery Simulation**: Virtual treatment protocol modeling and population impact analysis.
 
-Or run individually:
+### ⚙️ Self-Improving Intelligence
+- **Continuous Learning Loop**: Automated drift detection (PSI) and Champion-vs-Challenger retraining.
+- **Explainable AI (XAI)**: SHAP-driven narratives explaining "Why This Prediction" for all models.
 
-```bash
-# Backend
-cd backend && uvicorn main:app --reload --port 8000
+---
 
-# ML Service
-cd ml && uvicorn main:app --reload --port 8001
+## 👥 The Team (AV26-020)
+- **Aarya R Joshi**
+- **Amruth G R**
+- **Gagan M**
+- **Karthik Kumar Biradar**
 
-# Frontend
-cd frontend && npm run dev
-```
+---
 
-## 🧪 Health Checks
-
-```bash
-curl http://localhost:8000/health   # Backend
-curl http://localhost:8001/health   # ML Service
-```
-
-## 👥 Team
-
-- **Team AV26-020**
-
-## 📄 License
-
-Hackathon project — all rights reserved.
+*Built with ❤️ for a healthier future.*
