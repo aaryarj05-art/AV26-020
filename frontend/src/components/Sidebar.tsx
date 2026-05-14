@@ -32,10 +32,10 @@ export default function Sidebar() {
             key={item.to}
             to={item.to}
             className={({ isActive }) =>
-              `flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all duration-200 ${
+              `flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all duration-200 border-l-2 ${
                 isActive
-                  ? 'bg-helix-accent/15 text-helix-accent shadow-lg shadow-helix-accent/5'
-                  : 'text-helix-text-muted hover:text-helix-text hover:bg-helix-surface-light'
+                  ? 'bg-helix-accent/15 text-helix-accent shadow-lg shadow-helix-accent/5 border-helix-accent'
+                  : 'text-helix-text-muted hover:text-helix-text hover:bg-helix-surface-light border-transparent'
               }`
             }
           >

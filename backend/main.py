@@ -4,11 +4,19 @@ Predictive Biomedical & Public Health Intelligence Platform
 """
 
 import os
+import asyncio
 from dotenv import load_dotenv
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from app.api.data import router as data_router
 from app.api.predictions import router as predictions_router
+from app.api.environment import router as environment_router
+from app.api.symptoms import router as symptoms_router
+from app.api.dashboard import router as dashboard_router
+from app.api.alerts import router as alerts_router
+
+from app.services.alert_engine import AlertEngine
+from app.database import SessionLocal
 
 load_dotenv()
 
@@ -29,16 +37,34 @@ app.add_middleware(
 
 app.include_router(data_router)
 app.include_router(predictions_router)
+app.include_router(environment_router)
+app.include_router(symptoms_router)
+app.include_router(dashboard_router)
+app.include_router(alerts_router)
 
+# Background Monitoring Task
+async def run_alert_scanner():
+    while True:
+        try:
+            db = SessionLocal()
+            engine = AlertEngine(db)
+            await engine.check_all_regions()
+            db.close()
+        except Exception as e:
+            print(f"❌ Background Monitor Error: {e}")
+        
+        await asyncio.sleep(300) # Run every 5 minutes
+
+@app.on_event("startup")
+async def startup_event():
+    asyncio.create_task(run_alert_scanner())
 
 @app.get("/health")
 async def health_check():
     """Health check endpoint."""
     return {"status": "ok", "service": "helix-backend"}
 
-
 if __name__ == "__main__":
     import uvicorn
-
     port = int(os.getenv("PORT", 8000))
     uvicorn.run("main:app", host="0.0.0.0", port=port, reload=True)

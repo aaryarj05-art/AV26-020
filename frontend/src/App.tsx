@@ -1,7 +1,13 @@
 import { Routes, Route } from 'react-router-dom'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import Layout from './components/Layout'
 import Landing from './pages/Landing'
 import Dashboard from './pages/Dashboard'
+import SymptomChecker from './pages/SymptomChecker'
+import OutbreakMap from './pages/OutbreakMap'
+import Alerts from './pages/Alerts'
+
+const queryClient = new QueryClient();
 
 function PlaceholderPage({ title, icon }: { title: string; icon: string }) {
   return (
@@ -18,19 +24,21 @@ function PlaceholderPage({ title, icon }: { title: string; icon: string }) {
 
 export default function App() {
   return (
-    <Routes>
-      {/* Landing page — no sidebar */}
-      <Route path="/" element={<Landing />} />
+    <QueryClientProvider client={queryClient}>
+      <Routes>
+        {/* Landing page — no sidebar */}
+        <Route path="/" element={<Landing />} />
 
-      {/* App shell with sidebar */}
-      <Route element={<Layout />}>
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/outbreak-map" element={<PlaceholderPage title="Outbreak Map" icon="🗺️" />} />
-        <Route path="/alerts" element={<PlaceholderPage title="Alerts" icon="🚨" />} />
-        <Route path="/personal-risk" element={<PlaceholderPage title="Personal Risk" icon="🛡️" />} />
-        <Route path="/health-twin" element={<PlaceholderPage title="Health Twin" icon="🧬" />} />
-        <Route path="/symptom-checker" element={<PlaceholderPage title="Symptom Checker" icon="🩺" />} />
-      </Route>
-    </Routes>
+        {/* App shell with sidebar */}
+        <Route element={<Layout />}>
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/outbreak-map" element={<OutbreakMap />} />
+          <Route path="/alerts" element={<Alerts />} />
+          <Route path="/personal-risk" element={<PlaceholderPage title="Personal Risk" icon="🛡️" />} />
+          <Route path="/health-twin" element={<PlaceholderPage title="Health Twin" icon="🧬" />} />
+          <Route path="/symptom-checker" element={<SymptomChecker />} />
+        </Route>
+      </Routes>
+    </QueryClientProvider>
   )
 }

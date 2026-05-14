@@ -52,5 +52,7 @@ class UserSymptomReport(Base):
     user_id_hash = Column(String, index=True)
     region = Column(String)
     symptoms = Column(String) # JSON string of symptoms
+    severity = Column(Integer, default=1)
+    age_group = Column(String) # children, adult, senior
     reported_disease = Column(String, nullable=True)
     risk_score = Column(Float, nullable=True)

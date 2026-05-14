@@ -82,6 +82,18 @@ helix/
 | 9  | **Synthetic Fallback Data** (7.8k records)   | Ensures development consistency without API    |
 | 10 | **ARIMA & Prophet Ensemble**                 | Hybrid forecasting for robust outbreak trends  |
 | 11 | **Backend Prediction Proxy**                 | Transparent communication between FE and ML    |
+| 12 | **Weighted Ensemble** (30/30/40)             | Optimized weighting: ARIMA, Prophet, LSTM      |
+| 13 | **LSTM Deep Learning Layer**                 | Captures complex temporal dependencies         |
+| 14 | **Environmental Regressors**                 | Weather drivers (Rain, Humid) in Prophet       |
+| 15 | **Weather Risk Multiplier**                  | 0.5-2.0 dynamic risk modifier based on climate |
+| 16 | **Anonymized Symptom Reporting**             | Privacy-first crowdsourced data collection     |
+| 17 | **DBSCAN Clustering**                        | Detects abnormal groups of similar symptoms    |
+| 18 | **Z-Score Spike Detection**                  | Real-time alerts for symptom volume anomalies  |
+| 19 | **Bio-Spatial Map** (Leaflet)                | Interactive dark-theme risk heatmap            |
+| 20 | **Central Intelligence Dashboard**           | Real-time KPIs with 30s auto-sync              |
+| 21 | **Autonomous Alert Engine**                  | Multi-modal trigger logic (Risk/Spikes/Cases)  |
+| 22 | **Notification Bridge**                      | In-app alerts + mock email delivery system     |
+| 23 | **Background Surveillance Task**             | 5-min interval scanning across all regions     |
 
 ---
 
@@ -111,8 +123,13 @@ Font:            Inter (300–900)
 | 1     | Monorepo scaffold + dark UI shell            | ✅ Complete |
 | 2     | Historical Data Pipeline + Privacy Layer     | ✅ Complete |
 | 3     | ARIMA & Prophet Forecasting Models           | ✅ Complete |
-| 4     | LSTM Model & Deep Learning Pipeline          | 🔜 Next     |
-| 5–30  | See implementation plan                      | ⏳ Pending  |
+| 4     | LSTM Model & Deep Learning Pipeline          | ✅ Complete |
+| 5     | Environmental Correlation Engine             | ✅ Complete |
+| 6     | Symptom Input + Clustering Engine            | ✅ Complete |
+| 7     | Geo-Spatial Heatmaps + Dashboard             | ✅ Complete |
+| 8     | Early Warning Alert System                   | ✅ Complete |
+| 9     | Personal Risk Prediction + AI Symptom Checker| 🔜 Next     |
+| 10–30 | See implementation plan                      | ⏳ Pending  |
 
 ---
 
@@ -143,6 +160,38 @@ cd frontend && npm run dev
 ## ML Architecture (Phase 3)
 - **ARIMA**: Auto-selected (p,d,q) using `pmdarima`, seasonal m=52 (weekly).
 - **Prophet**: Additive model with Indian holiday integration and uncertainty intervals.
-- **Ensemble**: Average of ARIMA + Prophet predictions with combined risk scoring.
+- **Ensemble**: Weighted average (ARIMA: 30%, Prophet: 30%, LSTM: 40%) with combined risk scoring.
 
-*Last updated: Phase 3 — 2026-05-14*
+## Deep Learning Pipeline (Phase 4)
+- **LSTM Architecture**: 2-layer stacked LSTM (64, 32 units) with 20% Dropout.
+- **Sequence Length**: 12 weeks of historical context per prediction.
+- **Features**: `cases`, `rolling_avg`, `week_of_year`, `is_monsoon_season`.
+- **Training**: `train_all.py` orchestrator for automated cross-validation and model persistence.
+
+## Environmental Correlation Engine (Phase 5)
+- **Integration**: OpenWeatherMap API (Current) + Synthetic Seasonal Fallback (Historical).
+- **Correlations**: Pearson/Spearman analysis with 0-4 week lags for early warning.
+- **Rules Engine**: Disease-specific weather risk logic (e.g., Dengue ~ Rainfall/Humidity).
+- **Prophet Regressors**: Added `rainfall` and `humidity` as external indicators.
+
+## Symptom Intelligence (Phase 6)
+- **Input System**: Multi-step symptom checker with region-specific risk assessment.
+- **Anonymization**: Zero-PII storage (only region, timestamp, symptoms, severity, age group).
+- **Clustering**: DBSCAN engine to identify spatial clusters of similar symptom profiles.
+- **Anomalies**: Z-score spike detection (>2.0σ) for early outbreak warnings.
+- **Classification**: Rule-based engine mapping symptoms (Fever, Rash, etc.) to likely diseases.
+
+## Geo-Spatial Intelligence (Phase 7)
+- **Interactive Mapping**: Leaflet-based Outbreak Map with CartoDB Dark Matter tiles.
+- **Risk Visualization**: Pulsing CircleMarkers with radius scaled to case volume and colors mapped to risk scores.
+- **Real-Time Dash**: High-fidelity dashboard with auto-refreshing KPIs (Active Cases, High-Risk Zones, Accuracy).
+- **Matrix Views**: Regional risk matrix allowing comparison of multiple diseases across cities.
+
+## Early Warning Alert System (Phase 8)
+- **Engine Logic**: 4-tier severity levels (Critical, High, Medium, Low) based on hybrid triggers.
+- **Triggers**: Triggered by Risk Score (>85%), Case Counts (>500), or Symptom Spikes (Z-Score > 3).
+- **Background Monitor**: Async scanner running every 5 minutes across 50 region-pathogen pairs.
+- **Notifications**: Integrated notification bell with pulsing unread indicators and mock email logging.
+- **Workflow**: Structured recommended actions (e.g., "Activate Emergency Protocol") for each severity.
+
+*Last updated: Phase 8 — 2026-05-14*
