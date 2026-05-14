@@ -1,4 +1,5 @@
 import { NavLink } from 'react-router-dom'
+import DataStatus from './DataStatus'
 
 const navItems = [
   { to: '/dashboard', label: 'Dashboard', icon: '📊' },
@@ -55,6 +56,7 @@ export default function Sidebar() {
             <p className="text-xs text-helix-text-muted">Hackathon</p>
           </div>
         </div>
+        <DataStatus />
       </div>
     </aside>
   )

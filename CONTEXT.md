@@ -77,6 +77,9 @@ helix/
 | 4  | **SQLite** for database                      | Zero-config for hackathon; swap to PG later    |
 | 5  | **Separate ML service** on `:8001`          | Isolate heavy ML deps from core API            |
 | 6  | **Inter font** from Google Fonts            | Clean, modern, highly readable                 |
+| 7  | **Parquet storage** for processed ML data     | Efficient storage/retrieval for analytics      |
+| 8  | **Anonymization Layer** (hash + ±2% noise)  | Privacy-preserving biomedical intelligence     |
+| 9  | **Synthetic Fallback Data** (7.8k records)   | Ensures development consistency without API    |
 
 ---
 
@@ -104,8 +107,9 @@ Font:            Inter (300–900)
 | Phase | Description                                  | Status      |
 | ----- | -------------------------------------------- | ----------- |
 | 1     | Monorepo scaffold + dark UI shell            | ✅ Complete |
-| 2     | Historical Data Pipeline + Privacy Layer     | 🔜 Next     |
-| 3–30  | See implementation plan                      | ⏳ Pending  |
+| 2     | Historical Data Pipeline + Privacy Layer     | ✅ Complete |
+| 3     | Real-time Analytics & Forecasting            | 🔜 Next     |
+| 4–30  | See implementation plan                      | ⏳ Pending  |
 
 ---
 
@@ -128,4 +132,9 @@ cd frontend && npm run dev
 
 ---
 
-*Last updated: Phase 1 — 2026-05-14*
+## Data Pipeline Summary
+- **Datasets**: WHO Global Health Observatory (Indicators), Synthetic Outbreak Data (7,800 records).
+- **Schema**: SQLite DB with `outbreak_records`, `environmental_data`, `alert_logs`, `user_symptom_reports`.
+- **Pipeline**: Raw CSV → Normalization → Anonymization (Hashing/Noise) → Feature Engineering (Rolling Avgs) → Parquet.
+
+*Last updated: Phase 2 — 2026-05-14*

@@ -9,3 +9,4 @@ shap
 scipy
 fastapi
 uvicorn[standard]
+pyarrow
