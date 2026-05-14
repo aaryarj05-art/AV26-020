@@ -10,3 +10,6 @@ scipy
 fastapi
 uvicorn[standard]
 pyarrow
+opencv-python
+mediapipe
+python-multipart

@@ -6,7 +6,7 @@ Machine Learning models for disease prediction, outbreak forecasting, and health
 import os
 import os
 from datetime import datetime
-from fastapi import FastAPI, Body, Query
+from fastapi import FastAPI, Body, Query, File, UploadFile, Form
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from typing import Optional, List, Dict
@@ -218,6 +218,36 @@ async def get_fusion_contribution(disease: str, region: str):
 @app.post("/api/fusion/predict")
 async def fusion_predict(request: PredictionRequest):
     return fusion_engine.fuse(request.disease, request.region, datetime.now().isoformat())
+
+# Phase 14 Stroke Guard Endpoints
+@app.post("/api/personal/stroke-guard/facial")
+async def analyze_facial(file: UploadFile = File(...)):
+    image_bytes = await file.read()
+    return stroke_guard_engine.facial_engine.analyze_image(image_bytes)
+
+@app.post("/api/personal/stroke-guard/speech")
+async def analyze_speech(text: str = Body(..., embed=True)):
+    return stroke_guard_engine.speech_engine.analyze_text_input(text)
+
+@app.post("/api/personal/stroke-guard/full")
+async def stroke_guard_full(
+    health_data: str = Form(...),
+    stroke_model_risk: float = Form(...),
+    image: UploadFile = File(None),
+    speech_text: str = Form(None)
+):
+    import json
+    h_data = json.loads(health_data)
+    model_output = {"risk_probability": stroke_model_risk}
+    
+    img_bytes = await image.read() if image else None
+    
+    return stroke_guard_engine.full_assessment(
+        health_data=h_data,
+        stroke_model_output=model_output,
+        image_bytes=img_bytes,
+        speech_text=speech_text
+    )
 
 if __name__ == "__main__":
     import uvicorn

@@ -11,6 +11,7 @@ import HealthTwin from './pages/HealthTwin'
 import XAIView from './pages/XAIView'
 import ModelValidation from './pages/ModelValidation'
 import DataSources from './pages/DataSources'
+import StrokeGuard from './pages/StrokeGuard'
 
 const queryClient = new QueryClient();
 
@@ -45,6 +46,7 @@ export default function App() {
           <Route path="/xai" element={<XAIView />} />
           <Route path="/validation" element={<ModelValidation />} />
           <Route path="/data-sources" element={<DataSources />} />
+          <Route path="/stroke-guard" element={<StrokeGuard />} />
         </Route>
       </Routes>
     </QueryClientProvider>

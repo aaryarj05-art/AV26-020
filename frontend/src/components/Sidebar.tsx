@@ -11,6 +11,7 @@ const navItems = [
   { to: '/xai', label: 'XAI Intelligence', icon: '🧠' },
   { to: '/validation', label: 'Model Validation', icon: '✅' },
   { to: '/data-sources', label: 'Data Sources', icon: '🔌' },
+  { to: '/stroke-guard', label: 'Stroke Guard CV', icon: '📷' },
 ]
 
 export default function Sidebar() {

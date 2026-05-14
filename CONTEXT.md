@@ -139,8 +139,10 @@ Font:            Inter (300–900)
 | 11    | XAI Model Explainability (SHAP/LIME)         | ✅ Complete |
 | 12    | Validated Accuracy Metrics Dashboard         | ✅ Complete |
 | 13    | Multi-Source Data Fusion Engine              | ✅ Complete |
-| 14    | Stroke Guard Neural Engine Enhanced          | 🔜 Next     |
-| 15–30 | See implementation plan                      | ⏳ Pending  |
+| 14    | Stroke Guard Neural Engine Enhanced          | ✅ Complete |
+| 15    | Live Interactive Map Polish                  | ✅ Complete |
+| 16    | End-to-End Alert Demo                        | 🔜 Next     |
+| 17–30 | See implementation plan                      | ⏳ Pending  |
 
 ---
 
@@ -232,4 +234,17 @@ cd frontend && npm run dev
 - **Fusion UI Panel**: Added `DataFusionPanel.tsx` detailing live ingestion status, an interactive donut chart of contribution ratios, and a 6-hour ingestion timeline.
 - **Traceability**: All predictions now explicitly cite their underlying data sources within the XAI `WhyThisPrediction` intelligence layers.
 
-*Last updated: Phase 13 — 2026-05-14*
+## Stroke Guard Neural Engine Enhanced (Phase 14)
+- **Computer Vision**: Integrated `mediapipe.solutions.face_mesh` for live facial landmark detection to compute asymmetry scores (Eye openness, Mouth droop). Includes robust fallback if CV fails.
+- **Speech NLP**: Implemented text-based fluency and confusion marker detection to identify slurred or struggling speech patterns.
+- **Multimodal Fusion**: Upgraded `StrokeGuardEngine` to fuse ML risk (40%), Facial Asymmetry (30%), Speech Fluency (20%), and Vitals (10%).
+- **Interactive UI**: Added a 3-step `StrokeGuard.tsx` wizard featuring live webcam capture, multipart image upload, text input, and a final FAST-aligned risk report with an emergency 112 trigger.
+
+## Live Interactive Map Polish (Phase 15)
+- **Animated Risk Zones**: Overhauled `OutbreakMap.tsx` with proportional, color-coded CircleMarkers featuring a CSS pulse animation for "Critical" regions.
+- **Rich Popups**: Interactive Leaflet popups displaying active cases, 7-day trends, and dynamic progress bars for regional risk scores.
+- **Control & Legend**: Added a left-side control panel for toggling Risk Zones, Heatmaps, and 2-week Forecast Mode. Integrated a fixed bottom-right map legend.
+- **Outbreak Animation**: Built a playback timeline scrubber with 30-day historical replay functionality (2 fps animation loop).
+- **Region Slide-in Panel**: Developed a detailed right-hand slide-in panel showing 30-day case trajectory charts, disease breakdown donuts, and local environmental modifiers upon clicking a city.
+
+*Last updated: Phase 15 — 2026-05-14*
