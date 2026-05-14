@@ -17,6 +17,7 @@ import EnvironmentalPanel from '../components/EnvironmentalPanel';
 import SymptomTrends from '../components/SymptomTrends';
 import RiskSummaryCard from '../components/RiskSummaryCard';
 import WearableWidget from '../components/WearableWidget';
+import ModelIntelligenceWidget from '../components/ModelIntelligenceWidget';
 
 const fetchDashboardSummary = async () => {
   const { data } = await axios.get('http://localhost:8000/api/dashboard/summary');
@@ -177,15 +178,7 @@ export default function Dashboard() {
           </div>
 
           <EnvironmentalPanel disease="Dengue" region="Maharashtra" />
-
-          <div className="bg-helix-surface border border-helix-border rounded-2xl p-6 relative overflow-hidden group">
-            <div className="absolute top-0 right-0 w-32 h-32 bg-helix-accent/5 rounded-full -mr-16 -mt-16 transition-transform group-hover:scale-150 duration-500" />
-            <h3 className="text-sm font-bold text-helix-text mb-2 uppercase tracking-widest">Helix Protocol</h3>
-            <p className="text-xs text-helix-text-muted leading-relaxed mb-4">
-               Autonomous surveillance active. Multi-modal synthesis identifying 2 potential anomalies in the Mumbai-Pune corridor.
-            </p>
-            <button className="text-[10px] font-bold text-helix-accent uppercase tracking-widest border-b border-helix-accent">Execute Risk Mitigation</button>
-          </div>
+          <ModelIntelligenceWidget />
         </div>
       </div>
     </div>

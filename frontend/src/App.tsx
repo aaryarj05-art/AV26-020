@@ -8,6 +8,7 @@ import OutbreakMap from './pages/OutbreakMap'
 import Alerts from './pages/Alerts'
 import PersonalRisk from './pages/PersonalRisk'
 import HealthTwin from './pages/HealthTwin'
+import XAIView from './pages/XAIView'
 
 const queryClient = new QueryClient();
 
@@ -39,6 +40,7 @@ export default function App() {
           <Route path="/personal-risk" element={<PersonalRisk />} />
           <Route path="/health-twin" element={<HealthTwin />} />
           <Route path="/symptom-checker" element={<SymptomChecker />} />
+          <Route path="/xai" element={<XAIView />} />
         </Route>
       </Routes>
     </QueryClientProvider>

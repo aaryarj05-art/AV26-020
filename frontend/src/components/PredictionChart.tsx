@@ -11,6 +11,7 @@ import {
   Area,
   ComposedChart
 } from 'recharts';
+import WhyThisPrediction from './WhyThisPrediction';
 
 interface PredictionChartProps {
   disease: string;
@@ -22,21 +23,18 @@ export default function PredictionChart({ disease, region }: PredictionChartProp
   const [loading, setLoading] = useState(true);
   const [model, setModel] = useState('ensemble');
   const [metrics, setMetrics] = useState<any>(null);
+  const [currentVal, setCurrentVal] = useState(0);
 
   useEffect(() => {
     const fetchPrediction = async () => {
       setLoading(true);
       try {
-        // 1. Fetch historical data (first 52 weeks of the 3 years for context)
         const histRes = await fetch(`http://localhost:8000/api/data/outbreaks?disease=${disease}&region=${region}`);
         const histData = await histRes.json();
         
-        // 2. Fetch prediction
         const predRes = await fetch(`http://localhost:8000/api/predictions/outbreak?disease=${disease}&region=${region}&model=${model}&steps=12`);
         const predData = await predRes.json();
         
-        // Format for Recharts
-        // Take last 12 historical points + 12 pred points
         const recentHist = histData.slice(-12).map((d: any) => ({
           date: new Date(d.date).toLocaleDateString(),
           actual: d.cases,
@@ -58,6 +56,7 @@ export default function PredictionChart({ disease, region }: PredictionChartProp
         
         setData([...recentHist, ...forecast]);
         setMetrics(predData.arima_metrics || predData.metrics);
+        setCurrentVal(predData.forecast[0]);
       } catch (err) {
         console.error("Failed to load predictions:", err);
       } finally {
@@ -115,7 +114,6 @@ export default function PredictionChart({ disease, region }: PredictionChartProp
             />
             <Legend wrapperStyle={{ fontSize: '10px', paddingTop: '10px' }} />
             
-            {/* Shaded Confidence Interval */}
             <Area
               type="monotone"
               dataKey="upper"
@@ -135,7 +133,6 @@ export default function PredictionChart({ disease, region }: PredictionChartProp
               tooltipType="none"
             />
             
-            {/* Historical Line */}
             <Line 
               type="monotone" 
               dataKey="actual" 
@@ -145,7 +142,6 @@ export default function PredictionChart({ disease, region }: PredictionChartProp
               name="Historical"
             />
             
-            {/* Forecast Line */}
             <Line 
               type="monotone" 
               dataKey="forecast" 
@@ -155,20 +151,16 @@ export default function PredictionChart({ disease, region }: PredictionChartProp
               dot={{ r: 3, fill: '#00D4FF' }}
               name="Forecast"
             />
-            
-            {/* Alert Threshold (example static) */}
-            <Line 
-              type="monotone" 
-              dataKey={() => 1500} 
-              stroke="#EF4444" 
-              strokeWidth={1} 
-              strokeDasharray="3 3" 
-              dot={false}
-              name="Threshold"
-            />
           </ComposedChart>
         </ResponsiveContainer>
       </div>
+
+      <WhyThisPrediction 
+        type="outbreak" 
+        disease={disease} 
+        region={region} 
+        predictionValue={currentVal}
+      />
 
       {metrics && (
         <div className="mt-4 flex items-center gap-4">

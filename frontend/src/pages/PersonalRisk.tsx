@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
+import WhyThisPrediction from '../components/WhyThisPrediction';
 
-const RiskGauge = ({ value, label, category }: { value: number; label: string; category: string }) => {
+const RiskGauge = ({ value, label, category, condition, userData }: { value: number; label: string; category: string; condition: string; userData: any }) => {
   const percentage = value * 100;
-  const strokeDasharray = 157; // Semicircle
-  const strokeDashoffset = strokeDasharray - (percentage / 100) * strokeDasharray;
-
+  
   const getColor = (cat: string) => {
     if (cat === 'High') return '#EF4444';
     if (cat === 'Moderate') return '#F59E0B';
@@ -12,7 +11,7 @@ const RiskGauge = ({ value, label, category }: { value: number; label: string; c
   };
 
   return (
-    <div className="flex flex-col items-center p-4 bg-helix-surface border border-helix-border rounded-2xl">
+    <div className="flex flex-col items-center p-6 bg-helix-surface border border-helix-border rounded-2xl">
       <div className="relative w-32 h-20 overflow-hidden">
         <svg viewBox="0 0 100 50" className="w-full h-full">
           <path
@@ -41,6 +40,14 @@ const RiskGauge = ({ value, label, category }: { value: number; label: string; c
       <span className={`text-[9px] font-black uppercase mt-1 ${category === 'High' ? 'text-helix-danger' : category === 'Moderate' ? 'text-helix-warning' : 'text-helix-success'}`}>
         {category} Risk
       </span>
+      
+      <div className="w-full mt-4">
+        <WhyThisPrediction 
+          type="personal" 
+          condition={condition} 
+          userData={userData} 
+        />
+      </div>
     </div>
   );
 };
@@ -97,7 +104,6 @@ export default function PersonalRisk() {
         <p className="text-helix-text-muted">Predictive risk assessment for chronic conditions</p>
       </div>
 
-      {/* Wizard */}
       <div className="bg-helix-surface border border-helix-border rounded-3xl overflow-hidden shadow-2xl">
         <div className="flex h-1 bg-helix-bg">
           <div 
@@ -281,28 +287,34 @@ export default function PersonalRisk() {
                 <p className="text-helix-text-muted mt-2">Personal risk vectors identified and categorized</p>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+              <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
                 <RiskGauge 
                   value={results.diabetes.risk_probability} 
                   label="Diabetes" 
-                  category={results.diabetes.risk_category} 
+                  category={results.diabetes.risk_category}
+                  condition="diabetes"
+                  userData={formData}
                 />
                 <RiskGauge 
                   value={results.heart.risk_probability} 
                   label="Heart Disease" 
-                  category={results.heart.risk_category} 
+                  category={results.heart.risk_category}
+                  condition="heart"
+                  userData={formData}
                 />
                 <RiskGauge 
                   value={results.stroke.risk_probability} 
                   label="Stroke" 
-                  category={results.stroke.risk_category} 
+                  category={results.stroke.risk_category}
+                  condition="stroke"
+                  userData={formData}
                 />
               </div>
 
               <div className="bg-helix-bg/50 border border-helix-border rounded-3xl p-8 space-y-6">
                 <h3 className="text-sm font-bold text-helix-text uppercase tracking-widest">Critical Recommendations</h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  {results.heart.top_risk_factors.length > 0 ? (
+                  {results.heart.top_risk_factors?.length > 0 ? (
                     <div className="p-5 rounded-2xl bg-helix-surface border border-helix-border">
                       <div className="flex items-center gap-3 mb-3">
                         <span className="text-xl">🫀</span>

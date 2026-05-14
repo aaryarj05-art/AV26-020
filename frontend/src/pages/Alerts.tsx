@@ -10,6 +10,52 @@ interface Alert {
   is_active: boolean;
 }
 
+const AlertExplanation = ({ alertId }: { alertId: number }) => {
+  const [explanation, setExplanation] = useState<any>(null);
+  const [loading, setLoading] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+
+  const fetchExplanation = async () => {
+    setLoading(true);
+    try {
+      const res = await fetch(`http://localhost:8000/api/explain/alert/${alertId}`);
+      const data = await res.json();
+      setExplanation(data);
+    } catch (err) {
+      console.error("Failed to fetch alert explanation:", err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    if (isOpen && !explanation) fetchExplanation();
+  }, [isOpen]);
+
+  return (
+    <div className="mt-4">
+      <button 
+        onClick={() => setIsOpen(!isOpen)}
+        className="text-[10px] font-bold text-helix-accent uppercase tracking-widest flex items-center gap-1.5 hover:underline"
+      >
+        <span>🧠</span> {isOpen ? 'Hide Explanation' : 'Explain Trigger Logic'}
+      </button>
+      {isOpen && (
+        <div className="mt-2 p-4 bg-helix-bg/50 border border-helix-border rounded-xl animate-fade-in">
+          {loading ? (
+             <p className="text-[10px] text-helix-text-muted italic">Running rule synthesis...</p>
+          ) : (
+            <div className="space-y-2">
+               <p className="text-[11px] text-helix-text italic">"{explanation?.reason}"</p>
+               <p className="text-[9px] text-helix-text-muted uppercase tracking-tighter">{explanation?.summary}</p>
+            </div>
+          )}
+        </div>
+      )}
+    </div>
+  );
+};
+
 export default function Alerts() {
   const [alerts, setAlerts] = useState<Alert[]>([]);
   const [filter, setFilter] = useState('ALL');
@@ -29,7 +75,7 @@ export default function Alerts() {
 
   useEffect(() => {
     fetchAlerts();
-    const interval = setInterval(fetchAlerts, 10000); // Poll every 10s
+    const interval = setInterval(fetchAlerts, 10000);
     return () => clearInterval(interval);
   }, [filter]);
 
@@ -125,6 +171,7 @@ export default function Alerts() {
                   <h3 className="text-xl font-bold text-helix-text">{alert.region}: {alert.disease}</h3>
                   <p className="text-sm text-helix-text-muted mt-1 leading-relaxed">{alert.message}</p>
                 </div>
+                <AlertExplanation alertId={alert.id} />
               </div>
               
               <div className="flex items-center">
@@ -138,40 +185,6 @@ export default function Alerts() {
             </div>
           </div>
         ))}
-      </div>
-
-      {/* History Preview */}
-      <div className="pt-8">
-        <h2 className="text-sm font-bold text-helix-text uppercase tracking-widest mb-6">Network History (Last 50 Events)</h2>
-        <div className="bg-helix-surface border border-helix-border rounded-2xl overflow-hidden">
-           <table className="w-full text-left border-collapse">
-              <thead>
-                 <tr className="bg-helix-bg border-b border-helix-border">
-                    <th className="px-6 py-4 text-[10px] font-bold text-helix-text-muted uppercase tracking-widest">Time</th>
-                    <th className="px-6 py-4 text-[10px] font-bold text-helix-text-muted uppercase tracking-widest">Region</th>
-                    <th className="px-6 py-4 text-[10px] font-bold text-helix-text-muted uppercase tracking-widest">Disease</th>
-                    <th className="px-6 py-4 text-[10px] font-bold text-helix-text-muted uppercase tracking-widest">Status</th>
-                 </tr>
-              </thead>
-              <tbody className="text-xs text-helix-text-muted">
-                 <tr className="border-b border-helix-border/50 hover:bg-helix-bg/50 transition-colors">
-                    <td className="px-6 py-4 font-mono">2026-05-14 18:30</td>
-                    <td className="px-6 py-4">Maharashtra</td>
-                    <td className="px-6 py-4">Dengue</td>
-                    <td className="px-6 py-4"><span className="text-helix-success">RESOLVED</span></td>
-                 </tr>
-                 <tr className="border-b border-helix-border/50 hover:bg-helix-bg/50 transition-colors">
-                    <td className="px-6 py-4 font-mono">2026-05-14 14:15</td>
-                    <td className="px-6 py-4">Delhi</td>
-                    <td className="px-6 py-4">Influenza</td>
-                    <td className="px-6 py-4"><span className="text-helix-success">RESOLVED</span></td>
-                 </tr>
-              </tbody>
-           </table>
-           <div className="p-4 text-center text-[10px] text-helix-text-muted uppercase tracking-widest">
-              End of simulation history
-           </div>
-        </div>
       </div>
     </div>
   );

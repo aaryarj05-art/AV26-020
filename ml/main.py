@@ -19,6 +19,7 @@ from services.symptom_clustering import SymptomClusteringEngine
 from services.personal_risk_service import PersonalRiskService
 from services.health_twin import HealthTwin
 from services.stroke_guard import StrokeGuardEngine
+from services.explainability_service import ExplainabilityService
 
 app = FastAPI(
     title="Helix ML Service",
@@ -41,6 +42,7 @@ correlation_engine = CorrelationEngine()
 clustering_engine = SymptomClusteringEngine()
 personal_risk_service = PersonalRiskService()
 stroke_guard_engine = StrokeGuardEngine()
+explain_service = ExplainabilityService()
 
 # Region to City mapping
 REGION_CITY_MAP = {
@@ -70,6 +72,13 @@ class HealthTwinSimulationRequest(BaseModel):
 
 class StrokeGuardRequest(BaseModel):
     health_data: Dict
+
+class ExplainRequest(BaseModel):
+    disease: Optional[str] = None
+    region: Optional[str] = None
+    condition: Optional[str] = None
+    user_data: Optional[Dict] = None
+    prediction_value: Optional[float] = 0.0
 
 @app.get("/health")
 async def health_check():
@@ -126,14 +135,6 @@ async def get_risk_multiplier(disease: str, region: str):
 async def classify_symptoms(request: SymptomClassifyRequest):
     return clustering_engine.classify_disease(request.symptoms)
 
-@app.get("/api/symptoms/clusters")
-async def get_symptom_clusters(region: str):
-    return clustering_engine.detect_clusters(region, [])
-
-@app.get("/api/symptoms/spikes")
-async def get_symptom_spikes(region: str, symptom: str):
-    return clustering_engine.detect_spike([10, 12, 15, 11, 13, 14, 12], 25)
-
 # Phase 9 Personal Risk Endpoints
 @app.post("/api/personal/risk-assessment")
 async def get_personal_risk(request: HealthProfileRequest):
@@ -159,9 +160,21 @@ async def get_risk_reduction(profile: Dict, intervention: str, value: float):
 
 @app.post("/api/personal/stroke-guard")
 async def run_stroke_guard(request: StrokeGuardRequest):
-    # Get base stroke risk first
     base_risk = personal_risk_service.predict_stroke(request.health_data)
     return stroke_guard_engine.assess_neurological_risk(request.health_data, base_risk)
+
+# Phase 11 Explainability Endpoints
+@app.post("/api/explain/outbreak")
+async def explain_outbreak(request: ExplainRequest):
+    return explain_service.explain_outbreak_prediction(request.disease, request.region, request.prediction_value)
+
+@app.post("/api/explain/personal-risk")
+async def explain_personal(request: ExplainRequest):
+    return explain_service.explain_personal_risk(request.condition, request.user_data)
+
+@app.post("/api/explain/alert")
+async def explain_alert(alert_data: Dict):
+    return explain_service.explain_alert(alert_data)
 
 @app.get("/api/predict/seasonal")
 async def get_seasonal(disease: str):
