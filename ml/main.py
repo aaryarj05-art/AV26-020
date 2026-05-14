@@ -20,6 +20,7 @@ from services.symptom_clustering import SymptomClusteringEngine
 from services.explainability_service import ExplainabilityService
 from services.seir_simulation import SEIRSimulation
 from services.resource_planner import ResourcePlanner
+from services.fusion_service import FusionService
 
 app = FastAPI(
     title="Helix ML Service",
@@ -43,6 +44,7 @@ clustering_engine = SymptomClusteringEngine()
 explain_service = ExplainabilityService()
 simulation_engine = SEIRSimulation()
 resource_planner = ResourcePlanner()
+fusion_service = FusionService()
 
 # Region to City mapping
 REGION_CITY_MAP = {
@@ -151,6 +153,20 @@ async def get_resource_plan(req: ResourcePlanRequest):
 @app.get("/api/resources/gap-analysis")
 async def get_gap_analysis(disease: str, region: str, predicted_cases: int):
     return resource_planner.gap_analysis(region, disease, predicted_cases)
+
+# --- PHASE 23: DATA FUSION ENDPOINTS ---
+
+@app.get("/api/fusion/status")
+async def get_fusion_status(region: str = "Maharashtra"):
+    return fusion_service.get_status(region)
+
+@app.get("/api/fusion/contribution")
+async def get_fusion_contribution(disease: str, region: str):
+    return fusion_service.get_contribution(disease, region)
+
+@app.post("/api/fusion/predict")
+async def fusion_predict(request: dict = Body(...)):
+    return fusion_service.fusion_predict(request)
 
 if __name__ == "__main__":
     import uvicorn

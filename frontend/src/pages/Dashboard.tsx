@@ -38,14 +38,25 @@ const chartConfig = {
   )
 };
 
+const fetchFusionStatus = async () => {
+  const { data } = await axios.get('http://localhost:8000/api/fusion/status');
+  return data;
+};
+
 export default function Dashboard() {
-  const { isLoading } = useQuery({
+  const { isLoading: isSummaryLoading } = useQuery({
     queryKey: ['dashboardSummary'],
     queryFn: fetchDashboardSummary,
     refetchInterval: 30000,
   });
 
-  if (isLoading) {
+  const { data: fusionData, isLoading: isFusionLoading } = useQuery({
+    queryKey: ['fusionStatus'],
+    queryFn: fetchFusionStatus,
+    refetchInterval: 15000,
+  });
+
+  if (isSummaryLoading || isFusionLoading) {
     return (
       <div className="p-6 space-y-6">
         <div className="grid grid-cols-4 gap-4">
@@ -81,6 +92,15 @@ export default function Dashboard() {
     { disease: 'Cholera', probability: 24, color: '#10B981' },
     { disease: 'Typhoid', probability: 12, color: '#10B981' },
   ];
+
+  const getStatusColor = (status: string) => {
+    switch (status) {
+      case 'healthy': return '#10B981';
+      case 'warning': return '#F59E0B';
+      case 'critical': return '#EF4444';
+      default: return '#8A9BB0';
+    }
+  };
 
   return (
     <div className="p-6 space-y-6">
@@ -125,15 +145,11 @@ export default function Dashboard() {
         <div className="lg:col-span-4 bg-[#111827] border border-[#1E2D40] rounded-2xl p-5">
           <div className="text-[11px] font-semibold uppercase tracking-widest text-[#8A9BB0] mb-6">DATA FUSION STATUS</div>
           <div className="space-y-4">
-            {[
-              { name: 'Historical Data', status: '#10B981', updated: '2m ago' },
-              { name: 'Environmental Factors', status: '#F59E0B', updated: '15m ago' },
-              { name: 'Real-time Symptoms', status: '#10B981', updated: 'Now' },
-            ].map((source, i) => (
+            {fusionData?.sources.map((source: any, i: number) => (
               <div key={i} className="flex items-center justify-between py-2 border-b border-[#1E2D40] last:border-0">
                 <span className="text-[14px] text-[#F0F4F8]">{source.name}</span>
                 <div className="flex items-center gap-3">
-                  <div className="w-2 h-2 rounded-full" style={{ backgroundColor: source.status }} />
+                  <div className="w-2 h-2 rounded-full" style={{ backgroundColor: getStatusColor(source.status) }} />
                   <span className="text-[12px] text-[#8A9BB0]">{source.updated}</span>
                 </div>
               </div>
@@ -141,7 +157,9 @@ export default function Dashboard() {
           </div>
           <div className="mt-8 pt-6 border-t border-[#1E2D40]">
             <div className="text-[11px] font-semibold text-[#8A9BB0] uppercase tracking-widest mb-1">Fusion Confidence</div>
-            <div className="text-[32px] font-mono font-semibold text-[#F0F4F8]">84%</div>
+            <div className="text-[32px] font-mono font-semibold text-[#F0F4F8]">
+              {fusionData?.overall_confidence || 0}%
+            </div>
           </div>
         </div>
       </div>

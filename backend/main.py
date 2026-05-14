@@ -19,6 +19,7 @@ from app.api.map import router as map_router
 from app.api.simulation import router as simulation_router
 from app.api.resources import router as resources_router
 from app.api.reports import router as reports_router
+from app.api.fusion import router as fusion_router
 
 from app.services.alert_engine import AlertEngine
 from app.database import SessionLocal
@@ -51,6 +52,7 @@ app.include_router(map_router)
 app.include_router(simulation_router)
 app.include_router(resources_router)
 app.include_router(reports_router)
+app.include_router(fusion_router)
 
 # Background Monitoring Task
 async def run_alert_scanner():

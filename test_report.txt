@@ -3,61 +3,45 @@
 ==========================================
 
 --- Module: Data ---
-[FAIL (Got 404)] Data -> /api/data/stats | Time: 2.056s
-[PASS] Data -> /api/data/outbreaks | Time: 2.237s
-[FAIL (Got 404)] Data -> /api/data/environmental | Time: 2.029s
-[PASS] Data -> /api/data/regions | Time: 2.051s
-[PASS] Data -> /api/data/diseases | Time: 2.050s
+[FAIL (Got 404)] Data -> /api/data/stats | Time: 2.058s
+[PASS] Data -> /api/data/outbreaks | Time: 2.228s
+[FAIL (Got 404)] Data -> /api/data/environmental | Time: 2.024s
+[PASS] Data -> /api/data/regions | Time: 2.053s
+[PASS] Data -> /api/data/diseases | Time: 2.052s
 
 --- Module: Predictions ---
-[PASS] Predictions -> /api/predictions/outbreak | Time: 2.027s
-[FAIL (Got 404)] Predictions -> /api/predictions/risk | Time: 2.022s
-[FAIL (Got 404)] Predictions -> /api/predictions/evaluate | Time: 2.034s
-[FAIL (Got 404)] Predictions -> /api/predictions/environmental | Time: 2.034s
-[FAIL (Got 404)] Predictions -> /api/predictions/symptoms | Time: 2.034s
-[FAIL (Got 404)] Predictions -> /api/predictions/historical | Time: 2.050s
-[FAIL (Got 404)] Predictions -> /api/predictions/active | Time: 2.049s
-[FAIL (Got 404)] Predictions -> /api/predictions/forecast | Time: 2.051s
-
---- Module: Personal Health ---
-[FAIL (Got 404)] Personal Health -> /api/personal/risk | Time: 2.050s
-[FAIL (Got 404)] Personal Health -> /api/personal/symptoms | Time: 2.033s
-[FAIL (Got 404)] Personal Health -> /api/personal/history | Time: 2.034s
-[FAIL (Got 404)] Personal Health -> /api/personal/recommendations | Time: 2.049s
-[FAIL (Got 404)] Personal Health -> /api/personal/health-twin | Time: 2.068s
-[FAIL (Got 404)] Personal Health -> /api/personal/wearables | Time: 2.049s
+[FAIL (HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5))] Predictions -> /api/predictions/outbreak?disease=Dengue&region=Maharashtra | Time: 7.067s
+[FAIL (Got 404)] Predictions -> /api/predictions/risk?disease=Dengue&region=Maharashtra | Time: 2.050s
+[FAIL (Got 404)] Predictions -> /api/predictions/seasonal?disease=Dengue | Time: 2.050s
 
 --- Module: Alerts ---
-[PASS] Alerts -> /api/alerts/active | Time: 2.036s
-[PASS] Alerts -> /api/alerts/history | Time: 2.064s
-[FAIL (Got 404)] Alerts -> /api/alerts/severity | Time: 2.068s
-[FAIL (Got 404)] Alerts -> /api/alerts/subscriptions | Time: 2.033s
+[PASS] Alerts -> /api/alerts/active | Time: 2.072s
+[PASS] Alerts -> /api/alerts/history | Time: 2.034s
 
 --- Module: Environmental ---
-[FAIL (Got 404)] Environmental -> /api/env/current | Time: 2.032s
-[FAIL (Got 404)] Environmental -> /api/env/forecast | Time: 2.066s
-[FAIL (Got 404)] Environmental -> /api/env/correlation | Time: 2.067s
+[FAIL (HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5))] Environmental -> /api/environment/weather?region=Maharashtra | Time: 7.039s
 
 --- Module: Dashboard ---
-[PASS] Dashboard -> /api/dashboard/summary | Time: 2.040s
-[PASS] Dashboard -> /api/dashboard/export | Time: 2.044s
-[FAIL (Got 404)] Dashboard -> /api/kpi/summary | Time: 2.049s
-[FAIL (Got 404)] Dashboard -> /api/kpi/enhanced | Time: 2.051s
+[PASS] Dashboard -> /api/dashboard/summary | Time: 2.057s
+[PASS] Dashboard -> /api/dashboard/export | Time: 2.047s
 
---- Module: Demo ---
-[FAIL (Got 404)] Demo -> /api/demo/trigger | Time: 2.038s
-[FAIL (Got 404)] Demo -> /api/demo/reset | Time: 2.044s
+--- Module: Fusion ---
+[FAIL (HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5))] Fusion -> /api/fusion/status?region=Maharashtra | Time: 7.029s
+[FAIL (HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5))] Fusion -> /api/fusion/contribution?disease=Dengue&region=Maharashtra | Time: 7.081s
+
+--- Module: Simulation ---
+[PASS] Simulation -> /api/simulation/seir | Time: 2.031s
 
 --- LOAD TEST (/api/predictions/outbreak) ---
 Concurrent Requests: 10
-Req 1: Status 422 | Time 2.031s
-Req 2: Status 422 | Time 2.032s
-Req 3: Status 422 | Time 2.033s
-Req 4: Status 422 | Time 2.038s
-Req 5: Status 422 | Time 2.034s
-Req 6: Status 422 | Time 2.040s
-Req 7: Status 422 | Time 2.035s
-Req 8: Status 422 | Time 2.045s
-Req 9: Status 422 | Time 2.050s
-Req 10: Status 422 | Time 2.044s
-Average Response Time: 2.038s
+Req 1: Status 422 | Time 2.027s
+Req 2: Status 422 | Time 2.028s
+Req 3: Status 422 | Time 2.024s
+Req 4: Status 422 | Time 2.028s
+Req 5: Status 422 | Time 2.030s
+Req 6: Status 422 | Time 2.038s
+Req 7: Status 422 | Time 2.040s
+Req 8: Status 422 | Time 2.040s
+Req 9: Status 422 | Time 2.038s
+Req 10: Status 422 | Time 2.050s
+Average Response Time: 2.034s

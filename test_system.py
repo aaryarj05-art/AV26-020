@@ -15,43 +15,27 @@ ENDPOINTS = {
         ("/api/data/diseases", 200)
     ],
     "Predictions": [
-        ("/api/predictions/outbreak", 200), # Might need params or it uses defaults
-        ("/api/predictions/risk", 200),
-        ("/api/predictions/evaluate", 200),
-        ("/api/predictions/environmental", 200),
-        ("/api/predictions/symptoms", 200),
-        ("/api/predictions/historical", 200),
-        ("/api/predictions/active", 200),
-        ("/api/predictions/forecast", 200)
-    ],
-    "Personal Health": [
-        ("/api/personal/risk", 200),
-        ("/api/personal/symptoms", 200),
-        ("/api/personal/history", 200),
-        ("/api/personal/recommendations", 200),
-        ("/api/personal/health-twin", 200),
-        ("/api/personal/wearables", 200)
+        ("/api/predictions/outbreak?disease=Dengue&region=Maharashtra", 200),
+        ("/api/predictions/risk?disease=Dengue&region=Maharashtra", 200),
+        ("/api/predictions/seasonal?disease=Dengue", 200)
     ],
     "Alerts": [
         ("/api/alerts/active", 200),
-        ("/api/alerts/history", 200),
-        ("/api/alerts/severity", 200),
-        ("/api/alerts/subscriptions", 200)
+        ("/api/alerts/history", 200)
     ],
     "Environmental": [
-        ("/api/env/current", 200),
-        ("/api/env/forecast", 200),
-        ("/api/env/correlation", 200)
+        ("/api/environment/weather?region=Maharashtra", 200)
     ],
     "Dashboard": [
         ("/api/dashboard/summary", 200),
-        ("/api/dashboard/export", 200),
-        ("/api/kpi/summary", 200),
-        ("/api/kpi/enhanced", 200)
+        ("/api/dashboard/export", 200)
     ],
-    "Demo": [
-        ("/api/demo/trigger", 200),
-        ("/api/demo/reset", 200)
+    "Fusion": [
+        ("/api/fusion/status?region=Maharashtra", 200),
+        ("/api/fusion/contribution?disease=Dengue&region=Maharashtra", 200)
+    ],
+    "Simulation": [
+        ("/api/simulation/seir", 405) # POST required
     ]
 }
 
