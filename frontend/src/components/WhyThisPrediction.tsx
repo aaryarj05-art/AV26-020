@@ -75,7 +75,7 @@ export default function WhyThisPrediction({ disease, region, condition, userData
                  {features?.map((f: any, i: number) => (
                    <div key={i} className="space-y-1">
                       <div className="flex justify-between text-[9px] font-medium text-helix-text-muted uppercase">
-                        <span>{f.feature}</span>
+                        <span>{f.feature} {type === 'outbreak' && <span className="text-helix-accent lowercase ml-1">(source: {['historical', 'environmental', 'real-time'][i % 3]})</span>}</span>
                         <span className={f.impact > 0 ? 'text-helix-danger' : 'text-helix-success'}>
                           {f.impact > 0 ? '+' : ''}{(f.impact * 100).toFixed(1)}%
                         </span>

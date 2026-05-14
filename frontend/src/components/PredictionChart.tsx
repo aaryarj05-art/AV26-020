@@ -74,7 +74,7 @@ export default function PredictionChart({ disease, region }: PredictionChartProp
       <div className="flex items-center justify-between mb-6">
         <div>
           <h3 className="text-lg font-semibold text-helix-text">Outbreak Forecast</h3>
-          <p className="text-xs text-helix-text-muted">12-week predictive trajectory</p>
+          <p className="text-xs text-helix-text-muted">12-week predictive trajectory <span className="text-helix-accent ml-2 border-l border-helix-border pl-2">Powered by 3 data sources</span></p>
         </div>
         
         <div className="flex gap-2">

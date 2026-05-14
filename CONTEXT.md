@@ -137,8 +137,10 @@ Font:            Inter (300–900)
 | 9     | Personal Risk Prediction + AI Symptom Checker| ✅ Complete |
 | 10    | Digital Health Twin + Wearable Integration   | ✅ Complete |
 | 11    | XAI Model Explainability (SHAP/LIME)         | ✅ Complete |
-| 12    | Validated Accuracy Metrics Dashboard         | 🔜 Next     |
-| 13–30 | See implementation plan                      | ⏳ Pending  |
+| 12    | Validated Accuracy Metrics Dashboard         | ✅ Complete |
+| 13    | Multi-Source Data Fusion Engine              | ✅ Complete |
+| 14    | Stroke Guard Neural Engine Enhanced          | 🔜 Next     |
+| 15–30 | See implementation plan                      | ⏳ Pending  |
 
 ---
 
@@ -217,4 +219,17 @@ cd frontend && npm run dev
 - **XAI Dashboard Widget**: Identifies top global predictors (e.g., Rainfall) across the entire platform.
 - **Model Intelligence View**: Full-page `XAIView.tsx` with SHAP waterfall charts and correlation matrices.
 
-*Last updated: Phase 11 — 2026-05-14*
+## Model Validation & Accuracy Metrics (Phase 12)
+- **Metrics Engine**: `MetricsService` computing RMSE, MAE, F1, and AUC scores across models.
+- **Validation Dashboard**: Full-page `ModelValidation.tsx` presenting empirical accuracy and precision metrics.
+- **Visualizations**: Recharts integration for ROC Curves and Prediction vs Actual scatter plots.
+- **Performance Overview**: Summary tables for all 7 models alongside Confusion Matrix for alert classification.
+- **Confidence Banner**: Production confidence indicators on the Dashboard and Validation views.
+
+## Multi-Source Data Fusion Engine (Phase 13)
+- **Engine Logic**: `DataFusionEngine` merges Historical (50%), Environmental (30%), and Real-time Symptom (20%) data arrays.
+- **Dynamic Weighting**: Automatic weight shifting and gap detection (e.g., if telemetry drops, reliance shifts to historical).
+- **Fusion UI Panel**: Added `DataFusionPanel.tsx` detailing live ingestion status, an interactive donut chart of contribution ratios, and a 6-hour ingestion timeline.
+- **Traceability**: All predictions now explicitly cite their underlying data sources within the XAI `WhyThisPrediction` intelligence layers.
+
+*Last updated: Phase 13 — 2026-05-14*

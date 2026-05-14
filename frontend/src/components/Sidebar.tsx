@@ -9,6 +9,8 @@ const navItems = [
   { to: '/health-twin', label: 'Health Twin', icon: '🧬' },
   { to: '/symptom-checker', label: 'Symptom Checker', icon: '🩺' },
   { to: '/xai', label: 'XAI Intelligence', icon: '🧠' },
+  { to: '/validation', label: 'Model Validation', icon: '✅' },
+  { to: '/data-sources', label: 'Data Sources', icon: '🔌' },
 ]
 
 export default function Sidebar() {

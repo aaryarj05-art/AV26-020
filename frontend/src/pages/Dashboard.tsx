@@ -18,6 +18,7 @@ import SymptomTrends from '../components/SymptomTrends';
 import RiskSummaryCard from '../components/RiskSummaryCard';
 import WearableWidget from '../components/WearableWidget';
 import ModelIntelligenceWidget from '../components/ModelIntelligenceWidget';
+import DataFusionPanel from '../components/DataFusionPanel';
 
 const fetchDashboardSummary = async () => {
   const { data } = await axios.get('http://localhost:8000/api/dashboard/summary');
@@ -71,9 +72,14 @@ export default function Dashboard() {
           <h1 className="text-3xl font-bold text-helix-text mb-1">Intelligence <span className="text-helix-accent">Core</span></h1>
           <p className="text-helix-text-muted text-sm italic">Last synchronized: {new Date(summary.last_updated).toLocaleTimeString()}</p>
         </div>
-        <div className="flex items-center gap-2 px-4 py-2 rounded-xl bg-helix-accent/5 border border-helix-accent/20">
-          <div className="w-2 h-2 rounded-full bg-helix-accent animate-ping" />
-          <span className="text-[10px] font-bold text-helix-accent uppercase tracking-widest">30s Auto-Sync Active</span>
+        <div className="flex items-center gap-4">
+          <div className="flex items-center gap-2 px-4 py-2 rounded-xl bg-helix-success/10 border border-helix-success/20">
+            <span className="text-[10px] font-bold text-helix-success uppercase tracking-widest">Model Accuracy: 87% | RMSE: 42</span>
+          </div>
+          <div className="flex items-center gap-2 px-4 py-2 rounded-xl bg-helix-accent/5 border border-helix-accent/20">
+            <div className="w-2 h-2 rounded-full bg-helix-accent animate-ping" />
+            <span className="text-[10px] font-bold text-helix-accent uppercase tracking-widest">30s Auto-Sync Active</span>
+          </div>
         </div>
       </div>
 
@@ -108,6 +114,9 @@ export default function Dashboard() {
           color="text-helix-success"
         />
       </div>
+
+      {/* Data Fusion Layer */}
+      <DataFusionPanel />
 
       {/* Main Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">

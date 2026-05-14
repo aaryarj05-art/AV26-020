@@ -4,6 +4,8 @@ Machine Learning models for disease prediction, outbreak forecasting, and health
 """
 
 import os
+import os
+from datetime import datetime
 from fastapi import FastAPI, Body, Query
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
@@ -20,6 +22,8 @@ from services.personal_risk_service import PersonalRiskService
 from services.health_twin import HealthTwin
 from services.stroke_guard import StrokeGuardEngine
 from services.explainability_service import ExplainabilityService
+from services.metrics_service import MetricsService
+from services.fusion_engine import DataFusionEngine
 
 app = FastAPI(
     title="Helix ML Service",
@@ -43,6 +47,8 @@ clustering_engine = SymptomClusteringEngine()
 personal_risk_service = PersonalRiskService()
 stroke_guard_engine = StrokeGuardEngine()
 explain_service = ExplainabilityService()
+metrics_service = MetricsService()
+fusion_engine = DataFusionEngine()
 
 # Region to City mapping
 REGION_CITY_MAP = {
@@ -186,7 +192,32 @@ async def get_models_status():
 
 @app.get("/api/models/metrics")
 async def get_models_metrics():
-    return service.get_all_metrics()
+    return metrics_service.generate_metrics_report()
+
+@app.get("/api/models/metrics/roc")
+async def get_roc_curves():
+    return metrics_service.get_roc_curves()
+
+@app.get("/api/models/metrics/scatter")
+async def get_scatter_data(disease: str, region: str):
+    return metrics_service.get_scatter_data(disease, region)
+
+@app.get("/api/models/metrics/confusion")
+async def get_confusion_matrix():
+    return metrics_service.get_confusion_matrix()
+
+# Phase 13 Data Fusion Endpoints
+@app.get("/api/fusion/status")
+async def get_fusion_status(region: str = "Maharashtra"):
+    return fusion_engine.get_status(region)
+
+@app.get("/api/fusion/contribution")
+async def get_fusion_contribution(disease: str, region: str):
+    return fusion_engine.get_source_contributions(disease, region)
+
+@app.post("/api/fusion/predict")
+async def fusion_predict(request: PredictionRequest):
+    return fusion_engine.fuse(request.disease, request.region, datetime.now().isoformat())
 
 if __name__ == "__main__":
     import uvicorn

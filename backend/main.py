@@ -17,6 +17,8 @@ from app.api.alerts import router as alerts_router
 from app.api.personal import router as personal_router
 from app.api.wearables import router as wearables_router
 from app.api.explain import router as explain_router
+from app.api.metrics import router as metrics_router
+from app.api.fusion import router as fusion_router
 
 from app.services.alert_engine import AlertEngine
 from app.database import SessionLocal
@@ -47,6 +49,8 @@ app.include_router(alerts_router)
 app.include_router(personal_router)
 app.include_router(wearables_router)
 app.include_router(explain_router)
+app.include_router(metrics_router)
+app.include_router(fusion_router)
 
 # Background Monitoring Task
 async def run_alert_scanner():
