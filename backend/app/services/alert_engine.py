@@ -17,7 +17,7 @@ class AlertEngine:
         self.notifier = NotificationService(db)
 
     async def check_all_regions(self):
-        print(f"🚀 Helix Alert Engine scanning {len(REGIONS)} regions for 5 pathogens...")
+        print(f"[ALERT_ENGINE] Scanning {len(REGIONS)} regions for 5 pathogens...")
         
         async with httpx.AsyncClient() as client:
             for region in REGIONS:
@@ -61,9 +61,9 @@ class AlertEngine:
                                 self.notifier.trigger_notification_workflow(region, disease, severity)
                                 
                     except Exception as e:
-                        print(f"⚠️ Alert engine error for {disease}/{region}: {str(e)}")
+                        print(f"[WARN] Alert engine error for {disease}/{region}: {str(e)}")
                         
-        print("✅ Alert scan complete.")
+        print("[ALERT_ENGINE] Alert scan complete.")
 
     def get_active_alerts(self, severity_filter=None):
         query = self.db.query(AlertLog).filter(AlertLog.is_active == True)

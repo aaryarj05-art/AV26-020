@@ -12,6 +12,7 @@ import XAIView from './pages/XAIView'
 import ModelValidation from './pages/ModelValidation'
 import DataSources from './pages/DataSources'
 import StrokeGuard from './pages/StrokeGuard'
+import AlertDemo from './pages/AlertDemo'
 
 const queryClient = new QueryClient();
 
@@ -38,6 +39,7 @@ export default function App() {
         {/* App shell with sidebar */}
         <Route element={<Layout />}>
           <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/alert-demo" element={<AlertDemo />} />
           <Route path="/outbreak-map" element={<OutbreakMap />} />
           <Route path="/alerts" element={<Alerts />} />
           <Route path="/personal-risk" element={<PersonalRisk />} />

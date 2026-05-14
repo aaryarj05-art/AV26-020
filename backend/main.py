@@ -21,6 +21,7 @@ from app.api.metrics import router as metrics_router
 from app.api.fusion import router as fusion_router
 from app.api.strokeguard import router as strokeguard_router
 from app.api.map import router as map_router
+from app.api.demo import router as demo_router
 
 from app.services.alert_engine import AlertEngine
 from app.database import SessionLocal
@@ -55,6 +56,7 @@ app.include_router(metrics_router)
 app.include_router(fusion_router)
 app.include_router(strokeguard_router)
 app.include_router(map_router)
+app.include_router(demo_router)
 
 # Background Monitoring Task
 async def run_alert_scanner():
@@ -65,7 +67,7 @@ async def run_alert_scanner():
             await engine.check_all_regions()
             db.close()
         except Exception as e:
-            print(f"❌ Background Monitor Error: {e}")
+            print(f"[ERR] Background Monitor Error: {e}")
         
         await asyncio.sleep(300) # Run every 5 minutes
 

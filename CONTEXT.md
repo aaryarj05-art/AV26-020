@@ -141,8 +141,9 @@ Font:            Inter (300–900)
 | 13    | Multi-Source Data Fusion Engine              | ✅ Complete |
 | 14    | Stroke Guard Neural Engine Enhanced          | ✅ Complete |
 | 15    | Live Interactive Map Polish                  | ✅ Complete |
-| 16    | End-to-End Alert Demo                        | 🔜 Next     |
-| 17–30 | See implementation plan                      | ⏳ Pending  |
+| 16    | End-to-End Alert Demo                        | ✅ Complete |
+| 17    | KPI Dashboard + Resource Widgets             | 🔜 Next     |
+| 18–30 | See implementation plan                      | ⏳ Pending  |
 
 ---
 
@@ -247,4 +248,10 @@ cd frontend && npm run dev
 - **Outbreak Animation**: Built a playback timeline scrubber with 30-day historical replay functionality (2 fps animation loop).
 - **Region Slide-in Panel**: Developed a detailed right-hand slide-in panel showing 30-day case trajectory charts, disease breakdown donuts, and local environmental modifiers upon clicking a city.
 
-*Last updated: Phase 15 — 2026-05-14*
+## End-to-End Alert Demo (Phase 16)
+- **Outbreak Simulator (`/api/demo/trigger-outbreak`)**: Added an API endpoint to mock an outbreak escalation over a 15-second timeline. 
+- **Real-time SSE Logs**: Implemented Server-Sent Events (`EventSourceResponse`) in FastAPI to stream step-by-step logs from the backend to the React frontend as the simulation progresses.
+- **Cinematic UI**: Built `AlertDemo.tsx`, a striking interface with a glowing trigger button, a live sub-system telemetry feed, and dynamic alert tier badging.
+- **Mock Email Modal**: Added a highly realistic email payload visualization that pops up when the outbreak reaches the CRITICAL alerting tier, demonstrating what Health Authorities would receive.
+
+*Last updated: Phase 16 — 2026-05-14*

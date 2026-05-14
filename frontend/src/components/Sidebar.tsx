@@ -2,6 +2,7 @@ import { NavLink } from 'react-router-dom'
 import DataStatus from './DataStatus'
 
 const navItems = [
+  { to: '/alert-demo', label: 'Live Demo', icon: '⚡' },
   { to: '/dashboard', label: 'Dashboard', icon: '📊' },
   { to: '/outbreak-map', label: 'Outbreak Map', icon: '🗺️' },
   { to: '/alerts', label: 'Alerts', icon: '🚨' },
