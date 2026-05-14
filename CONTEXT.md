@@ -94,6 +94,12 @@ helix/
 | 21 | **Autonomous Alert Engine**                  | Multi-modal trigger logic (Risk/Spikes/Cases)  |
 | 22 | **Notification Bridge**                      | In-app alerts + mock email delivery system     |
 | 23 | **Background Surveillance Task**             | 5-min interval scanning across all regions     |
+| 24 | **Chronic Risk Classifiers**                 | Diabetes (LR), Heart (RF), Stroke (GBM) models |
+| 25 | **Clinical Triage Engine**                   | Rule-based urgency scoring (Critical-SelfCare) |
+| 26 | **Health Twin Simulator**                    | Longitudinal what-if modeling & projections    |
+| 27 | **Stroke Guard Neural Engine**               | Multimodal risk synthesis (Bio+CV+NLP)         |
+| 28 | **Wearable Telemetry Pipeline**              | Real-time ingest for HeartRate/SpO2/Steps      |
+| 29 | **Full Core Integration Suite**              | Comprehensive test_integration.py validation   |
 
 ---
 
@@ -128,8 +134,10 @@ Font:            Inter (300–900)
 | 6     | Symptom Input + Clustering Engine            | ✅ Complete |
 | 7     | Geo-Spatial Heatmaps + Dashboard             | ✅ Complete |
 | 8     | Early Warning Alert System                   | ✅ Complete |
-| 9     | Personal Risk Prediction + AI Symptom Checker| 🔜 Next     |
-| 10–30 | See implementation plan                      | ⏳ Pending  |
+| 9     | Personal Risk Prediction + AI Symptom Checker| ✅ Complete |
+| 10    | Digital Health Twin + Wearable Integration   | ✅ Complete |
+| 11    | XAI Model Explainability (SHAP/LIME)         | 🔜 Next     |
+| 12–30 | See implementation plan                      | ⏳ Pending  |
 
 ---
 
@@ -194,4 +202,11 @@ cd frontend && npm run dev
 - **Notifications**: Integrated notification bell with pulsing unread indicators and mock email logging.
 - **Workflow**: Structured recommended actions (e.g., "Activate Emergency Protocol") for each severity.
 
-*Last updated: Phase 8 — 2026-05-14*
+## Digital Twin & Wearable Core (Phase 10) - SET 1 COMPLETE
+- **Digital Health Twin**: Personalized longitudinal simulation model with a 5-year projection window.
+- **What-If Simulator**: Interactive interface for modeling the impact of weight loss, exercise, and smoking cessation.
+- **Stroke Guard™**: Neural engine synthesizing multi-source data for acute neurological event prevention.
+- **Wearable Ingest**: Real-time telemetry pipeline for live vitals monitoring (HR, SpO2, Steps) with sparkline visualizations.
+- **Verification**: `test_integration.py` validates all core API surfaces across Backend and ML services.
+
+*Last updated: Phase 10 — 2026-05-14*

@@ -6,6 +6,8 @@ import Dashboard from './pages/Dashboard'
 import SymptomChecker from './pages/SymptomChecker'
 import OutbreakMap from './pages/OutbreakMap'
 import Alerts from './pages/Alerts'
+import PersonalRisk from './pages/PersonalRisk'
+import HealthTwin from './pages/HealthTwin'
 
 const queryClient = new QueryClient();
 
@@ -34,8 +36,8 @@ export default function App() {
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/outbreak-map" element={<OutbreakMap />} />
           <Route path="/alerts" element={<Alerts />} />
-          <Route path="/personal-risk" element={<PlaceholderPage title="Personal Risk" icon="🛡️" />} />
-          <Route path="/health-twin" element={<PlaceholderPage title="Health Twin" icon="🧬" />} />
+          <Route path="/personal-risk" element={<PersonalRisk />} />
+          <Route path="/health-twin" element={<HealthTwin />} />
           <Route path="/symptom-checker" element={<SymptomChecker />} />
         </Route>
       </Routes>

@@ -5,7 +5,7 @@ from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 from sqlalchemy import func
 from datetime import datetime, timedelta
-from typing import List
+from typing import List, Optional
 
 from ..database import get_db
 from ..models.models import UserSymptomReport
@@ -17,6 +17,24 @@ router = APIRouter(
 )
 
 ML_SERVICE_URL = os.getenv("ML_SERVICE_URL", "http://localhost:8001")
+
+def get_triage_score(symptoms: List[str], severity: int):
+    # Rule-based triage scoring (Phase 9)
+    critical_symptoms = ["Shortness of Breath", "Chest Pain", "Loss of Consciousness", "Severe Bleeding"]
+    urgent_symptoms = ["Fever", "Vomiting", "Severe Headache", "Rash"]
+    
+    # Check for critical symptoms
+    if any(s in symptoms for s in critical_symptoms) or severity >= 5:
+        return "CRITICAL (Immediate ER)"
+    
+    # Check for urgent symptoms
+    if any(s in symptoms for s in urgent_symptoms) or severity >= 3:
+        return "URGENT (Consult Doctor)"
+    
+    if severity >= 2:
+        return "NON-URGENT (Clinic Visit)"
+        
+    return "SELF-CARE (Monitor at home)"
 
 @router.post("/report", response_model=SymptomReportResponse)
 async def report_symptoms(report: SymptomReportCreate, db: Session = Depends(get_db)):
@@ -34,11 +52,13 @@ async def report_symptoms(report: SymptomReportCreate, db: Session = Depends(get
         # Fallback if ML service is down
         classification = {"disease": "Unknown", "confidence": 0.0, "risk_level": "low"}
 
-    # 2. Anonymize and Save to DB
-    # user_id_hash is omitted or generated if needed for tracking, here we just set it to "anon"
+    # 2. Triage Logic (Phase 9)
+    triage = get_triage_score(report.symptoms, report.severity)
+
+    # 3. Anonymize and Save to DB
     db_report = UserSymptomReport(
         timestamp=report.timestamp or datetime.utcnow(),
-        user_id_hash="anonymous", # Anonymized as per requirement
+        user_id_hash="anonymous",
         region=report.region,
         symptoms=json.dumps(report.symptoms),
         severity=report.severity,
@@ -55,20 +75,19 @@ async def report_symptoms(report: SymptomReportCreate, db: Session = Depends(get
         "report_id": db_report.id,
         "risk_level": classification['risk_level'],
         "estimated_disease": classification['disease'],
-        "confidence": classification['confidence']
+        "confidence": classification['confidence'],
+        "triage_recommendation": triage # Added in Phase 9
     }
 
 @router.get("/summary", response_model=List[SymptomSummary])
 def get_symptom_summary(db: Session = Depends(get_db)):
-    # Summary of last 7 days
     seven_days_ago = datetime.utcnow() - timedelta(days=7)
-    
     reports = db.query(UserSymptomReport).filter(UserSymptomReport.timestamp >= seven_days_ago).all()
     
     summary = {}
     for r in reports:
         symptoms = json.loads(r.symptoms)
-        key = (r.region, symptoms[0] if symptoms else "Unknown") # Simplifying to dominant symptom
+        key = (r.region, symptoms[0] if symptoms else "Unknown")
         summary[key] = summary.get(key, 0) + 1
         
     return [

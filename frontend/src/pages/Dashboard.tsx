@@ -9,15 +9,14 @@ import {
   CartesianGrid,
   Tooltip,
   ResponsiveContainer,
-  BarChart,
-  Bar,
-  Cell
 } from 'recharts';
 
 import PredictionChart from '../components/PredictionChart';
 import ModelMetricsCard from '../components/ModelMetricsCard';
 import EnvironmentalPanel from '../components/EnvironmentalPanel';
 import SymptomTrends from '../components/SymptomTrends';
+import RiskSummaryCard from '../components/RiskSummaryCard';
+import WearableWidget from '../components/WearableWidget';
 
 const fetchDashboardSummary = async () => {
   const { data } = await axios.get('http://localhost:8000/api/dashboard/summary');
@@ -42,7 +41,7 @@ export default function Dashboard() {
   const { data: summary, isLoading, isError } = useQuery({
     queryKey: ['dashboardSummary'],
     queryFn: fetchDashboardSummary,
-    refetchInterval: 30000, // 30 seconds
+    refetchInterval: 30000,
   });
 
   if (isLoading) return (
@@ -57,7 +56,6 @@ export default function Dashboard() {
 
   const riskRegions = summary.high_risk_regions.join(", ");
   
-  // Mock data for trends chart
   const trendData = [
     { name: 'Week 1', Dengue: 400, Malaria: 240, Influenza: 500 },
     { name: 'Week 2', Dengue: 300, Malaria: 139, Influenza: 480 },
@@ -112,7 +110,6 @@ export default function Dashboard() {
 
       {/* Main Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-        {/* Left Column: Charts & Trends */}
         <div className="lg:col-span-2 space-y-8">
           <div className="bg-helix-surface border border-helix-border rounded-2xl p-6">
             <h3 className="text-lg font-semibold text-helix-text mb-6">Aggregate Pathogen Trends</h3>
@@ -148,8 +145,10 @@ export default function Dashboard() {
           <PredictionChart disease="Dengue" region="Maharashtra" />
         </div>
 
-        {/* Right Column: Risk Matrix & Env */}
         <div className="space-y-8">
+          <RiskSummaryCard />
+          <WearableWidget />
+          
           <div className="bg-helix-surface border border-helix-border rounded-2xl p-6">
             <h3 className="text-sm font-bold text-helix-text-muted uppercase tracking-widest mb-6">Regional Risk Matrix</h3>
             <div className="space-y-4">

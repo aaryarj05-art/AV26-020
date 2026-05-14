@@ -56,3 +56,14 @@ class UserSymptomReport(Base):
     age_group = Column(String) # children, adult, senior
     reported_disease = Column(String, nullable=True)
     risk_score = Column(Float, nullable=True)
+
+class WearableReading(Base):
+    __tablename__ = "wearable_readings"
+
+    id = Column(Integer, primary_key=True, index=True)
+    device_id = Column(String, index=True)
+    timestamp = Column(DateTime, default=datetime.utcnow)
+    heart_rate = Column(Integer)
+    spo2 = Column(Float)
+    steps = Column(Integer)
+    sleep_hours = Column(Float)

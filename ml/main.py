@@ -7,7 +7,7 @@ import os
 from fastapi import FastAPI, Body, Query
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
-from typing import Optional, List
+from typing import Optional, List, Dict
 
 from services.prediction_service import PredictionService
 from services.arima_model import ARIMAForecast
@@ -16,6 +16,9 @@ from services.lstm_model import LSTMForecast
 from services.weather_service import WeatherService
 from services.correlation_engine import CorrelationEngine
 from services.symptom_clustering import SymptomClusteringEngine
+from services.personal_risk_service import PersonalRiskService
+from services.health_twin import HealthTwin
+from services.stroke_guard import StrokeGuardEngine
 
 app = FastAPI(
     title="Helix ML Service",
@@ -36,6 +39,8 @@ service = PredictionService()
 weather_service = WeatherService()
 correlation_engine = CorrelationEngine()
 clustering_engine = SymptomClusteringEngine()
+personal_risk_service = PersonalRiskService()
+stroke_guard_engine = StrokeGuardEngine()
 
 # Region to City mapping
 REGION_CITY_MAP = {
@@ -54,6 +59,17 @@ class PredictionRequest(BaseModel):
 
 class SymptomClassifyRequest(BaseModel):
     symptoms: List[str]
+
+class HealthProfileRequest(BaseModel):
+    profile: Dict
+
+class HealthTwinSimulationRequest(BaseModel):
+    profile: Dict
+    years: int = 5
+    interventions: Optional[Dict] = None
+
+class StrokeGuardRequest(BaseModel):
+    health_data: Dict
 
 @app.get("/health")
 async def health_check():
@@ -112,14 +128,40 @@ async def classify_symptoms(request: SymptomClassifyRequest):
 
 @app.get("/api/symptoms/clusters")
 async def get_symptom_clusters(region: str):
-    # This would normally query the DB via Backend, but for ML we mock it or expect data
-    # Placeholder: return empty list or mock clusters
     return clustering_engine.detect_clusters(region, [])
 
 @app.get("/api/symptoms/spikes")
 async def get_symptom_spikes(region: str, symptom: str):
-    # Placeholder: mock spike detection
-    return clustering_engine.detect_spike([10, 12, 15, 11, 13, 14, 12], 25) # Example spike
+    return clustering_engine.detect_spike([10, 12, 15, 11, 13, 14, 12], 25)
+
+# Phase 9 Personal Risk Endpoints
+@app.post("/api/personal/risk-assessment")
+async def get_personal_risk(request: HealthProfileRequest):
+    return personal_risk_service.predict_all(request.profile)
+
+@app.post("/api/personal/disease-risk")
+async def get_single_risk(condition: str, health_data: Dict):
+    if condition == 'diabetes': return personal_risk_service.predict_diabetes(health_data)
+    elif condition == 'heart': return personal_risk_service.predict_heart(health_data)
+    elif condition == 'stroke': return personal_risk_service.predict_stroke(health_data)
+    return {"error": "Invalid condition"}
+
+# Phase 10 Health Twin & Stroke Guard Endpoints
+@app.post("/api/personal/health-twin/simulate")
+async def simulate_health_twin(request: HealthTwinSimulationRequest):
+    twin = HealthTwin(request.profile)
+    return twin.run_simulation(years=request.years, interventions=request.interventions)
+
+@app.post("/api/personal/health-twin/reduction")
+async def get_risk_reduction(profile: Dict, intervention: str, value: float):
+    twin = HealthTwin(profile)
+    return {"reduction": twin.get_potential_reduction(intervention, value)}
+
+@app.post("/api/personal/stroke-guard")
+async def run_stroke_guard(request: StrokeGuardRequest):
+    # Get base stroke risk first
+    base_risk = personal_risk_service.predict_stroke(request.health_data)
+    return stroke_guard_engine.assess_neurological_risk(request.health_data, base_risk)
 
 @app.get("/api/predict/seasonal")
 async def get_seasonal(disease: str):
