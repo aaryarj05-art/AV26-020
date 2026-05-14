@@ -8,6 +8,7 @@ const navItems = [
   { to: '/personal-risk', label: 'Personal Risk', icon: '🛡️' },
   { to: '/health-twin', label: 'Health Twin', icon: '🧬' },
   { to: '/symptom-checker', label: 'Symptom Checker', icon: '🩺' },
+  { to: '/xai', label: 'XAI Intelligence', icon: '🧠' },
 ]
 
 export default function Sidebar() {

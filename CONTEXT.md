@@ -136,8 +136,9 @@ Font:            Inter (300–900)
 | 8     | Early Warning Alert System                   | ✅ Complete |
 | 9     | Personal Risk Prediction + AI Symptom Checker| ✅ Complete |
 | 10    | Digital Health Twin + Wearable Integration   | ✅ Complete |
-| 11    | XAI Model Explainability (SHAP/LIME)         | 🔜 Next     |
-| 12–30 | See implementation plan                      | ⏳ Pending  |
+| 11    | XAI Model Explainability (SHAP/LIME)         | ✅ Complete |
+| 12    | Validated Accuracy Metrics Dashboard         | 🔜 Next     |
+| 13–30 | See implementation plan                      | ⏳ Pending  |
 
 ---
 
@@ -209,4 +210,11 @@ cd frontend && npm run dev
 - **Wearable Ingest**: Real-time telemetry pipeline for live vitals monitoring (HR, SpO2, Steps) with sparkline visualizations.
 - **Verification**: `test_integration.py` validates all core API surfaces across Backend and ML services.
 
-*Last updated: Phase 10 — 2026-05-14*
+## XAI & Model Interpretability (Phase 11) - SET 2 BEGINS
+- **SHAP Integration**: `ExplainabilityService` using SHAP tree algorithms to generate feature importance.
+- **Why This Prediction**: Reusable collapsible panel added to outbreak and personal risk visualizations.
+- **Narrative Generation**: Automated plain-English summaries explaining complex model logic to stakeholders.
+- **XAI Dashboard Widget**: Identifies top global predictors (e.g., Rainfall) across the entire platform.
+- **Model Intelligence View**: Full-page `XAIView.tsx` with SHAP waterfall charts and correlation matrices.
+
+*Last updated: Phase 11 — 2026-05-14*
