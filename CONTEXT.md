@@ -80,6 +80,8 @@ helix/
 | 7  | **Parquet storage** for processed ML data     | Efficient storage/retrieval for analytics      |
 | 8  | **Anonymization Layer** (hash + ±2% noise)  | Privacy-preserving biomedical intelligence     |
 | 9  | **Synthetic Fallback Data** (7.8k records)   | Ensures development consistency without API    |
+| 10 | **ARIMA & Prophet Ensemble**                 | Hybrid forecasting for robust outbreak trends  |
+| 11 | **Backend Prediction Proxy**                 | Transparent communication between FE and ML    |
 
 ---
 
@@ -108,8 +110,9 @@ Font:            Inter (300–900)
 | ----- | -------------------------------------------- | ----------- |
 | 1     | Monorepo scaffold + dark UI shell            | ✅ Complete |
 | 2     | Historical Data Pipeline + Privacy Layer     | ✅ Complete |
-| 3     | Real-time Analytics & Forecasting            | 🔜 Next     |
-| 4–30  | See implementation plan                      | ⏳ Pending  |
+| 3     | ARIMA & Prophet Forecasting Models           | ✅ Complete |
+| 4     | LSTM Model & Deep Learning Pipeline          | 🔜 Next     |
+| 5–30  | See implementation plan                      | ⏳ Pending  |
 
 ---
 
@@ -137,4 +140,9 @@ cd frontend && npm run dev
 - **Schema**: SQLite DB with `outbreak_records`, `environmental_data`, `alert_logs`, `user_symptom_reports`.
 - **Pipeline**: Raw CSV → Normalization → Anonymization (Hashing/Noise) → Feature Engineering (Rolling Avgs) → Parquet.
 
-*Last updated: Phase 2 — 2026-05-14*
+## ML Architecture (Phase 3)
+- **ARIMA**: Auto-selected (p,d,q) using `pmdarima`, seasonal m=52 (weekly).
+- **Prophet**: Additive model with Indian holiday integration and uncertainty intervals.
+- **Ensemble**: Average of ARIMA + Prophet predictions with combined risk scoring.
+
+*Last updated: Phase 3 — 2026-05-14*

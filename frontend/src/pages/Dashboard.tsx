@@ -1,16 +1,85 @@
+import React, { useState, useEffect } from 'react';
+import PredictionChart from '../components/PredictionChart';
+import { useOutbreakData } from '../hooks/useOutbreakData';
+
 export default function Dashboard() {
+  const [selectedDisease, setSelectedDisease] = useState('Dengue');
+  const [selectedRegion, setSelectedRegion] = useState('Maharashtra');
+  const [riskData, setRiskData] = useState<any>(null);
+  
+  const { data: outbreakData, loading: dataLoading } = useOutbreakData({ 
+    disease: selectedDisease, 
+    region: selectedRegion 
+  });
+
+  const [diseases, setDiseases] = useState<string[]>(['Dengue', 'Malaria', 'Cholera', 'Influenza', 'COVID-19']);
+  const [regions, setRegions] = useState<string[]>(['Maharashtra', 'Delhi', 'Karnataka', 'Tamil Nadu', 'Kerala']);
+
+  useEffect(() => {
+    const fetchRisk = async () => {
+      try {
+        const res = await fetch(`http://localhost:8000/api/predictions/risk-score?disease=${selectedDisease}&region=${selectedRegion}`);
+        const json = await res.json();
+        setRiskData(json);
+      } catch (err) {
+        console.error("Failed to fetch risk score:", err);
+      }
+    };
+    fetchRisk();
+  }, [selectedDisease, selectedRegion]);
+
   const cards = [
-    { title: 'Active Outbreaks', value: '—', icon: '🦠', color: 'text-helix-danger' },
-    { title: 'Risk Score', value: '—', icon: '🛡️', color: 'text-helix-accent' },
-    { title: 'Regions Monitored', value: '—', icon: '🌍', color: 'text-helix-success' },
-    { title: 'Alerts Today', value: '—', icon: '🔔', color: 'text-helix-warning' },
-  ]
+    { 
+      title: 'Active Outbreaks', 
+      value: outbreakData.length > 0 ? outbreakData.slice(-1)[0].cases.toLocaleString() : '0', 
+      icon: '🦠', 
+      color: 'text-helix-danger' 
+    },
+    { 
+      title: 'Risk Score', 
+      value: riskData ? `${riskData.risk_score}%` : '—', 
+      icon: '🛡️', 
+      color: riskData?.risk_score > 70 ? 'text-helix-danger' : 'text-helix-accent' 
+    },
+    { 
+      title: 'Trend', 
+      value: riskData ? riskData.trend.toUpperCase() : '—', 
+      icon: '📈', 
+      color: riskData?.trend === 'rising' ? 'text-helix-danger' : 'text-helix-success' 
+    },
+    { 
+      title: 'Alerts Today', 
+      value: '2', 
+      icon: '🔔', 
+      color: 'text-helix-warning' 
+    },
+  ];
 
   return (
     <div className="space-y-8 animate-fade-in">
-      <div>
-        <h1 className="text-3xl font-bold text-helix-text mb-1">Dashboard</h1>
-        <p className="text-helix-text-muted">Real-time public health overview</p>
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div>
+          <h1 className="text-3xl font-bold text-helix-text mb-1">Dashboard</h1>
+          <p className="text-helix-text-muted">Predictive public health intelligence</p>
+        </div>
+        
+        <div className="flex items-center gap-3 bg-helix-surface p-1.5 rounded-2xl border border-helix-border">
+          <select 
+            value={selectedDisease}
+            onChange={(e) => setSelectedDisease(e.target.value)}
+            className="bg-transparent text-sm text-helix-text px-3 py-1.5 outline-none cursor-pointer"
+          >
+            {diseases.map(d => <option key={d} value={d}>{d}</option>)}
+          </select>
+          <div className="w-px h-4 bg-helix-border" />
+          <select 
+            value={selectedRegion}
+            onChange={(e) => setSelectedRegion(e.target.value)}
+            className="bg-transparent text-sm text-helix-text px-3 py-1.5 outline-none cursor-pointer"
+          >
+            {regions.map(r => <option key={r} value={r}>{r}</option>)}
+          </select>
+        </div>
       </div>
 
       {/* Stat Cards */}
@@ -22,7 +91,7 @@ export default function Dashboard() {
           >
             <div className="flex items-center justify-between mb-4">
               <span className="text-2xl">{card.icon}</span>
-              <span className={`text-xs font-medium ${card.color} uppercase tracking-wider`}>Live</span>
+              <span className={`text-[10px] font-bold ${card.color} uppercase tracking-widest`}>Live</span>
             </div>
             <p className="text-3xl font-bold text-helix-text mb-1">{card.value}</p>
             <p className="text-sm text-helix-text-muted">{card.title}</p>
@@ -30,15 +99,25 @@ export default function Dashboard() {
         ))}
       </div>
 
-      {/* Placeholder sections */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <div className="bg-helix-surface border border-helix-border rounded-2xl p-6 h-64 flex items-center justify-center">
-          <p className="text-helix-text-muted text-sm">📈 Outbreak Trend Chart — Coming in Phase 2</p>
+      {/* Main Analytics Row */}
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <div className="lg:col-span-2">
+          <PredictionChart disease={selectedDisease} region={selectedRegion} />
         </div>
-        <div className="bg-helix-surface border border-helix-border rounded-2xl p-6 h-64 flex items-center justify-center">
-          <p className="text-helix-text-muted text-sm">🗺️ Geographic Heatmap — Coming in Phase 3</p>
+        
+        <div className="bg-helix-surface border border-helix-border rounded-2xl p-6 flex flex-col items-center justify-center text-center">
+          <div className="w-16 h-16 rounded-full bg-helix-accent/10 flex items-center justify-center mb-4">
+             <span className="text-3xl">🗺️</span>
+          </div>
+          <h3 className="text-lg font-semibold text-helix-text mb-2">Geographic Heatmap</h3>
+          <p className="text-sm text-helix-text-muted max-w-[200px]">
+            Spatial risk distribution and migration pattern analysis.
+          </p>
+          <div className="mt-6 px-4 py-1.5 rounded-full border border-helix-border bg-helix-bg text-[10px] text-helix-text-muted uppercase tracking-widest">
+            Coming in Phase 4
+          </div>
         </div>
       </div>
     </div>
-  )
+  );
 }

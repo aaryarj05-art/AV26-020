@@ -8,6 +8,7 @@ from dotenv import load_dotenv
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from app.api.data import router as data_router
+from app.api.predictions import router as predictions_router
 
 load_dotenv()
 
@@ -27,6 +28,7 @@ app.add_middleware(
 )
 
 app.include_router(data_router)
+app.include_router(predictions_router)
 
 
 @app.get("/health")
