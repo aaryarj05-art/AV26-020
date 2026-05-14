@@ -12,6 +12,7 @@ from typing import Optional
 from services.prediction_service import PredictionService
 from services.arima_model import ARIMAForecast
 from services.prophet_model import ProphetForecast
+from services.lstm_model import LSTMForecast
 
 app = FastAPI(
     title="Helix ML Service",
@@ -33,7 +34,7 @@ service = PredictionService()
 class PredictionRequest(BaseModel):
     disease: str
     region: str
-    model: str = "ensemble" # arima, prophet, ensemble
+    model: str = "ensemble" # arima, prophet, lstm, ensemble
     steps: int = 12
 
 @app.get("/health")
@@ -58,6 +59,14 @@ async def predict_outbreak(request: PredictionRequest):
         except:
             model.fit()
             return model.predict(periods=request.steps)
+
+    elif request.model == "lstm":
+        model = LSTMForecast(request.disease, request.region)
+        try:
+            return model.predict(steps=request.steps)
+        except:
+            model.fit()
+            return model.predict(steps=request.steps)
             
     else: # ensemble
         return service.run_ensemble(request.disease, request.region, steps=request.steps)
@@ -73,6 +82,10 @@ async def get_seasonal(disease: str):
 @app.get("/api/models/status")
 async def get_models_status():
     return service.get_models_status()
+
+@app.get("/api/models/metrics")
+async def get_models_metrics():
+    return service.get_all_metrics()
 
 if __name__ == "__main__":
     import uvicorn

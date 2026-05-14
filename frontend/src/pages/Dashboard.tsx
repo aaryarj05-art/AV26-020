@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import PredictionChart from '../components/PredictionChart';
+import ModelMetricsCard from '../components/ModelMetricsCard';
 import { useOutbreakData } from '../hooks/useOutbreakData';
 
 export default function Dashboard() {
@@ -14,6 +15,13 @@ export default function Dashboard() {
 
   const [diseases, setDiseases] = useState<string[]>(['Dengue', 'Malaria', 'Cholera', 'Influenza', 'COVID-19']);
   const [regions, setRegions] = useState<string[]>(['Maharashtra', 'Delhi', 'Karnataka', 'Tamil Nadu', 'Kerala']);
+
+  // Mock metrics for Phase 4 (would be fetched from /api/models/metrics)
+  const [metrics, setMetrics] = useState({
+    arima: { rmse: 42.5, mae: 31.2, lastTrained: '2026-05-14' },
+    prophet: { rmse: 38.2, mae: 28.5, lastTrained: '2026-05-14' },
+    lstm: { rmse: 35.1, mae: 25.8, lastTrained: '2026-05-14' }
+  });
 
   useEffect(() => {
     const fetchRisk = async () => {
@@ -101,20 +109,37 @@ export default function Dashboard() {
 
       {/* Main Analytics Row */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        <div className="lg:col-span-2">
+        <div className="lg:col-span-2 space-y-6">
           <PredictionChart disease={selectedDisease} region={selectedRegion} />
+          <ModelMetricsCard metrics={metrics} />
         </div>
         
-        <div className="bg-helix-surface border border-helix-border rounded-2xl p-6 flex flex-col items-center justify-center text-center">
-          <div className="w-16 h-16 rounded-full bg-helix-accent/10 flex items-center justify-center mb-4">
-             <span className="text-3xl">🗺️</span>
+        <div className="space-y-6">
+          <div className="bg-helix-surface border border-helix-border rounded-2xl p-6 flex flex-col items-center justify-center text-center h-80">
+            <div className="w-16 h-16 rounded-full bg-helix-accent/10 flex items-center justify-center mb-4">
+               <span className="text-3xl">🗺️</span>
+            </div>
+            <h3 className="text-lg font-semibold text-helix-text mb-2">Geographic Heatmap</h3>
+            <p className="text-sm text-helix-text-muted max-w-[200px]">
+              Spatial risk distribution and migration pattern analysis.
+            </p>
+            <div className="mt-6 px-4 py-1.5 rounded-full border border-helix-border bg-helix-bg text-[10px] text-helix-text-muted uppercase tracking-widest">
+              Coming in Phase 5
+            </div>
           </div>
-          <h3 className="text-lg font-semibold text-helix-text mb-2">Geographic Heatmap</h3>
-          <p className="text-sm text-helix-text-muted max-w-[200px]">
-            Spatial risk distribution and migration pattern analysis.
-          </p>
-          <div className="mt-6 px-4 py-1.5 rounded-full border border-helix-border bg-helix-bg text-[10px] text-helix-text-muted uppercase tracking-widest">
-            Coming in Phase 4
+          
+          <div className="bg-helix-surface border border-helix-border rounded-2xl p-6">
+            <h4 className="text-sm font-bold text-helix-text mb-4 uppercase tracking-widest">Recent Alerts</h4>
+            <div className="space-y-3">
+              <div className="p-3 rounded-xl bg-helix-danger/5 border border-helix-danger/10">
+                 <p className="text-xs font-bold text-helix-danger">Dengue Spike Detected</p>
+                 <p className="text-[10px] text-helix-text-muted">Maharashtra • Projected +15% cases</p>
+              </div>
+              <div className="p-3 rounded-xl bg-helix-warning/5 border border-helix-warning/10">
+                 <p className="text-xs font-bold text-helix-warning">Monsoon Season Warning</p>
+                 <p className="text-[10px] text-helix-text-muted">Kerala • Rising humidity levels</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
