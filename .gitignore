@@ -1,0 +1,48 @@
+# ─── Python ───
+__pycache__/
+*.py[cod]
+*.pyo
+*.egg-info/
+dist/
+build/
+*.egg
+.eggs/
+*.whl
+venv/
+.venv/
+env/
+.env
+
+# ─── Node ───
+node_modules/
+frontend/dist/
+.cache/
+
+# ─── IDE ───
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# ─── OS ───
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ─── Database ───
+*.db
+*.sqlite3
+
+# ─── ML artifacts ───
+ml/models/*.pkl
+ml/models/*.h5
+ml/models/*.joblib
+ml/data/*.csv
+ml/data/*.json
+!ml/data/.gitkeep
+!ml/models/.gitkeep
+
+# ─── Misc ───
+*.log
+.env.local

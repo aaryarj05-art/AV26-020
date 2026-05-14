@@ -1,0 +1,11 @@
+scikit-learn
+pandas
+numpy
+statsmodels
+prophet
+tensorflow
+joblib
+shap
+scipy
+fastapi
+uvicorn[standard]

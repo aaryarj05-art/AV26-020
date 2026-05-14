@@ -1,0 +1,91 @@
+@import "tailwindcss";
+
+/* ─── Helix Design System ─── */
+@theme {
+  --color-helix-bg: #0A0F1E;
+  --color-helix-surface: #111827;
+  --color-helix-surface-light: #1F2937;
+  --color-helix-accent: #00D4FF;
+  --color-helix-accent-dim: #00A3CC;
+  --color-helix-accent-glow: rgba(0, 212, 255, 0.15);
+  --color-helix-text: #FFFFFF;
+  --color-helix-text-muted: #9CA3AF;
+  --color-helix-border: #1F2937;
+  --color-helix-danger: #EF4444;
+  --color-helix-warning: #F59E0B;
+  --color-helix-success: #10B981;
+  --font-family-sans: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+/* ─── Base ─── */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-family-sans);
+  background-color: var(--color-helix-bg);
+  color: var(--color-helix-text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+}
+
+/* ─── Scrollbar ─── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-helix-bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-helix-surface-light);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-helix-accent-dim);
+}
+
+/* ─── Utilities ─── */
+.glow-accent {
+  box-shadow: 0 0 20px rgba(0, 212, 255, 0.3), 0 0 60px rgba(0, 212, 255, 0.1);
+}
+
+.text-gradient {
+  background: linear-gradient(135deg, #00D4FF, #7C3AED, #00D4FF);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradient-shift 3s ease-in-out infinite;
+}
+
+@keyframes gradient-shift {
+  0% { background-position: 0% center; }
+  50% { background-position: 100% center; }
+  100% { background-position: 0% center; }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 20px rgba(0, 212, 255, 0.2); }
+  50% { box-shadow: 0 0 40px rgba(0, 212, 255, 0.4); }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.6s ease-out forwards;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
