@@ -16,7 +16,7 @@ router = APIRouter(
     tags=["symptoms"]
 )
 
-ML_SERVICE_URL = os.getenv("ML_SERVICE_URL", "http://localhost:8001")
+ML_SERVICE_URL = os.getenv("ML_SERVICE_URL", "http://127.0.0.1:8001")
 
 def get_triage_score(symptoms: List[str], severity: int):
     # Rule-based triage scoring (Phase 9)

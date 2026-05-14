@@ -8,7 +8,7 @@ router = APIRouter(
     tags=["resources"]
 )
 
-ML_SERVICE_URL = os.getenv("ML_SERVICE_URL", "http://localhost:8001")
+ML_SERVICE_URL = os.getenv("ML_SERVICE_URL", "http://127.0.0.1:8001")
 
 class ResourcePlanRequest(BaseModel):
     disease: str

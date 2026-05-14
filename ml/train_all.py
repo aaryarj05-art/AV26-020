@@ -22,8 +22,8 @@ def train_all():
     
     # For hackathon/speed, we'll train for top 2 diseases and 2 regions
     # But the script is built to handle all
-    for disease in diseases[:3]: # Limit to 3 for demo speed
-        for region in regions[:3]: # Limit to 3 for demo speed
+    for disease in diseases:
+        for region in regions:
             print(f"\n--- Training {disease} in {region} ---")
             
             # ARIMA

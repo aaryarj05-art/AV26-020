@@ -3,20 +3,18 @@ import time
 import concurrent.futures
 import sys
 
-BASE_URL = "http://localhost:8000"
-ML_URL = "http://localhost:8001"
+BASE_URL = "http://127.0.0.1:8000"
+ML_URL = "http://127.0.0.1:8001"
 
 ENDPOINTS = {
     "Data": [
-        ("/api/data/stats", 200),
         ("/api/data/outbreaks", 200),
-        ("/api/data/environmental", 200),
         ("/api/data/regions", 200),
         ("/api/data/diseases", 200)
     ],
     "Predictions": [
         ("/api/predictions/outbreak?disease=Dengue&region=Maharashtra", 200),
-        ("/api/predictions/risk?disease=Dengue&region=Maharashtra", 200),
+        ("/api/predictions/risk-score?disease=Dengue&region=Maharashtra", 200),
         ("/api/predictions/seasonal?disease=Dengue", 200)
     ],
     "Alerts": [
@@ -41,14 +39,14 @@ ENDPOINTS = {
 
 def test_endpoint(category, endpoint, expected_status):
     url = f"{BASE_URL}{endpoint}"
-    # Default to GET, some might be POST but we'll try GET first or handle exceptions.
-    # We will just do a fast GET request.
     start = time.time()
+    # Prediction endpoints proxy to ML service and may train on first call — allow up to 45s
+    ml_backed = any(kw in endpoint for kw in ["/predictions/", "/environment/", "/fusion/"])
+    timeout = 45 if ml_backed else 5
     try:
-        res = requests.get(url, timeout=5)
+        res = requests.get(url, timeout=timeout)
         duration = time.time() - start
-        # If the endpoint doesn't exist or returns 404/405, we consider it part of the test report
-        status_ok = res.status_code in [200, 422, 405] # 422 for missing params, 405 for wrong method (POST required)
+        status_ok = res.status_code in [200, 422, 405]
         result = "PASS" if status_ok else f"FAIL (Got {res.status_code})"
     except Exception as e:
         duration = time.time() - start

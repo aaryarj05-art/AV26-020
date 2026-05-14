@@ -57,36 +57,6 @@ class MetricsService:
                 "MAE": 22.4,
                 "dataset_size": 7800,
                 "trained_at": datetime.now().isoformat()
-            },
-            "risk_diabetes_rf": {
-                "type": "Classification",
-                "F1": 0.88,
-                "AUC": 0.92,
-                "Precision": 0.86,
-                "Recall": 0.90,
-                "Accuracy": 0.89,
-                "dataset_size": 15000,
-                "trained_at": datetime.now().isoformat()
-            },
-            "risk_heart_rf": {
-                "type": "Classification",
-                "F1": 0.85,
-                "AUC": 0.89,
-                "Precision": 0.84,
-                "Recall": 0.86,
-                "Accuracy": 0.86,
-                "dataset_size": 12000,
-                "trained_at": datetime.now().isoformat()
-            },
-            "risk_stroke_gb": {
-                "type": "Classification",
-                "F1": 0.87,
-                "AUC": 0.94,
-                "Precision": 0.89,
-                "Recall": 0.85,
-                "Accuracy": 0.88,
-                "dataset_size": 10000,
-                "trained_at": datetime.now().isoformat()
             }
         }
         
@@ -96,7 +66,7 @@ class MetricsService:
         return metrics
 
     def get_confusion_matrix(self):
-        """Mock confusion matrix for alert classification"""
+        """Mock confusion matrix for outbreak alert classification"""
         return {
             "TP": 845,
             "FP": 112,
@@ -107,21 +77,17 @@ class MetricsService:
         }
         
     def get_roc_curves(self):
-        """Mock ROC curve data for the 3 personal risk models"""
+        """Mock ROC curve data for the outbreak ensemble model"""
         curves = []
         for fpr in np.linspace(0, 1, 20):
             curves.append({
                 "fpr": fpr,
-                "diabetes_tpr": fpr ** 0.3 + random.uniform(-0.02, 0.02),
-                "heart_tpr": fpr ** 0.4 + random.uniform(-0.02, 0.02),
-                "stroke_tpr": fpr ** 0.2 + random.uniform(-0.02, 0.02)
+                "ensemble_tpr": fpr ** 0.25 + random.uniform(-0.02, 0.02)
             })
         
         # Ensure boundaries
         for c in curves:
-            c["diabetes_tpr"] = min(1.0, max(0.0, c["diabetes_tpr"]))
-            c["heart_tpr"] = min(1.0, max(0.0, c["heart_tpr"]))
-            c["stroke_tpr"] = min(1.0, max(0.0, c["stroke_tpr"]))
+            c["ensemble_tpr"] = min(1.0, max(0.0, c["ensemble_tpr"]))
             
         return curves
 

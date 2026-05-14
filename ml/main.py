@@ -4,6 +4,8 @@ Machine Learning models for disease prediction, outbreak forecasting, and health
 """
 
 import os
+import asyncio
+from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime
 from fastapi import FastAPI, Body, Query
 from fastapi.middleware.cors import CORSMiddleware
@@ -20,7 +22,8 @@ from services.symptom_clustering import SymptomClusteringEngine
 from services.explainability_service import ExplainabilityService
 from services.seir_simulation import SEIRSimulation
 from services.resource_planner import ResourcePlanner
-from services.fusion_service import FusionService
+from services.resource_planner import ResourcePlanner
+from services.fusion_engine import DataFusionEngine
 
 app = FastAPI(
     title="Helix ML Service",
@@ -44,7 +47,10 @@ clustering_engine = SymptomClusteringEngine()
 explain_service = ExplainabilityService()
 simulation_engine = SEIRSimulation()
 resource_planner = ResourcePlanner()
-fusion_service = FusionService()
+fusion_engine = DataFusionEngine()
+
+# Thread pool for CPU-bound ML inference
+_executor = ThreadPoolExecutor(max_workers=4)
 
 # Region to City mapping
 REGION_CITY_MAP = {
@@ -91,30 +97,36 @@ async def health_check():
 
 @app.post("/api/predict/outbreak")
 async def predict_outbreak(request: PredictionRequest):
-    if request.model == "arima":
-        model = ARIMAForecast(request.disease, request.region)
-        try: return model.predict(steps=request.steps)
-        except: 
-            model.fit()
-            return model.predict(steps=request.steps)
-    elif request.model == "prophet":
-        model = ProphetForecast(request.disease, request.region)
-        try: return model.predict(periods=request.steps)
-        except:
-            model.fit()
-            return model.predict(periods=request.steps)
-    elif request.model == "lstm":
-        model = LSTMForecast(request.disease, request.region)
-        try: return model.predict(steps=request.steps)
-        except:
-            model.fit()
-            return model.predict(steps=request.steps)
-    else: # ensemble
-        return service.run_ensemble(request.disease, request.region, steps=request.steps)
+    loop = asyncio.get_event_loop()
+
+    def _run():
+        if request.model == "arima":
+            model = ARIMAForecast(request.disease, request.region)
+            try: return model.predict(steps=request.steps)
+            except:
+                model.fit()
+                return model.predict(steps=request.steps)
+        elif request.model == "prophet":
+            model = ProphetForecast(request.disease, request.region)
+            try: return model.predict(periods=request.steps)
+            except:
+                model.fit()
+                return model.predict(periods=request.steps)
+        elif request.model == "lstm":
+            model = LSTMForecast(request.disease, request.region)
+            try: return model.predict(steps=request.steps)
+            except:
+                model.fit()
+                return model.predict(steps=request.steps)
+        else:  # ensemble
+            return service.run_ensemble(request.disease, request.region, steps=request.steps)
+
+    return await loop.run_in_executor(_executor, _run)
 
 @app.get("/api/predict/risk-score")
 async def get_risk_score(disease: str, region: str):
-    return service.get_risk_score(disease, region)
+    loop = asyncio.get_event_loop()
+    return await loop.run_in_executor(_executor, service.get_risk_score, disease, region)
 
 @app.get("/api/environment/weather")
 async def get_weather(city: Optional[str] = None, region: Optional[str] = None):
@@ -158,15 +170,16 @@ async def get_gap_analysis(disease: str, region: str, predicted_cases: int):
 
 @app.get("/api/fusion/status")
 async def get_fusion_status(region: str = "Maharashtra"):
-    return fusion_service.get_status(region)
+    return fusion_engine.get_status(region)
 
 @app.get("/api/fusion/contribution")
 async def get_fusion_contribution(disease: str, region: str):
-    return fusion_service.get_contribution(disease, region)
+    return fusion_engine.get_source_contributions(disease, region)
 
 @app.post("/api/fusion/predict")
 async def fusion_predict(request: dict = Body(...)):
-    return fusion_service.fusion_predict(request)
+    # request should contain disease, region, date
+    return fusion_engine.fuse(request.get("disease"), request.get("region"), request.get("date"))
 
 if __name__ == "__main__":
     import uvicorn

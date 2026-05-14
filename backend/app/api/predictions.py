@@ -8,7 +8,7 @@ router = APIRouter(
     tags=["predictions"]
 )
 
-ML_SERVICE_URL = os.getenv("ML_SERVICE_URL", "http://localhost:8001")
+ML_SERVICE_URL = os.getenv("ML_SERVICE_URL", "http://127.0.0.1:8001")
 
 @router.get("/outbreak")
 async def get_outbreak_prediction(
@@ -55,6 +55,19 @@ async def get_models_status():
             response = await client.get(
                 f"{ML_SERVICE_URL}/api/models/status",
                 timeout=5.0
+            )
+            response.raise_for_status()
+            return response.json()
+    except httpx.HTTPError as e:
+        raise HTTPException(status_code=500, detail=f"ML Service Error: {str(e)}")
+@router.get("/seasonal")
+async def get_seasonal(disease: str):
+    try:
+        async with httpx.AsyncClient() as client:
+            response = await client.get(
+                f"{ML_SERVICE_URL}/api/predict/seasonal",
+                params={"disease": disease},
+                timeout=10.0
             )
             response.raise_for_status()
             return response.json()
