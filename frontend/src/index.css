@@ -1,150 +1,87 @@
 @import "tailwindcss";
-@import "leaflet/dist/leaflet.css";
 
-/* ─── Helix Design System ─── */
 @theme {
-  --color-helix-bg: #0A0F1E;
-  --color-helix-surface: #111827;
-  --color-helix-surface-light: #1F2937;
-  --color-helix-accent: #00D4FF;
-  --color-helix-accent-dim: #00A3CC;
-  --color-helix-accent-glow: rgba(0, 212, 255, 0.15);
-  --color-helix-text: #FFFFFF;
-  --color-helix-text-muted: #9CA3AF;
-  --color-helix-border: #1F2937;
-  --color-helix-danger: #EF4444;
-  --color-helix-warning: #F59E0B;
-  --color-helix-success: #10B981;
-  --font-family-sans: 'Inter', system-ui, -apple-system, sans-serif;
-
-  --animate-fade-in: fade-in 0.8s ease-out;
-  --animate-scale-in: scale-in 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-  --animate-float: float 6s ease-in-out infinite;
-
-  @keyframes fade-in {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-  @keyframes scale-in {
-    from { opacity: 0; transform: scale(0.95); }
-    to { opacity: 1; transform: scale(1); }
-  }
-  @keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
-  }
-}
-
-/* ─── Base ─── */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-html {
-  scroll-behavior: smooth;
+  --color-background: #0C1220;
+  --color-surface: #111827;
+  --color-surface-elevated: #1A2332;
+  --color-border: #1E2D40;
+  --color-text-primary: #F0F4F8;
+  --color-text-secondary: #8A9BB0;
+  --color-text-muted: #4A5568;
+  --color-accent: #3B82F6;
+  --color-accent-hover: #2563EB;
+  --color-status-success: #10B981;
+  --color-status-warning: #F59E0B;
+  --color-status-danger: #EF4444;
+  --color-status-critical: #DC2626;
 }
 
 body {
-  font-family: var(--font-family-sans);
-  background-color: var(--color-helix-bg);
-  color: var(--color-helix-text);
+  background-color: #0C1220;
+  color: #F0F4F8;
+  font-family: 'Inter', sans-serif;
+  margin: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  min-height: 100vh;
 }
 
-/* ─── Scrollbar ─── */
+/* Custom Scrollbar */
 ::-webkit-scrollbar {
   width: 6px;
 }
+
 ::-webkit-scrollbar-track {
-  background: var(--color-helix-bg);
+  background: #0C1220;
 }
+
 ::-webkit-scrollbar-thumb {
-  background: var(--color-helix-surface-light);
+  background: #1E2D40;
   border-radius: 3px;
 }
+
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--color-helix-accent-dim);
+  background: #3B82F6/40;
 }
 
-/* ─── Utilities ─── */
-.glow-accent {
-  box-shadow: 0 0 20px rgba(0, 212, 255, 0.3), 0 0 60px rgba(0, 212, 255, 0.1);
+/* Chart Styles */
+.recharts-cartesian-grid-horizontal line {
+  stroke: #1E2D40;
 }
 
-.text-gradient {
-  background: linear-gradient(135deg, #00D4FF, #7C3AED, #00D4FF);
-  background-size: 200% auto;
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: gradient-shift 3s ease-in-out infinite;
+.recharts-cartesian-axis-tick-value {
+  fill: #8A9BB0;
+  font-size: 11px;
 }
 
-@keyframes gradient-shift {
-  0% { background-position: 0% center; }
-  50% { background-position: 100% center; }
-  100% { background-position: 0% center; }
+/* Base Card Style Utility */
+.helix-card {
+  background-color: #111827;
+  border: 1px solid #1E2D40;
+  border-radius: 1rem; /* 16px */
+  padding: 1.25rem; /* 20px */
 }
 
-@keyframes fade-in {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
+.helix-card-clickable:hover {
+  border-color: rgba(59, 130, 246, 0.4);
 }
 
-@keyframes pulse-glow {
-  0%, 100% { box-shadow: 0 0 20px rgba(0, 212, 255, 0.2); }
-  50% { box-shadow: 0 0 40px rgba(0, 212, 255, 0.4); }
+/* Typography Utilities */
+.text-label {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #8A9BB0;
 }
 
-.animate-fade-in {
-  animation: fade-in 0.6s ease-out forwards;
+.text-value-large {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 36px;
+  font-weight: 600;
+  color: #F0F4F8;
 }
 
-.animate-pulse-glow {
-  animation: pulse-glow 2s ease-in-out infinite;
-}
-
-@layer components {
-  .helix-card {
-    @apply bg-helix-surface border border-helix-accent/10 rounded-2xl shadow-xl hover:border-helix-accent/30 transition-all duration-300;
-  }
-  
-  .helix-glass {
-    @apply bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl;
-  }
-
-  .helix-hero-gradient {
-    background: radial-gradient(circle at top right, rgba(0, 212, 255, 0.08), transparent 40%),
-                radial-gradient(circle at bottom left, rgba(0, 212, 255, 0.05), transparent 40%);
-  }
-
-  .skeleton-box {
-    @apply bg-helix-surface-light animate-pulse rounded-lg;
-  }
-}
-
-/* ─── Leaflet Dark Theme Overrides ─── */
-.leaflet-container {
-  background: var(--color-helix-bg) !important;
-}
-
-.leaflet-popup-content-wrapper, .leaflet-popup-tip {
-  background: var(--color-helix-surface) !important;
-  color: var(--color-helix-text) !important;
-  border: 1px solid var(--color-helix-border);
-  border-radius: 12px !important;
-}
-
-.leaflet-control-zoom-in, .leaflet-control-zoom-out {
-  background: var(--color-helix-surface) !important;
-  color: var(--color-helix-text) !important;
-  border: 1px solid var(--color-helix-border) !important;
-}
-
-.leaflet-bar a:hover {
-  background: var(--color-helix-surface-light) !important;
+.text-caption {
+  font-size: 12px;
+  color: #8A9BB0;
 }

@@ -40,10 +40,17 @@ async def trigger_test_alert(
     severity: str = "HIGH",
     db: Session = Depends(get_db)
 ):
-    from ..services.notification_service import NotificationService
-    notifier = NotificationService(db)
-    alert = notifier.trigger_notification_workflow(region, disease, severity)
-    return {"status": "success", "alert": alert}
+    new_alert = AlertLog(
+        region=region,
+        disease=disease,
+        severity=severity,
+        message=f"TEST ALERT: {severity} risk for {disease} in {region}.",
+        is_active=True
+    )
+    db.add(new_alert)
+    db.commit()
+    db.refresh(new_alert)
+    return {"status": "success", "alert": new_alert}
 
 @router.get("/notifications")
 async def poll_notifications(db: Session = Depends(get_db)):

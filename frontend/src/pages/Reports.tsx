@@ -1,242 +1,138 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import { useState } from 'react';
+import { FileText, FileDown } from 'lucide-react';
 
-interface RecentReport {
-  id: string;
-  type: string;
-  region: string;
-  disease: string;
-  generated_at: string;
-  size_kb: number;
-}
+const REGIONS = ['Maharashtra', 'Delhi', 'Karnataka', 'Tamil Nadu', 'Kerala'];
+const DISEASES = ['Dengue', 'Malaria', 'Influenza', 'Cholera'];
+const REPORT_TYPES = ['Regional Brief', 'National Summary', 'Alert Impact Analysis'];
 
 export default function Reports() {
   const [region, setRegion] = useState('Maharashtra');
   const [disease, setDisease] = useState('Dengue');
   const [reportType, setReportType] = useState('Regional Brief');
-  const [recentReports, setRecentReports] = useState<RecentReport[]>([]);
   const [isGenerating, setIsGenerating] = useState(false);
-  const [previewUrl, setPreviewUrl] = useState<string | null>(null);
-  const [autoBrief, setAutoBrief] = useState(false);
 
-  const regions = ["Maharashtra", "Delhi", "Karnataka", "Tamil Nadu", "Kerala"];
-  const diseases = ["Dengue", "Malaria", "Influenza", "Cholera"];
+  // Mock recent reports
+  const recentReports = [
+    { name: 'Maharashtra_Dengue_Brief', date: '2026-05-15 08:00', type: 'Regional' },
+    { name: 'Delhi_Influenza_Brief', date: '2026-05-14 14:30', type: 'Regional' },
+    { name: 'National_Outbreak_Summary', date: '2026-05-14 09:00', type: 'National' },
+    { name: 'Mumbai_Spike_Analysis', date: '2026-05-13 18:20', type: 'Alert' },
+  ];
 
-  useEffect(() => {
-    fetchRecentReports();
-  }, []);
+  // Mock resource planning data
+  const resourceData = [
+    { region: 'Mumbai', beds: 450, meds: '5k Units', status: 'Critical' },
+    { region: 'Pune', beds: 120, meds: '2k Units', status: 'Warning' },
+    { region: 'Nagpur', beds: 80, meds: '1k Units', status: 'Stable' },
+  ];
 
-  const fetchRecentReports = async () => {
-    try {
-      const response = await axios.get('http://localhost:8000/api/reports/list');
-      setRecentReports(response.data);
-    } catch (error) {
-      console.error('Failed to fetch recent reports:', error);
-    }
-  };
-
-  const generateReport = async () => {
+  const handleGenerate = () => {
     setIsGenerating(true);
-    setPreviewUrl(null);
-    try {
-      let url = '';
-      if (reportType === 'Regional Brief') {
-        url = `http://localhost:8000/api/reports/regional?region=${region}&disease=${disease}`;
-      } else if (reportType === 'National Summary') {
-        url = `http://localhost:8000/api/reports/national`;
-      } else {
-        url = `http://localhost:8000/api/reports/alert/ALT-882`; // Mock alert ID
-      }
-
-      const response = await axios.get(url, { responseType: 'blob' });
-      const blob = new Blob([response.data], { type: 'application/pdf' });
-      const blobUrl = URL.createObjectURL(blob);
-      setPreviewUrl(blobUrl);
-      fetchRecentReports();
-    } catch (error) {
-      console.error('Report generation failed:', error);
-    } finally {
-      setIsGenerating(false);
-    }
-  };
-
-  const copyUrl = () => {
-    if (previewUrl) {
-      navigator.clipboard.writeText(previewUrl);
-      alert('Report preview URL copied to clipboard!');
-    }
+    setTimeout(() => setIsGenerating(false), 2000);
   };
 
   return (
-    <div className="min-h-screen bg-helix-background p-8 pb-24 text-helix-text animate-fade-in">
-      <div className="flex items-center gap-3 mb-8">
-        <span className="text-3xl">📄</span>
-        <div>
-          <h1 className="text-3xl font-bold tracking-tight">Authority <span className="text-helix-accent">Briefing System</span></h1>
-          <p className="text-sm text-helix-text-muted">Auto-generated PDF intelligence for health officials</p>
-        </div>
-      </div>
-
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-        {/* Left Column: Generator Form */}
+    <div className="p-6">
+      <div className="grid grid-cols-1 lg:grid-cols-10 gap-6">
+        {/* LEFT COLUMN: Generator */}
         <div className="lg:col-span-4 space-y-6">
-          <div className="bg-helix-surface border border-helix-border rounded-3xl p-6 shadow-xl">
-            <h2 className="text-lg font-bold mb-6 flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-helix-accent animate-pulse" />
-              Report Configuration
-            </h2>
-
+          <div className="bg-[#111827] border border-[#1E2D40] rounded-2xl p-5">
+            <div className="text-[11px] font-semibold uppercase tracking-widest text-[#8A9BB0] mb-6">GENERATE REPORT</div>
+            
             <div className="space-y-4">
-              <div>
-                <label className="block text-xs font-bold text-helix-text-muted uppercase tracking-widest mb-2">Report Type</label>
+              <div className="space-y-1">
+                <label className="text-[11px] text-[#8A9BB0] uppercase">Region</label>
                 <select 
-                  value={reportType}
-                  onChange={(e) => setReportType(e.target.value)}
-                  className="w-full bg-black/30 border border-helix-border rounded-xl p-3 text-sm focus:border-helix-accent outline-none transition-all"
+                  value={region} 
+                  onChange={(e) => setRegion(e.target.value)}
+                  className="w-full bg-[#0C1220] border border-[#1E2D40] rounded-lg text-[13px] text-[#F0F4F8] h-9 px-2 outline-none focus:border-[#3B82F6]"
                 >
-                  <option>Regional Brief</option>
-                  <option>National Summary</option>
-                  <option>Alert Brief</option>
+                  {REGIONS.map(r => <option key={r} value={r}>{r}</option>)}
                 </select>
               </div>
 
-              {reportType === 'Regional Brief' && (
-                <>
-                  <div>
-                    <label className="block text-xs font-bold text-helix-text-muted uppercase tracking-widest mb-2">Target Region</label>
-                    <select 
-                      value={region}
-                      onChange={(e) => setRegion(e.target.value)}
-                      className="w-full bg-black/30 border border-helix-border rounded-xl p-3 text-sm focus:border-helix-accent outline-none"
-                    >
-                      {regions.map(r => <option key={r}>{r}</option>)}
-                    </select>
-                  </div>
-
-                  <div>
-                    <label className="block text-xs font-bold text-helix-text-muted uppercase tracking-widest mb-2">Pathogen Focal Point</label>
-                    <select 
-                      value={disease}
-                      onChange={(e) => setDisease(e.target.value)}
-                      className="w-full bg-black/30 border border-helix-border rounded-xl p-3 text-sm focus:border-helix-accent outline-none"
-                    >
-                      {diseases.map(d => <option key={d}>{d}</option>)}
-                    </select>
-                  </div>
-                </>
-              )}
-
-              <div className="pt-4">
-                <button 
-                  onClick={generateReport}
-                  disabled={isGenerating}
-                  className="w-full py-4 bg-helix-accent text-helix-background font-black uppercase tracking-widest rounded-2xl hover:scale-[1.02] active:scale-[0.98] transition-all disabled:opacity-50 shadow-[0_0_20px_rgba(0,212,255,0.3)]"
+              <div className="space-y-1">
+                <label className="text-[11px] text-[#8A9BB0] uppercase">Disease Focal Point</label>
+                <select 
+                  value={disease} 
+                  onChange={(e) => setDisease(e.target.value)}
+                  className="w-full bg-[#0C1220] border border-[#1E2D40] rounded-lg text-[13px] text-[#F0F4F8] h-9 px-2 outline-none focus:border-[#3B82F6]"
                 >
-                  {isGenerating ? (
-                    <span className="flex items-center justify-center gap-2">
-                      <div className="w-4 h-4 border-2 border-helix-background/30 border-t-helix-background rounded-full animate-spin" />
-                      Generating...
-                    </span>
-                  ) : 'Generate Intelligence Brief'}
-                </button>
+                  {DISEASES.map(d => <option key={d} value={d}>{d}</option>)}
+                </select>
               </div>
+
+              <div className="space-y-2">
+                <label className="text-[11px] text-[#8A9BB0] uppercase">Report Type</label>
+                <div className="space-y-2">
+                  {REPORT_TYPES.map(type => (
+                    <label key={type} className="flex items-center gap-3 cursor-pointer group">
+                      <input 
+                        type="radio" 
+                        name="reportType" 
+                        value={type} 
+                        checked={reportType === type}
+                        onChange={(e) => setReportType(e.target.value)}
+                        className="w-4 h-4 border-[#1E2D40] bg-[#0C1220] checked:bg-[#3B82F6] outline-none"
+                      />
+                      <span className={`text-[13px] transition-colors ${reportType === type ? 'text-[#F0F4F8]' : 'text-[#8A9BB0] group-hover:text-[#F0F4F8]'}`}>{type}</span>
+                    </label>
+                  ))}
+                </div>
+              </div>
+
+              <button 
+                onClick={handleGenerate}
+                disabled={isGenerating}
+                className="w-full h-10 bg-[#3B82F6] text-white rounded-lg text-[14px] font-semibold hover:bg-[#2563EB] transition-colors disabled:opacity-50 mt-4"
+              >
+                {isGenerating ? 'Generating PDF...' : 'Generate Report'}
+              </button>
             </div>
           </div>
 
-          <div className="bg-helix-surface border border-helix-border rounded-3xl p-6">
-            <h2 className="text-sm font-bold text-helix-text-muted uppercase tracking-widest mb-4">Automation Settings</h2>
-            <div className="space-y-4">
-              <div className="flex items-center justify-between p-3 bg-black/20 rounded-xl border border-helix-border/50">
-                <div className="text-sm font-semibold">Daily 08:00 AM Briefing</div>
-                <button 
-                  onClick={() => setAutoBrief(!autoBrief)}
-                  className={`w-12 h-6 rounded-full p-1 transition-colors ${autoBrief ? 'bg-helix-success' : 'bg-helix-border'}`}
-                >
-                  <div className={`w-4 h-4 bg-white rounded-full transition-transform ${autoBrief ? 'translate-x-6' : ''}`} />
-                </button>
-              </div>
-              <div>
-                <label className="block text-xs font-bold text-helix-text-muted uppercase tracking-widest mb-2">Recipient Authority Email</label>
-                <input 
-                  type="email" 
-                  placeholder="health-ministry@gov.in"
-                  className="w-full bg-black/30 border border-helix-border rounded-xl p-3 text-sm focus:border-helix-accent outline-none"
-                />
-              </div>
+          {/* Resource Planning Summary */}
+          <div className="bg-[#111827] border border-[#1E2D40] rounded-2xl p-5">
+            <div className="text-[11px] font-semibold uppercase tracking-widest text-[#8A9BB0] mb-4">RESOURCE PLANNING SUMMARY</div>
+            <div className="space-y-3">
+              {resourceData.map((row, i) => (
+                <div key={i} className="flex items-center justify-between text-[12px] border-b border-[#1E2D40] pb-2 last:border-0 last:pb-0">
+                  <div className="flex flex-col">
+                    <span className="font-bold text-[#F0F4F8]">{row.region}</span>
+                    <span className="text-[#8A9BB0]">{row.beds} Beds | {row.meds}</span>
+                  </div>
+                  <span className={row.status === 'Critical' ? 'text-[#EF4444]' : row.status === 'Warning' ? 'text-[#F59E0B]' : 'text-[#10B981]'}>
+                    {row.status}
+                  </span>
+                </div>
+              ))}
             </div>
           </div>
         </div>
 
-        {/* Right Column: Preview & History */}
-        <div className="lg:col-span-8 space-y-6">
-          {/* Report Preview */}
-          <div className="bg-helix-surface border border-helix-border rounded-3xl overflow-hidden shadow-2xl min-h-[500px] flex flex-col">
-            <div className="p-4 border-b border-helix-border/50 flex justify-between items-center bg-black/20">
-              <h3 className="font-bold flex items-center gap-2">
-                <span className="text-helix-accent">👁</span> Intelligence Preview
-              </h3>
-              {previewUrl && (
-                <div className="flex gap-2">
-                  <button onClick={copyUrl} className="px-3 py-1.5 bg-helix-surface border border-helix-border rounded-lg text-xs font-bold hover:border-helix-accent transition-all">Copy Link</button>
-                  <a href={previewUrl} download={`Helix_Report_${reportType.replace(' ','_')}.pdf`} className="px-3 py-1.5 bg-helix-accent text-helix-background rounded-lg text-xs font-bold hover:bg-[#00e0ff] transition-all">Download PDF</a>
-                </div>
-              )}
-            </div>
+        {/* RIGHT COLUMN: Recent Reports */}
+        <div className="lg:col-span-6">
+          <div className="bg-[#111827] border border-[#1E2D40] rounded-2xl p-5">
+            <div className="text-[11px] font-semibold uppercase tracking-widest text-[#8A9BB0] mb-6">RECENT REPORTS</div>
             
-            <div className="flex-1 relative bg-black/40">
-              {previewUrl ? (
-                <iframe 
-                  src={previewUrl} 
-                  className="w-full h-full min-h-[600px] border-none"
-                  title="PDF Report Preview"
-                />
-              ) : (
-                <div className="absolute inset-0 flex flex-col items-center justify-center text-helix-text-muted">
-                  <span className="text-5xl mb-4 opacity-20">📊</span>
-                  <p className="text-sm italic">No report currently in preview.</p>
-                  <p className="text-xs mt-2">Configure settings and click generate to build intelligence.</p>
+            <div className="divide-y divide-[#1E2D40]">
+              {recentReports.map((report, i) => (
+                <div key={i} className="py-4 flex items-center justify-between group hover:bg-[#1A2332]/40 transition-colors px-2 rounded-lg">
+                  <div className="flex items-center gap-4">
+                    <div className="w-10 h-10 rounded-lg bg-[#1A2332] flex items-center justify-center text-[#3B82F6]">
+                      <FileText size={20} />
+                    </div>
+                    <div className="flex flex-col">
+                      <span className="text-[14px] font-bold text-[#F0F4F8]">{report.name}</span>
+                      <span className="text-[12px] text-[#4A5568]">{report.date} • {report.type}</span>
+                    </div>
+                  </div>
+                  <button className="flex items-center gap-2 px-3 py-1.5 border border-[#1E2D40] rounded-lg text-[12px] font-medium text-[#8A9BB0] hover:text-[#F0F4F8] hover:border-[#3B82F6] transition-all">
+                    <FileDown size={14} />
+                    Download
+                  </button>
                 </div>
-              )}
-            </div>
-          </div>
-
-          {/* Recent Reports Table */}
-          <div className="bg-helix-surface border border-helix-border rounded-3xl overflow-hidden shadow-xl">
-            <div className="p-6 border-b border-helix-border/50">
-              <h3 className="font-bold flex items-center gap-2">
-                <span className="text-helix-warning">🕒</span> Dispatch History
-              </h3>
-            </div>
-            <div className="overflow-x-auto">
-              <table className="w-full text-left">
-                <thead>
-                  <tr className="border-b border-helix-border/30 text-xs font-bold text-helix-text-muted uppercase tracking-widest bg-black/10">
-                    <th className="px-6 py-4">Report ID</th>
-                    <th className="px-6 py-4">Type</th>
-                    <th className="px-6 py-4">Region</th>
-                    <th className="px-6 py-4">Timestamp</th>
-                    <th className="px-6 py-4 text-right">Action</th>
-                  </tr>
-                </thead>
-                <tbody className="divide-y divide-helix-border/30">
-                  {recentReports.map((rpt, i) => (
-                    <tr key={rpt.id} className="hover:bg-white/5 transition-colors text-sm">
-                      <td className="px-6 py-4 font-mono text-helix-accent">{rpt.id}</td>
-                      <td className="px-6 py-4 font-semibold">{rpt.type}</td>
-                      <td className="px-6 py-4 text-helix-text-muted">{rpt.region}</td>
-                      <td className="px-6 py-4 text-xs font-mono">{rpt.generated_at}</td>
-                      <td className="px-6 py-4 text-right">
-                        <button className="text-helix-accent hover:underline font-bold">⬇ PDF</button>
-                      </td>
-                    </tr>
-                  ))}
-                  {recentReports.length === 0 && (
-                    <tr>
-                      <td colSpan={5} className="px-6 py-8 text-center text-helix-text-muted italic">No recent reports found.</td>
-                    </tr>
-                  )}
-                </tbody>
-              </table>
+              ))}
             </div>
           </div>
         </div>

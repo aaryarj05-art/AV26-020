@@ -4,9 +4,9 @@ import asyncio
 from datetime import datetime, timedelta
 from sqlalchemy.orm import Session
 from ..models.models import AlertLog, UserSymptomReport
-from .notification_service import NotificationService
+from ..models.models import AlertLog
 
-ML_SERVICE_URL = os.getenv("ML_SERVICE_URL", "http://localhost:8001")
+ML_SERVICE_URL = os.getenv("ML_SERVICE_URL", "http://127.0.0.1:8001")
 
 REGIONS = ["Maharashtra", "Delhi", "Karnataka", "Tamil Nadu", "Kerala"]
 DISEASES = ["Dengue", "Malaria", "Cholera", "Influenza", "COVID-19"]
@@ -14,7 +14,6 @@ DISEASES = ["Dengue", "Malaria", "Cholera", "Influenza", "COVID-19"]
 class AlertEngine:
     def __init__(self, db: Session):
         self.db = db
-        self.notifier = NotificationService(db)
 
     async def check_all_regions(self):
         print(f"[ALERT_ENGINE] Scanning {len(REGIONS)} regions for 5 pathogens...")
@@ -58,10 +57,22 @@ class AlertEngine:
                             ).first()
                             
                             if not existing:
-                                self.notifier.trigger_notification_workflow(region, disease, severity)
+                                new_alert = AlertLog(
+                                    region=region,
+                                    disease=disease,
+                                    severity=severity,
+                                    message=f"Critical {disease} risk detected in {region}. Proactive response recommended.",
+                                    timestamp=datetime.utcnow(),
+                                    is_active=True
+                                )
+                                self.db.add(new_alert)
+                                self.db.commit()
                                 
                     except Exception as e:
-                        print(f"[WARN] Alert engine error for {disease}/{region}: {str(e)}")
+                        if "connection" in str(e).lower():
+                            print(f"[WARN] ML Service unreachable at {ML_SERVICE_URL}. Ensure ML service is running on port 8001.")
+                        else:
+                            print(f"[WARN] Alert engine error for {disease}/{region}: {str(e)}")
                         
         print("[ALERT_ENGINE] Alert scan complete.")
 

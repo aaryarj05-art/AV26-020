@@ -1,23 +1,43 @@
-import NotificationBell from './NotificationBell'
+import { useLocation } from 'react-router-dom'
+import { Bell } from 'lucide-react'
 
 export default function Header() {
+  const location = useLocation()
+  
+  const getPageTitle = (pathname: string) => {
+    switch (pathname) {
+      case '/dashboard': return 'Dashboard'
+      case '/outbreak-map': return 'Outbreak Map'
+      case '/predictions': return 'Predictions'
+      case '/alerts': return 'Alerts'
+      case '/symptom-reports': return 'Symptom Reports'
+      case '/simulation': return 'Simulation'
+      case '/reports': return 'Reports'
+      default: return 'Helix Intelligence'
+    }
+  }
+
   return (
-    <header className="h-16 border-b border-helix-border bg-helix-surface/80 backdrop-blur-xl flex items-center justify-between px-8 sticky top-0 z-30">
-      <div className="flex items-center gap-4">
-        <h2 className="text-sm font-semibold text-helix-text-muted uppercase tracking-wider">
-          Public Health Intelligence
-        </h2>
-        <div className="px-2 py-0.5 rounded text-[10px] font-bold tracking-widest uppercase bg-indigo-500/20 text-indigo-400 border border-indigo-500/30">
-          Innovation Build
-        </div>
+    <header className="h-[56px] bg-[#0C1220] border-b border-[#1E2D40] flex items-center justify-between px-6 sticky top-0 z-30">
+      <div className="flex items-center">
+        <h1 className="text-[24px] font-semibold text-[#F0F4F8]">
+          {getPageTitle(location.pathname)}
+        </h1>
       </div>
+      
       <div className="flex items-center gap-6">
-        <NotificationBell />
-        <div className="w-px h-6 bg-helix-border" />
-        {/* Status indicator */}
-        <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-helix-success/10 border border-helix-success/20">
-          <div className="w-2 h-2 rounded-full bg-helix-success animate-pulse" />
-          <span className="text-xs font-medium text-helix-success">Systems Online</span>
+        {/* Alert Bell */}
+        <div className="relative cursor-pointer group">
+          <Bell size={20} className="text-[#8A9BB0] group-hover:text-[#F0F4F8] transition-colors" />
+          <span className="absolute -top-1 -right-1 w-4 h-4 bg-[#EF4444] text-white text-[10px] font-bold rounded-full flex items-center justify-center border-2 border-[#0C1220]">
+            3
+          </span>
+        </div>
+
+        {/* Live Pill */}
+        <div className="flex items-center gap-2 px-3 py-1 rounded-full border border-[#1E2D40] bg-[#111827]">
+          <div className="w-2 h-2 rounded-full bg-[#10B981]" />
+          <span className="text-[12px] font-medium text-[#10B981]">Live</span>
         </div>
       </div>
     </header>
