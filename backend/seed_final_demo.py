@@ -7,20 +7,21 @@ import random
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from app.database import SessionLocal, engine, Base
-from app.models.models import Alert, SymptomReport, HealthPassport, Appointment, Doctor, MoodLog
+from app.models.models import AlertLog, UserSymptomReport
 
 def seed_final():
+    Base.metadata.create_all(bind=engine)
     db = SessionLocal()
     
-    print("🚀 Initializing Final Demo Seed...")
+    print("Initializing Final Demo Seed...")
     
     # 1. Create Active Alerts
     alerts = [
-        Alert(region="Maharashtra", disease="Dengue", severity="CRITICAL", message="Severe spike in fever symptoms detected in Mumbai clusters. Immediate resource mobilization advised.", is_read=False),
-        Alert(region="Kerala", disease="Malaria", severity="CRITICAL", message="Anomaly detected in monsoon-driven malaria vectors. Prediction confidence 94%.", is_read=False),
-        Alert(region="Delhi", disease="Influenza", severity="HIGH", message="Rising respiratory distress reports across NCR region.", is_read=False),
-        Alert(region="Karnataka", disease="Cholera", severity="MEDIUM", message="Water-borne pathogen alerts triggered by recent rainfall data.", is_read=False),
-        Alert(region="Tamil Nadu", disease="Dengue", severity="MEDIUM", message="Early-stage clusters detected in Chennai suburbs.", is_read=False)
+        AlertLog(region="Maharashtra", disease="Dengue", severity="CRITICAL", message="Severe spike in fever symptoms detected in Mumbai clusters. Immediate resource mobilization advised.", is_active=True),
+        AlertLog(region="Kerala", disease="Malaria", severity="CRITICAL", message="Anomaly detected in monsoon-driven malaria vectors. Prediction confidence 94%.", is_active=True),
+        AlertLog(region="Delhi", disease="Influenza", severity="HIGH", message="Rising respiratory distress reports across NCR region.", is_active=True),
+        AlertLog(region="Karnataka", disease="Cholera", severity="MEDIUM", message="Water-borne pathogen alerts triggered by recent rainfall data.", is_active=True),
+        AlertLog(region="Tamil Nadu", disease="Dengue", severity="MEDIUM", message="Early-stage clusters detected in Chennai suburbs.", is_active=True)
     ]
     for a in alerts: db.add(a)
 
@@ -28,39 +29,14 @@ def seed_final():
     regions = ["Maharashtra", "Kerala", "Delhi", "Karnataka", "Tamil Nadu", "Gujarat", "West Bengal", "Rajasthan"]
     symptoms = ["fever", "cough", "fatigue", "rash", "headache", "chills", "nausea"]
     for _ in range(500):
-        report = SymptomReport(
+        report = UserSymptomReport(
             region=random.choice(regions),
             symptoms=",".join(random.sample(symptoms, random.randint(1, 3))),
-            severity=random.choice(["low", "medium", "high"]),
+            severity=random.randint(1, 3),
             age_group=random.choice(["child", "adult", "senior"]),
             timestamp=datetime.utcnow() - timedelta(hours=random.randint(0, 72))
         )
         db.add(report)
-
-    # 3. Appointments
-    doctors = db.query(Doctor).all()
-    if doctors:
-        for _ in range(10):
-            apt = Appointment(
-                doctor_id=random.choice(doctors).id,
-                user_name="Demo User",
-                user_email="demo@helix.ai",
-                appointment_date=datetime.utcnow().date() + timedelta(days=random.randint(1, 5)),
-                time_slot=random.choice(["10:00 AM", "11:30 AM", "02:00 PM", "04:30 PM"]),
-                status="Confirmed"
-            )
-            db.add(apt)
-
-    # 4. Mood Logs (30 days)
-    for i in range(30):
-        log = MoodLog(
-            user_session_id="demo_user",
-            mood_score=random.randint(4, 9),
-            stress_score=random.randint(2, 8),
-            notes="Daily check-in during simulation.",
-            timestamp=datetime.utcnow() - timedelta(days=i)
-        )
-        db.add(log)
 
     # 5. Performance Log (Simulated for Learning Center)
     # This is a jsonl file, not in DB. We can mock it in ml/main.py logic or create the file.

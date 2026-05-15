@@ -10,6 +10,20 @@ router = APIRouter(
 
 ML_SERVICE_URL = os.getenv("ML_SERVICE_URL", "http://127.0.0.1:8081")
 
+# Map global UI cities to available ML dataset regions
+REGION_MOCK_MAP = {
+    "New York, USA": "Maharashtra",
+    "London, UK": "Delhi",
+    "Tokyo, Japan": "Karnataka",
+    "Sao Paulo, Brazil": "Tamil Nadu",
+    "Johannesburg, SA": "Kerala",
+    "Lagos, Nigeria": "Maharashtra",
+    "Jakarta, Indonesia": "Delhi",
+    "Sydney, Australia": "Karnataka",
+    "Cairo, Egypt": "Tamil Nadu",
+    "Mumbai, India": "Maharashtra"
+}
+
 @router.get("/outbreak")
 async def get_outbreak_prediction(
     disease: str,
@@ -17,17 +31,21 @@ async def get_outbreak_prediction(
     model: str = "ensemble",
     steps: int = 12
 ):
+    target_region = REGION_MOCK_MAP.get(region, region)
+    if target_region not in ["Maharashtra", "Delhi", "Karnataka", "Tamil Nadu", "Kerala"]:
+        target_region = "Maharashtra"
+        
     try:
         async with httpx.AsyncClient() as client:
             response = await client.post(
                 f"{ML_SERVICE_URL}/api/predict/outbreak",
                 json={
                     "disease": disease,
-                    "region": region,
+                    "region": target_region,
                     "model": model,
                     "steps": steps
                 },
-                timeout=30.0
+                timeout=90.0
             )
             response.raise_for_status()
             return response.json()

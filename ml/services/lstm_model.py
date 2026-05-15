@@ -129,7 +129,7 @@ class LSTMForecast:
         
         if self.model is None:
             if os.path.exists(model_path):
-                self.model = load_model(model_path)
+                self.model = load_model(model_path, compile=False)
                 self.scaler = joblib.load(scaler_path)
             else:
                 raise ValueError("Model not fitted and no saved artifact found.")

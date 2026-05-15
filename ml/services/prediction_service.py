@@ -15,30 +15,44 @@ class PredictionService:
         pass
 
     def run_ensemble(self, disease, region, steps=12):
-        print(f"Running weighted ensemble for {disease} in {region}...")
-        
+        import time
+        t0 = time.time()
         arima = ARIMAForecast(disease, region)
         prophet = ProphetForecast(disease, region)
         lstm = LSTMForecast(disease, region)
         
+        print(f"[{region}] Loading/Fitting ARIMA...")
         # Load or fit all models
         try:
             arima_pred = arima.predict(steps=steps)
-        except:
+            print(f"[{region}] ARIMA loaded in {time.time() - t0:.2f}s")
+        except Exception as e:
+            print(f"[{region}] ARIMA load failed ({e}), fitting...")
             arima.fit()
             arima_pred = arima.predict(steps=steps)
+            print(f"[{region}] ARIMA fitted in {time.time() - t0:.2f}s")
             
+        t1 = time.time()
+        print(f"[{region}] Loading/Fitting Prophet...")
         try:
             prophet_pred = prophet.predict(periods=steps)
-        except:
+            print(f"[{region}] Prophet loaded in {time.time() - t1:.2f}s")
+        except Exception as e:
+            print(f"[{region}] Prophet load failed ({e}), fitting...")
             prophet.fit()
             prophet_pred = prophet.predict(periods=steps)
-
+            print(f"[{region}] Prophet fitted in {time.time() - t1:.2f}s")
+ 
+        t2 = time.time()
+        print(f"[{region}] Loading/Fitting LSTM...")
         try:
             lstm_pred = lstm.predict(steps=steps)
-        except:
+            print(f"[{region}] LSTM loaded in {time.time() - t2:.2f}s")
+        except Exception as e:
+            print(f"[{region}] LSTM load failed ({e}), fitting...")
             lstm.fit()
             lstm_pred = lstm.predict(steps=steps)
+            print(f"[{region}] LSTM fitted in {time.time() - t2:.2f}s")
             
         # Ensemble: weighted average (ARIMA: 30%, Prophet: 30%, LSTM: 40%)
         # Ensure all lists are same length
