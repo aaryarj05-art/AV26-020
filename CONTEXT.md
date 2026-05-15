@@ -50,5 +50,37 @@ The platform has been streamlined into 7 core modules, removing all personal hea
 ```
 
 ---
+## Phase 24: WHO Integration & Symptom Clustering (2026-05-15)
 
-*Last updated: Post-Refactor Completion — 2026-05-15*
+### New Services
+- **`backend/app/services/who_service.py`**: Fetches and normalises WHO Disease Outbreak News.
+  - Extracts disease, region, timestamp, severity (keyword-based), and summary (≤300 chars).
+  - **15-minute in-memory cache** (`_cache` dict). Falls back to 5 hardcoded mock entries on any network error.
+  - `get_cached()` is the primary public entry point for API routes.
+- **`ml/services/cluster_symptoms.py`**: `SymptomClusteringService`
+  - `build_feature_matrix()` — binary feature vectors (one column per known symptom).
+  - `run_kmeans()` — sklearn KMeans (up to 5 clusters).
+  - `detect_spikes()` — Z-score per region/date (spike threshold: Z > 2.0).
+  - `get_cluster_summary()` — combines user reports + WHO keywords; returns cluster list with `who_corroboration` flag.
+
+### New API Endpoints
+| Endpoint | Service | Description |
+|---|---|---|
+| `GET /api/who/live-outbreaks` | Backend | Returns cached WHO feed + metadata |
+| `GET /api/who/cluster-summary` | Backend → ML | Proxies to ML cluster engine |
+| `GET /api/cluster/summary` | ML (port 8001) | KMeans cluster + spike detection |
+
+### Data Architecture Notes
+- WHO feed is **supplementary** — existing symptom reporting (`/api/symptoms/report`, `/api/symptoms/summary`) is **unchanged**.
+- SQLite is used for symptom reports (via `UserSymptomReport` model).
+- WHO cache lives in-process; a restart clears it (first request repopulates within 10s).
+
+### Frontend
+- **`SymptomReports.tsx`** restructured: 40/60 split top, full-width trend chart bottom.
+  - Left: original submit form (unchanged).
+  - Right: WHO Live Feed card (polled every 15 min) + AI Cluster Detection card (polled every 5 min).
+  - Bottom: `ComposedChart` — User Reports line (blue) + WHO Reports dashed line (yellow) + Spike bars (red, 30% opacity).
+
+---
+
+*Last updated: Phase 24 — WHO Integration — 2026-05-15*

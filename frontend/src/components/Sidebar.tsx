@@ -9,7 +9,6 @@ import {
   FileText,
   Menu,
   ChevronLeft,
-  ChevronRight
 } from 'lucide-react'
 
 const navItems = [
