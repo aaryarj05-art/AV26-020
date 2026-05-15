@@ -8,7 +8,7 @@ router = APIRouter(
     tags=["environment"]
 )
 
-ML_SERVICE_URL = os.getenv("ML_SERVICE_URL", "http://127.0.0.1:8001")
+ML_SERVICE_URL = os.getenv("ML_SERVICE_URL", "http://127.0.0.1:8081")
 
 @router.get("/weather")
 async def get_weather(city: Optional[str] = None, region: Optional[str] = None):

@@ -11,13 +11,18 @@ export default function OutbreakMap() {
   const [forecastMode, setForecastMode] = useState(false);
   const [selectedCity, setSelectedCity] = useState<any>(null);
 
-  // Mock map data
+  // Global map data
   const mapData = [
-    { city: 'Mumbai', lat: 19.0760, lng: 72.8777, cases: 1240, risk_score: 85, level: 'Critical', top_disease: 'Dengue', trend: 'Rising' },
-    { city: 'Delhi', lat: 28.6139, lng: 77.2090, cases: 850, risk_score: 65, level: 'High', top_disease: 'Influenza', trend: 'Rising' },
-    { city: 'Bangalore', lat: 12.9716, lng: 77.5946, cases: 420, risk_score: 45, level: 'Medium', top_disease: 'Malaria', trend: 'Stable' },
-    { city: 'Chennai', lat: 13.0827, lng: 80.2707, cases: 310, risk_score: 35, level: 'Medium', top_disease: 'Cholera', trend: 'Declining' },
-    { city: 'Kochi', lat: 9.9312, lng: 76.2673, cases: 150, risk_score: 20, level: 'Low', top_disease: 'Dengue', trend: 'Declining' },
+    { city: 'Mumbai, India', lat: 19.0760, lng: 72.8777, cases: 1240, risk_score: 85, level: 'Critical', top_disease: 'Dengue', trend: 'Rising' },
+    { city: 'New York, USA', lat: 40.7128, lng: -74.0060, cases: 850, risk_score: 65, level: 'High', top_disease: 'Influenza', trend: 'Rising' },
+    { city: 'London, UK', lat: 51.5074, lng: -0.1278, cases: 420, risk_score: 45, level: 'Medium', top_disease: 'Influenza', trend: 'Stable' },
+    { city: 'Sao Paulo, Brazil', lat: -23.5505, lng: -46.6333, cases: 950, risk_score: 75, level: 'High', top_disease: 'Dengue', trend: 'Rising' },
+    { city: 'Johannesburg, SA', lat: -26.2041, lng: 28.0473, cases: 310, risk_score: 35, level: 'Medium', top_disease: 'Cholera', trend: 'Declining' },
+    { city: 'Tokyo, Japan', lat: 35.6762, lng: 139.6503, cases: 150, risk_score: 20, level: 'Low', top_disease: 'Influenza', trend: 'Declining' },
+    { city: 'Lagos, Nigeria', lat: 6.5244, lng: 3.3792, cases: 1100, risk_score: 80, level: 'Critical', top_disease: 'Malaria', trend: 'Rising' },
+    { city: 'Jakarta, Indonesia', lat: -6.2088, lng: 106.8456, cases: 620, risk_score: 55, level: 'High', top_disease: 'Dengue', trend: 'Stable' },
+    { city: 'Sydney, Australia', lat: -33.8688, lng: 151.2093, cases: 80, risk_score: 15, level: 'Low', top_disease: 'Influenza', trend: 'Declining' },
+    { city: 'Cairo, Egypt', lat: 30.0444, lng: 31.2357, cases: 280, risk_score: 40, level: 'Medium', top_disease: 'Cholera', trend: 'Stable' },
   ];
 
   const sparklineData = [
@@ -32,6 +37,35 @@ export default function OutbreakMap() {
   };
 
   const filteredData = mapData.filter(d => selectedDisease === 'All' || d.top_disease === selectedDisease);
+
+  // Apply forecast projections if forecastMode is active
+  const displayData = filteredData.map(city => {
+    if (!forecastMode) return city;
+
+    let multiplier = 1;
+    let riskBump = 0;
+    
+    if (city.trend === 'Rising') { 
+      multiplier = 1.45; 
+      riskBump = 15; 
+    } else if (city.trend === 'Declining') { 
+      multiplier = 0.75; 
+      riskBump = -12; 
+    } else { 
+      multiplier = 1.08; 
+      riskBump = 3; 
+    }
+
+    const projectedCases = Math.floor(city.cases * multiplier);
+    const projectedRisk = Math.min(100, Math.max(0, city.risk_score + riskBump));
+
+    return {
+      ...city,
+      cases: projectedCases,
+      risk_score: projectedRisk,
+      isForecast: true
+    };
+  });
 
   return (
     <div className="flex flex-col h-[calc(100vh-56px)] overflow-hidden">
@@ -53,7 +87,9 @@ export default function OutbreakMap() {
           ))}
         </div>
         <div className="flex items-center gap-3">
-          <span className="text-[12px] text-[#8A9BB0]">Forecast Mode</span>
+          <span className={`text-[12px] transition-colors ${forecastMode ? 'text-[#3B82F6] font-bold' : 'text-[#8A9BB0]'}`}>
+            {forecastMode ? '30-Day Forecast Active' : 'Forecast Mode'}
+          </span>
           <button 
             onClick={() => setForecastMode(!forecastMode)}
             className={`w-8 h-4 rounded-full relative transition-colors ${forecastMode ? 'bg-[#3B82F6]' : 'bg-[#1E2D40]'}`}
@@ -66,8 +102,8 @@ export default function OutbreakMap() {
       {/* MAP AREA */}
       <div className="flex-1 relative">
         <MapContainer 
-          center={[20.5937, 78.9629]} 
-          zoom={5} 
+          center={[20, 0]} 
+          zoom={3} 
           style={{ height: "100%", width: "100%" }}
           zoomControl={false}
         >
@@ -76,7 +112,7 @@ export default function OutbreakMap() {
             attribution='&copy; <a href="https://carto.com/">CARTO</a>'
           />
           
-          {filteredData.map((city, idx) => (
+          {displayData.map((city, idx) => (
             <CircleMarker
               key={idx}
               center={[city.lat, city.lng]}
@@ -94,11 +130,11 @@ export default function OutbreakMap() {
                   <div className="font-bold text-[14px] mb-2">{city.city}</div>
                   <div className="space-y-1 text-[12px]">
                     <div className="flex justify-between">
-                      <span className="text-[#8A9BB0]">Risk Score:</span>
+                      <span className="text-[#8A9BB0]">{city.isForecast ? 'Proj. Risk:' : 'Risk Score:'}</span>
                       <span style={{ color: getRiskColor(city.risk_score) }}>{city.risk_score}</span>
                     </div>
                     <div className="flex justify-between">
-                      <span className="text-[#8A9BB0]">Active Cases:</span>
+                      <span className="text-[#8A9BB0]">{city.isForecast ? 'Proj. Cases:' : 'Active Cases:'}</span>
                       <span>{city.cases}</span>
                     </div>
                     <div className="flex justify-between">

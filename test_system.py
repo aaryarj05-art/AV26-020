@@ -3,8 +3,8 @@ import time
 import concurrent.futures
 import sys
 
-BASE_URL = "http://127.0.0.1:8000"
-ML_URL = "http://127.0.0.1:8001"
+BASE_URL = "http://127.0.0.1:8080"
+ML_URL = "http://127.0.0.1:8081"
 
 ENDPOINTS = {
     "Data": [

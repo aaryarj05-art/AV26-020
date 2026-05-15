@@ -15,7 +15,7 @@ import {
 import SkeletonCard from '../components/SkeletonCard';
 
 const fetchDashboardSummary = async () => {
-  const { data } = await axios.get('http://localhost:8000/api/dashboard/summary');
+  const { data } = await axios.get('http://localhost:8080/api/kpi/enhanced');
   return data;
 };
 
@@ -39,12 +39,12 @@ const chartConfig = {
 };
 
 const fetchFusionStatus = async () => {
-  const { data } = await axios.get('http://localhost:8000/api/fusion/status');
+  const { data } = await axios.get('http://localhost:8080/api/fusion/status');
   return data;
 };
 
 export default function Dashboard() {
-  const { isLoading: isSummaryLoading } = useQuery({
+  const { data: kpisData, isLoading: isSummaryLoading } = useQuery({
     queryKey: ['dashboardSummary'],
     queryFn: fetchDashboardSummary,
     refetchInterval: 30000,
@@ -94,24 +94,42 @@ export default function Dashboard() {
   ];
 
   const getStatusColor = (status: string) => {
-    switch (status) {
-      case 'healthy': return '#10B981';
-      case 'warning': return '#F59E0B';
-      case 'critical': return '#EF4444';
-      default: return '#8A9BB0';
-    }
+    if (!status) return '#8A9BB0';
+    const s = status.toLowerCase();
+    if (s.includes('healthy')) return '#10B981';
+    if (s.includes('warning') || s.includes('degraded')) return '#F59E0B';
+    if (s.includes('critical')) return '#EF4444';
+    return '#8A9BB0';
   };
+
+  // Safely extract KPIs from the enhanced KPI response
+  const kpis = isSummaryLoading || !kpisData?.kpis ? [] : kpisData.kpis;
+  
+  const getKpiData = (id: string, fallbackLabel: string, fallbackVal: string) => {
+    const k = kpis.find((x: any) => x.id === id);
+    if (!k) return { label: fallbackLabel, value: fallbackVal, trend: '', trendColor: '#8A9BB0' };
+    const isUp = k.trend === 'up';
+    const color = k.color === 'danger' ? '#EF4444' : k.color === 'success' ? '#10B981' : '#F59E0B';
+    return {
+      label: k.title.toUpperCase(),
+      value: k.value.toLocaleString(),
+      trend: `${isUp ? '↑' : '↓'} ${k.delta_percent}%`,
+      trendColor: color
+    };
+  };
+
+  const topCards = [
+    getKpiData('active_cases', 'ACTIVE CASES', '12,847'),
+    getKpiData('high_risk_regions', 'HIGH RISK REGIONS', '08'),
+    getKpiData('active_alerts', 'ALERTS TODAY', '24'),
+    getKpiData('prediction_accuracy', 'MODEL ACCURACY', '94.2%'),
+  ];
 
   return (
     <div className="p-6 space-y-6">
       {/* ROW 1: KPI Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-        {[
-          { label: 'ACTIVE CASES', value: '12,847', trend: '↑ 12% vs last week', trendColor: '#EF4444' },
-          { label: 'HIGH RISK REGIONS', value: '08', trend: '↑ 2 regions', trendColor: '#F59E0B' },
-          { label: 'ALERTS TODAY', value: '24', trend: '↓ 5% vs yesterday', trendColor: '#10B981' },
-          { label: 'MODEL ACCURACY', value: '94.2%', trend: '↑ 0.4% improvement', trendColor: '#10B981' },
-        ].map((kpi, i) => (
+        {topCards.map((kpi, i) => (
           <div key={i} className="bg-[#111827] border border-[#1E2D40] rounded-2xl p-5">
             <div className="text-[11px] font-semibold uppercase tracking-widest text-[#8A9BB0] mb-2">{kpi.label}</div>
             <div className="text-[36px] font-mono font-semibold text-[#F0F4F8] leading-none mb-2">{kpi.value}</div>
@@ -145,12 +163,14 @@ export default function Dashboard() {
         <div className="lg:col-span-4 bg-[#111827] border border-[#1E2D40] rounded-2xl p-5">
           <div className="text-[11px] font-semibold uppercase tracking-widest text-[#8A9BB0] mb-6">DATA FUSION STATUS</div>
           <div className="space-y-4">
-            {fusionData?.sources.map((source: any, i: number) => (
+            {fusionData?.sources?.map((source: any, i: number) => (
               <div key={i} className="flex items-center justify-between py-2 border-b border-[#1E2D40] last:border-0">
                 <span className="text-[14px] text-[#F0F4F8]">{source.name}</span>
                 <div className="flex items-center gap-3">
                   <div className="w-2 h-2 rounded-full" style={{ backgroundColor: getStatusColor(source.status) }} />
-                  <span className="text-[12px] text-[#8A9BB0]">{source.updated}</span>
+                  <span className="text-[12px] text-[#8A9BB0]">
+                    {source.last_updated ? new Date(source.last_updated).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}) : 'Unknown'}
+                  </span>
                 </div>
               </div>
             ))}
@@ -158,7 +178,7 @@ export default function Dashboard() {
           <div className="mt-8 pt-6 border-t border-[#1E2D40]">
             <div className="text-[11px] font-semibold text-[#8A9BB0] uppercase tracking-widest mb-1">Fusion Confidence</div>
             <div className="text-[32px] font-mono font-semibold text-[#F0F4F8]">
-              {fusionData?.overall_confidence || 0}%
+              {fusionData?.confidence || 0}%
             </div>
           </div>
         </div>

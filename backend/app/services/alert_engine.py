@@ -6,7 +6,7 @@ from sqlalchemy.orm import Session
 from ..models.models import AlertLog, UserSymptomReport
 from ..models.models import AlertLog
 
-ML_SERVICE_URL = os.getenv("ML_SERVICE_URL", "http://127.0.0.1:8001")
+ML_SERVICE_URL = os.getenv("ML_SERVICE_URL", "http://127.0.0.1:8081")
 
 REGIONS = ["Maharashtra", "Delhi", "Karnataka", "Tamil Nadu", "Kerala"]
 DISEASES = ["Dengue", "Malaria", "Cholera", "Influenza", "COVID-19"]

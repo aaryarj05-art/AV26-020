@@ -7,7 +7,7 @@ router = APIRouter(
     tags=["metrics"]
 )
 
-ML_SERVICE_URL = os.getenv("ML_SERVICE_URL", "http://127.0.0.1:8001")
+ML_SERVICE_URL = os.getenv("ML_SERVICE_URL", "http://127.0.0.1:8081")
 
 @router.get("")
 async def get_all_metrics():

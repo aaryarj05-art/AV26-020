@@ -1,34 +1,79 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { FileText, FileDown } from 'lucide-react';
 
-const REGIONS = ['Maharashtra', 'Delhi', 'Karnataka', 'Tamil Nadu', 'Kerala'];
+const REGIONS = ['New York, USA', 'London, UK', 'Tokyo, Japan', 'Sao Paulo, Brazil', 'Johannesburg, SA', 'Lagos, Nigeria', 'Jakarta, Indonesia', 'Sydney, Australia', 'Cairo, Egypt', 'Mumbai, India'];
 const DISEASES = ['Dengue', 'Malaria', 'Influenza', 'Cholera'];
 const REPORT_TYPES = ['Regional Brief', 'National Summary', 'Alert Impact Analysis'];
 
+const BASE = 'http://localhost:8080';
+
 export default function Reports() {
-  const [region, setRegion] = useState('Maharashtra');
+  const [region, setRegion] = useState(REGIONS[0]);
   const [disease, setDisease] = useState('Dengue');
   const [reportType, setReportType] = useState('Regional Brief');
   const [isGenerating, setIsGenerating] = useState(false);
+  const [recentReports, setRecentReports] = useState<any[]>([]);
 
-  // Mock recent reports
-  const recentReports = [
-    { name: 'Maharashtra_Dengue_Brief', date: '2026-05-15 08:00', type: 'Regional' },
-    { name: 'Delhi_Influenza_Brief', date: '2026-05-14 14:30', type: 'Regional' },
-    { name: 'National_Outbreak_Summary', date: '2026-05-14 09:00', type: 'National' },
-    { name: 'Mumbai_Spike_Analysis', date: '2026-05-13 18:20', type: 'Alert' },
-  ];
-
-  // Mock resource planning data
+  // Mock resource planning data (can be integrated later)
   const resourceData = [
     { region: 'Mumbai', beds: 450, meds: '5k Units', status: 'Critical' },
-    { region: 'Pune', beds: 120, meds: '2k Units', status: 'Warning' },
-    { region: 'Nagpur', beds: 80, meds: '1k Units', status: 'Stable' },
+    { region: 'New York', beds: 120, meds: '2k Units', status: 'Warning' },
+    { region: 'Tokyo', beds: 80, meds: '1k Units', status: 'Stable' },
   ];
 
-  const handleGenerate = () => {
+  useEffect(() => {
+    fetch(`${BASE}/api/reports/list`)
+      .then(res => res.json())
+      .then(data => setRecentReports(data))
+      .catch(err => console.error(err));
+  }, []);
+
+  const downloadFile = async (url: string, filename: string) => {
+    try {
+      const response = await fetch(url);
+      if (!response.ok) throw new Error('Network response was not ok');
+      const blob = await response.blob();
+      const downloadUrl = window.URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.style.display = 'none';
+      a.href = downloadUrl;
+      a.download = filename;
+      document.body.appendChild(a);
+      a.click();
+      window.URL.revokeObjectURL(downloadUrl);
+    } catch (error) {
+      console.error('Download failed:', error);
+      alert('Failed to download report.');
+    }
+  };
+
+  const handleGenerate = async () => {
     setIsGenerating(true);
-    setTimeout(() => setIsGenerating(false), 2000);
+    let url = '';
+    let filename = '';
+
+    if (reportType === 'Regional Brief') {
+      url = `${BASE}/api/reports/regional?region=${encodeURIComponent(region)}&disease=${encodeURIComponent(disease)}`;
+      filename = `Helix_Briefing_${region.replace(/[^a-zA-Z0-9]/g, '')}_${disease}.pdf`;
+    } else if (reportType === 'National Summary') {
+      url = `${BASE}/api/reports/national`;
+      filename = `Helix_Global_Summary.pdf`;
+    } else {
+      url = `${BASE}/api/reports/alert/TEST-ALERT`;
+      filename = `Helix_Alert_Brief_TEST-ALERT.pdf`;
+    }
+
+    await downloadFile(url, filename);
+    setIsGenerating(false);
+  };
+
+  const handleDownloadRecent = (report: any) => {
+    let url = '';
+    if (report.type === 'National Summary') url = `${BASE}/api/reports/national`;
+    else if (report.type === 'Alert Brief') url = `${BASE}/api/reports/alert/${report.id}`;
+    else url = `${BASE}/api/reports/regional?region=${encodeURIComponent(report.region)}&disease=${encodeURIComponent(report.disease)}`;
+    
+    downloadFile(url, `${report.id}_${report.type.replace(/\s+/g, '_')}.pdf`);
   };
 
   return (
@@ -46,6 +91,7 @@ export default function Reports() {
                   value={region} 
                   onChange={(e) => setRegion(e.target.value)}
                   className="w-full bg-[#0C1220] border border-[#1E2D40] rounded-lg text-[13px] text-[#F0F4F8] h-9 px-2 outline-none focus:border-[#3B82F6]"
+                  disabled={reportType === 'National Summary'}
                 >
                   {REGIONS.map(r => <option key={r} value={r}>{r}</option>)}
                 </select>
@@ -57,6 +103,7 @@ export default function Reports() {
                   value={disease} 
                   onChange={(e) => setDisease(e.target.value)}
                   className="w-full bg-[#0C1220] border border-[#1E2D40] rounded-lg text-[13px] text-[#F0F4F8] h-9 px-2 outline-none focus:border-[#3B82F6]"
+                  disabled={reportType === 'National Summary'}
                 >
                   {DISEASES.map(d => <option key={d} value={d}>{d}</option>)}
                 </select>
@@ -115,28 +162,38 @@ export default function Reports() {
           <div className="bg-[#111827] border border-[#1E2D40] rounded-2xl p-5">
             <div className="text-[11px] font-semibold uppercase tracking-widest text-[#8A9BB0] mb-6">RECENT REPORTS</div>
             
-            <div className="divide-y divide-[#1E2D40]">
-              {recentReports.map((report, i) => (
-                <div key={i} className="py-4 flex items-center justify-between group hover:bg-[#1A2332]/40 transition-colors px-2 rounded-lg">
-                  <div className="flex items-center gap-4">
-                    <div className="w-10 h-10 rounded-lg bg-[#1A2332] flex items-center justify-center text-[#3B82F6]">
-                      <FileText size={20} />
+            {recentReports.length === 0 ? (
+              <div className="text-center text-[#8A9BB0] py-8 text-[13px]">Loading reports...</div>
+            ) : (
+              <div className="divide-y divide-[#1E2D40] max-h-[600px] overflow-y-auto custom-scrollbar">
+                {recentReports.map((report, i) => (
+                  <div key={i} className="py-4 flex items-center justify-between group hover:bg-[#1A2332]/40 transition-colors px-2 rounded-lg">
+                    <div className="flex items-center gap-4">
+                      <div className="w-10 h-10 rounded-lg bg-[#1A2332] flex items-center justify-center text-[#3B82F6]">
+                        <FileText size={20} />
+                      </div>
+                      <div className="flex flex-col">
+                        <span className="text-[14px] font-bold text-[#F0F4F8]">{report.id} - {report.type}</span>
+                        <span className="text-[12px] text-[#4A5568]">
+                          {report.generated_at} • {report.type === 'National Summary' ? 'Global' : report.region}
+                        </span>
+                      </div>
                     </div>
-                    <div className="flex flex-col">
-                      <span className="text-[14px] font-bold text-[#F0F4F8]">{report.name}</span>
-                      <span className="text-[12px] text-[#4A5568]">{report.date} • {report.type}</span>
-                    </div>
+                    <button 
+                      onClick={() => handleDownloadRecent(report)}
+                      className="flex items-center gap-2 px-3 py-1.5 border border-[#1E2D40] rounded-lg text-[12px] font-medium text-[#8A9BB0] hover:text-[#F0F4F8] hover:border-[#3B82F6] transition-all"
+                    >
+                      <FileDown size={14} />
+                      Download
+                    </button>
                   </div>
-                  <button className="flex items-center gap-2 px-3 py-1.5 border border-[#1E2D40] rounded-lg text-[12px] font-medium text-[#8A9BB0] hover:text-[#F0F4F8] hover:border-[#3B82F6] transition-all">
-                    <FileDown size={14} />
-                    Download
-                  </button>
-                </div>
-              ))}
-            </div>
+                ))}
+              </div>
+            )}
           </div>
         </div>
       </div>
     </div>
   );
 }
+

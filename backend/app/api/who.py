@@ -14,7 +14,7 @@ from ..services.who_service import get_cached
 
 router = APIRouter(prefix="/api/who", tags=["who"])
 
-ML_SERVICE_URL = os.getenv("ML_SERVICE_URL", "http://127.0.0.1:8001")
+ML_SERVICE_URL = os.getenv("ML_SERVICE_URL", "http://127.0.0.1:8081")
 
 
 @router.get("/live-outbreaks")

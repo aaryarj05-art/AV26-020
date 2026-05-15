@@ -8,7 +8,7 @@ router = APIRouter(
     tags=["predictions"]
 )
 
-ML_SERVICE_URL = os.getenv("ML_SERVICE_URL", "http://127.0.0.1:8001")
+ML_SERVICE_URL = os.getenv("ML_SERVICE_URL", "http://127.0.0.1:8081")
 
 @router.get("/outbreak")
 async def get_outbreak_prediction(

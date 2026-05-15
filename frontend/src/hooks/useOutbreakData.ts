@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-const API_BASE_URL = 'http://localhost:8000/api/data';
+const API_BASE_URL = 'http://localhost:8080/api/data';
 
 export interface OutbreakRecord {
   id: number;

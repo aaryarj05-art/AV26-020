@@ -56,12 +56,19 @@ _executor = ThreadPoolExecutor(max_workers=4)
 
 # Region to City mapping
 REGION_CITY_MAP = {
-    "Maharashtra": "Mumbai",
-    "Delhi": "Delhi",
-    "Karnataka": "Bangalore",
-    "Tamil Nadu": "Chennai",
-    "Kerala": "Kochi"
+    "USA": "New York",
+    "UK": "London",
+    "Japan": "Tokyo",
+    "Brazil": "Sao Paulo",
+    "SA": "Johannesburg",
+    "Nigeria": "Lagos",
+    "Indonesia": "Jakarta",
+    "Australia": "Sydney",
+    "Egypt": "Cairo",
+    "India": "Mumbai",
+    "Unknown": "New York"
 }
+
 
 class PredictionRequest(BaseModel):
     disease: str
@@ -186,7 +193,7 @@ async def fusion_predict(request: dict = Body(...)):
 
 # --- PHASE 24: SYMPTOM CLUSTER DETECTION ---
 
-BACKEND_URL = os.getenv("BACKEND_URL", "http://127.0.0.1:8000")
+BACKEND_URL = os.getenv("BACKEND_URL", "http://127.0.0.1:8080")
 
 @app.get("/api/cluster/summary")
 async def get_cluster_summary():
@@ -230,7 +237,7 @@ async def get_cluster_summary():
             ["Fever", "Cough", "Shortness of Breath"],
         ]
         for i, syms in enumerate(mock_symptoms * 3):
-            reports.append({"region": ["Mumbai", "Delhi", "Chennai"][i % 3], "symptoms": syms})
+            reports.append({"region": ["New York, USA", "London, UK", "Tokyo, Japan", "Sao Paulo, Brazil", "Johannesburg, SA"][i % 5], "symptoms": syms})
 
     clusters = cluster_service.get_cluster_summary(reports, who_outbreaks)
 

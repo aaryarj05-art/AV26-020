@@ -21,7 +21,7 @@ const GREEN    = '#10B981';
 const RED_HI   = '#EF4444';
 const RED_CR   = '#DC2626';
 
-const BASE = '';   // same-origin via Vite proxy
+const BASE = 'http://localhost:8080'; // Explicit backend URL (CORS is enabled)
 
 // ─────────────────────────────────────────────
 // Static data for the form
@@ -33,7 +33,7 @@ const SYMPTOMS = [
   'Shortness of Breath','Loss of Taste','Loss of Smell',
   'Body Ache','Dizziness','Loss of Appetite',
 ];
-const REGIONS = ['Mumbai','Delhi','Bangalore','Chennai','Kochi'];
+const REGIONS = ['New York, USA', 'London, UK', 'Tokyo, Japan', 'Sao Paulo, Brazil', 'Johannesburg, SA', 'Lagos, Nigeria', 'Jakarta, Indonesia', 'Sydney, Australia', 'Cairo, Egypt', 'Mumbai, India'];
 
 // ─────────────────────────────────────────────
 // Recharts shared config

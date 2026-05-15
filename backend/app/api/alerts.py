@@ -35,7 +35,7 @@ async def resolve_alert(alert_id: int, db: Session = Depends(get_db)):
 
 @router.post("/test")
 async def trigger_test_alert(
-    region: str = "Mumbai", 
+    region: str = "New York, USA", 
     disease: str = "Dengue", 
     severity: str = "HIGH",
     db: Session = Depends(get_db)

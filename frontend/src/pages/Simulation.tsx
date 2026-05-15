@@ -47,7 +47,7 @@ export default function Simulation() {
   const runSimulation = async () => {
     setIsLoading(true);
     try {
-      const res = await axios.post('http://localhost:8000/api/simulation/seir', {
+      const res = await axios.post('http://localhost:8080/api/simulation/seir', {
         disease, population, R0, gamma: 0.14, days: duration, model, interventions
       });
       
