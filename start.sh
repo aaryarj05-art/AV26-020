@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # ──────────────────────────────────────────────────────────────
 # Helix — Start All Services
-# Backend  :8000  |  ML Service  :8001  |  Frontend  :5173
+# Backend  :8080  |  ML Service  :8081  |  Frontend  :5173
 # ──────────────────────────────────────────────────────────────
 
 set -e
@@ -12,15 +12,15 @@ echo "🧬 Starting Helix Platform..."
 echo ""
 
 # Backend
-echo "  → Backend   (http://localhost:8000)"
+echo "  → Backend   (http://localhost:8080)"
 cd "$ROOT_DIR/backend"
-python -m uvicorn main:app --host 0.0.0.0 --port 8000 --reload &
+python -m uvicorn main:app --host 0.0.0.0 --port 8080 --reload &
 BACKEND_PID=$!
 
 # ML Service
-echo "  → ML Service (http://localhost:8001)"
+echo "  → ML Service (http://localhost:8081)"
 cd "$ROOT_DIR/ml"
-python -m uvicorn main:app --host 0.0.0.0 --port 8001 --reload &
+python -m uvicorn main:app --host 0.0.0.0 --port 8081 --reload &
 ML_PID=$!
 
 # Frontend
