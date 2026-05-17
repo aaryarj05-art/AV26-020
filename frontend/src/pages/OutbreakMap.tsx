@@ -1,8 +1,11 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { MapContainer, TileLayer, CircleMarker, Popup } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import { X } from 'lucide-react';
 import { LineChart, Line, ResponsiveContainer } from 'recharts';
+import DiseaseSelector from '../components/DiseaseSelector';
+import { useWHODiseases } from '../hooks/useWHODiseases';
+import { useRealtimeSocket } from '../hooks/useRealtimeSocket';
 
 const DISEASES = ['All', 'Dengue', 'Malaria', 'Cholera', 'Influenza'];
 
@@ -10,8 +13,34 @@ export default function OutbreakMap() {
   const [selectedDisease, setSelectedDisease] = useState('All');
   const [forecastMode, setForecastMode] = useState(false);
   const [selectedCity, setSelectedCity] = useState<any>(null);
+  const [realtimePoints, setRealtimePoints] = useState<any[]>([]);
+  const [lastUpdated, setLastUpdated] = useState<Date | null>(null);
 
-  // Global map data
+  const { diseases } = useWHODiseases();
+  const { connected, subscribe } = useRealtimeSocket();
+
+  // Subscribe to realtime heatmap points (Phase 4)
+  useEffect(() => {
+    subscribe('heatmap_points', (payload: any) => {
+      if (payload?.points) {
+        setRealtimePoints(payload.points);
+        setLastUpdated(new Date());
+      }
+    });
+  }, [subscribe]);
+
+  // Time since last update
+  const [secondsAgo, setSecondsAgo] = useState(0);
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (lastUpdated) {
+        setSecondsAgo(Math.floor((Date.now() - lastUpdated.getTime()) / 1000));
+      }
+    }, 1000);
+    return () => clearInterval(interval);
+  }, [lastUpdated]);
+
+  // Global map data (static fallback)
   const mapData = [
     { city: 'Mumbai, India', lat: 19.0760, lng: 72.8777, cases: 1240, risk_score: 85, level: 'Critical', top_disease: 'Dengue', trend: 'Rising' },
     { city: 'New York, USA', lat: 40.7128, lng: -74.0060, cases: 850, risk_score: 65, level: 'High', top_disease: 'Influenza', trend: 'Rising' },
@@ -25,6 +54,21 @@ export default function OutbreakMap() {
     { city: 'Cairo, Egypt', lat: 30.0444, lng: 31.2357, cases: 280, risk_score: 40, level: 'Medium', top_disease: 'Cholera', trend: 'Stable' },
   ];
 
+  // Merge realtime WHO points with static data
+  const mergedRealtimeMarkers = realtimePoints
+    .filter(p => p.lat !== 0 && p.lng !== 0)
+    .map(p => ({
+      city: p.region,
+      lat: p.lat,
+      lng: p.lng,
+      cases: p.caseCount || 100,
+      risk_score: Math.round(p.intensity * 100),
+      level: p.intensity > 0.8 ? 'Critical' : p.intensity > 0.6 ? 'High' : p.intensity > 0.3 ? 'Medium' : 'Low',
+      top_disease: p.disease || 'Unknown',
+      trend: 'Stable',
+      isRealtime: true,
+    }));
+
   const sparklineData = [
     { value: 10 }, { value: 15 }, { value: 8 }, { value: 12 }, { value: 20 }, { value: 18 }, { value: 25 }
   ];
@@ -36,7 +80,9 @@ export default function OutbreakMap() {
     return '#10B981'; // Low
   };
 
-  const filteredData = mapData.filter(d => selectedDisease === 'All' || d.top_disease === selectedDisease);
+  // Use realtime data if available, fallback to static
+  const baseData = mergedRealtimeMarkers.length > 0 ? mergedRealtimeMarkers : mapData;
+  const filteredData = baseData.filter(d => selectedDisease === 'All' || d.top_disease === selectedDisease);
 
   // Apply forecast projections if forecastMode is active
   const displayData = filteredData.map(city => {
@@ -71,20 +117,41 @@ export default function OutbreakMap() {
     <div className="flex flex-col h-[calc(100vh-56px)] overflow-hidden">
       {/* TOP BAR */}
       <div className="h-[48px] px-6 bg-[#0C1220] border-b border-[#1E2D40] flex items-center justify-between shrink-0">
-        <div className="flex items-center gap-2">
-          {DISEASES.map(disease => (
-            <button
-              key={disease}
-              onClick={() => setSelectedDisease(disease)}
-              className={`px-3 py-1 rounded-full text-[12px] font-medium transition-colors ${
-                selectedDisease === disease 
-                  ? 'bg-[#3B82F6] text-white' 
-                  : 'text-[#8A9BB0] hover:text-[#F0F4F8]'
-              }`}
-            >
-              {disease}
-            </button>
-          ))}
+        <div className="flex items-center gap-3">
+          {/* Disease filter buttons */}
+          <div className="flex items-center gap-2">
+            {DISEASES.map(disease => (
+              <button
+                key={disease}
+                onClick={() => setSelectedDisease(disease)}
+                className={`px-3 py-1 rounded-full text-[12px] font-medium transition-colors ${
+                  selectedDisease === disease 
+                    ? 'bg-[#3B82F6] text-white' 
+                    : 'text-[#8A9BB0] hover:text-[#F0F4F8]'
+                }`}
+              >
+                {disease}
+              </button>
+            ))}
+          </div>
+
+          {/* Divider */}
+          <div className="w-px h-5 bg-[#1E2D40]" />
+
+          {/* LIVE badge (Phase 4) */}
+          {connected && (
+            <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#10B981]/10 border border-[#10B981]/30">
+              <div className="w-2 h-2 rounded-full bg-[#10B981] animate-pulse" />
+              <span className="text-[11px] font-bold text-[#10B981] uppercase tracking-wider">LIVE</span>
+            </div>
+          )}
+
+          {/* Last updated timestamp */}
+          {lastUpdated && (
+            <span className="text-[11px] text-[#4A5568]">
+              Updated {secondsAgo}s ago
+            </span>
+          )}
         </div>
         <div className="flex items-center gap-3">
           <span className={`text-[12px] transition-colors ${forecastMode ? 'text-[#3B82F6] font-bold' : 'text-[#8A9BB0]'}`}>

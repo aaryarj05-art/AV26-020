@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import {
@@ -9,10 +10,11 @@ import {
   Tooltip,
   ResponsiveContainer,
   Legend,
-  BarChart,
-  Bar,
 } from 'recharts';
 import SkeletonCard from '../components/SkeletonCard';
+import DiseaseSelector from '../components/DiseaseSelector';
+import { useWHODiseases } from '../hooks/useWHODiseases';
+import { useRealtimeSocket } from '../hooks/useRealtimeSocket';
 
 const fetchDashboardSummary = async () => {
   const { data } = await axios.get('http://localhost:8080/api/kpi/enhanced');
@@ -44,6 +46,8 @@ const fetchFusionStatus = async () => {
 };
 
 export default function Dashboard() {
+  const [selectedDisease, setSelectedDisease] = useState('All Diseases');
+
   const { data: kpisData, isLoading: isSummaryLoading } = useQuery({
     queryKey: ['dashboardSummary'],
     queryFn: fetchDashboardSummary,
@@ -54,6 +58,16 @@ export default function Dashboard() {
     queryKey: ['fusionStatus'],
     queryFn: fetchFusionStatus,
     refetchInterval: 15000,
+  });
+
+  const { diseases } = useWHODiseases();
+
+  // Subscribe to realtime KPI updates
+  const { subscribe, connected } = useRealtimeSocket();
+  const [realtimeKpis, setRealtimeKpis] = useState<any>(null);
+
+  subscribe('kpis', (payload: any) => {
+    setRealtimeKpis(payload);
   });
 
   if (isSummaryLoading || isFusionLoading) {
@@ -69,12 +83,11 @@ export default function Dashboard() {
           <SkeletonCard className="col-span-6" height="h-[300px]" />
           <SkeletonCard className="col-span-4" height="h-[300px]" />
         </div>
-        <SkeletonCard height="h-[200px]" />
       </div>
     );
   }
 
-  // Mock data for trend and probability since we are rebuilding UI
+  // Mock data for trend
   const trendData = [
     { name: '05/01', Dengue: 400, Malaria: 240, Influenza: 500, Cholera: 100, Typhoid: 150 },
     { name: '05/05', Dengue: 300, Malaria: 139, Influenza: 480, Cholera: 120, Typhoid: 180 },
@@ -83,14 +96,6 @@ export default function Dashboard() {
     { name: '05/20', Dengue: 189, Malaria: 480, Influenza: 350, Cholera: 200, Typhoid: 300 },
     { name: '05/25', Dengue: 239, Malaria: 380, Influenza: 290, Cholera: 220, Typhoid: 280 },
     { name: '05/30', Dengue: 349, Malaria: 430, Influenza: 320, Cholera: 240, Typhoid: 260 },
-  ];
-
-  const probabilities = [
-    { disease: 'Dengue', probability: 78, color: '#EF4444' },
-    { disease: 'Malaria', probability: 52, color: '#F59E0B' },
-    { disease: 'Influenza', probability: 65, color: '#F59E0B' },
-    { disease: 'Cholera', probability: 24, color: '#10B981' },
-    { disease: 'Typhoid', probability: 12, color: '#10B981' },
   ];
 
   const getStatusColor = (status: string) => {
@@ -103,7 +108,8 @@ export default function Dashboard() {
   };
 
   // Safely extract KPIs from the enhanced KPI response
-  const kpis = isSummaryLoading || !kpisData?.kpis ? [] : kpisData.kpis;
+  const activeKpis = realtimeKpis?.kpis || kpisData?.kpis || [];
+  const kpis = isSummaryLoading || !activeKpis.length ? [] : activeKpis;
   
   const getKpiData = (id: string, fallbackLabel: string, fallbackVal: string) => {
     const k = kpis.find((x: any) => x.id === id);
@@ -127,6 +133,13 @@ export default function Dashboard() {
 
   return (
     <div className="p-6 space-y-6">
+      {/* Disease Selector */}
+      <DiseaseSelector
+        selected={selectedDisease}
+        onChange={setSelectedDisease}
+        diseases={diseases}
+      />
+
       {/* ROW 1: KPI Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
         {topCards.map((kpi, i) => (
@@ -142,7 +155,7 @@ export default function Dashboard() {
       <div className="grid grid-cols-1 lg:grid-cols-10 gap-6">
         <div className="lg:col-span-6 bg-[#111827] border border-[#1E2D40] rounded-2xl p-5">
           <div className="text-[11px] font-semibold uppercase tracking-widest text-[#8A9BB0] mb-6">OUTBREAK TREND — LAST 30 DAYS</div>
-          <div className="h-[220px]">
+          <div className="h-[280px]">
             <ResponsiveContainer width="100%" height="100%">
               <LineChart data={trendData}>
                 {chartConfig.grid}
@@ -181,29 +194,6 @@ export default function Dashboard() {
               {fusionData?.confidence || 0}%
             </div>
           </div>
-        </div>
-      </div>
-
-      {/* ROW 3: Outbreak Probability */}
-      <div className="bg-[#111827] border border-[#1E2D40] rounded-2xl p-5">
-        <div className="text-[11px] font-semibold uppercase tracking-widest text-[#8A9BB0] mb-6">30-DAY OUTBREAK PROBABILITY BY DISEASE</div>
-        <div className="h-[160px]">
-          <ResponsiveContainer width="100%" height="100%">
-            <BarChart layout="vertical" data={probabilities} margin={{ left: 20 }}>
-              {chartConfig.grid}
-              <XAxis type="number" hide />
-              <YAxis 
-                dataKey="disease" 
-                type="category" 
-                tick={{ fill: '#F0F4F8', fontSize: 12 }} 
-                axisLine={false} 
-                tickLine={false}
-                width={80}
-              />
-              {chartConfig.tooltip}
-              <Bar dataKey="probability" radius={[0, 4, 4, 0]} barSize={20} fill="#3B82F6" />
-            </BarChart>
-          </ResponsiveContainer>
         </div>
       </div>
     </div>

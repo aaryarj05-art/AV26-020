@@ -11,6 +11,9 @@ const Alerts = lazy(() => import('./pages/Alerts'));
 const SymptomReports = lazy(() => import('./pages/SymptomReports'));
 const Simulation = lazy(() => import('./pages/Simulation'));
 const Reports = lazy(() => import('./pages/Reports'));
+const Upgrade = lazy(() => import('./pages/Upgrade'));
+import { ChatBotProvider } from './components/ChatBotProvider';
+import ChatBot from './components/ChatBot';
 
 const queryClient = new QueryClient();
 
@@ -24,8 +27,9 @@ const LoadingFallback = () => (
 export default function App() {
   return (
     <QueryClientProvider client={queryClient}>
-      <Suspense fallback={<LoadingFallback />}>
-        <Routes>
+      <ChatBotProvider>
+        <Suspense fallback={<LoadingFallback />}>
+          <Routes>
           {/* Default route redirects to dashboard */}
           <Route path="/" element={<Navigate to="/dashboard" replace />} />
 
@@ -38,12 +42,15 @@ export default function App() {
             <Route path="/symptom-reports" element={<SymptomReports />} />
             <Route path="/simulation" element={<Simulation />} />
             <Route path="/reports" element={<Reports />} />
+            <Route path="/upgrade" element={<Upgrade />} />
           </Route>
 
           {/* Catch all redirect */}
           <Route path="*" element={<Navigate to="/dashboard" replace />} />
         </Routes>
       </Suspense>
+      <ChatBot />
+      </ChatBotProvider>
     </QueryClientProvider>
   )
 }

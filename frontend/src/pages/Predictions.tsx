@@ -14,6 +14,7 @@ import {
   BarChart,
   Bar
 } from 'recharts';
+import { useRealtimeSocket } from '../hooks/useRealtimeSocket';
 
 const REGIONS = ['New York, USA', 'London, UK', 'Tokyo, Japan', 'Sao Paulo, Brazil', 'Johannesburg, SA', 'Lagos, Nigeria', 'Jakarta, Indonesia', 'Sydney, Australia', 'Cairo, Egypt', 'Mumbai, India'];
 const DISEASES = ['Dengue', 'Malaria', 'Cholera', 'Influenza'];
@@ -56,6 +57,14 @@ export default function Predictions() {
   const [region, setRegion] = useState(REGIONS[0]);
   const [disease, setDisease] = useState('Dengue');
   const [model, setModel] = useState('Ensemble (Best)');
+  
+  const { subscribe, connected } = useRealtimeSocket();
+  const [realtimePredictions, setRealtimePredictions] = useState<any>(null);
+
+  // Subscribe to realtime prediction updates
+  subscribe('predictions', (payload: any) => {
+    setRealtimePredictions(payload);
+  });
 
   const { data: predictionData, isLoading } = useQuery({
     queryKey: ['prediction', disease, region, model],
@@ -165,6 +174,16 @@ export default function Predictions() {
             {MODELS.map(m => <option key={m} value={m}>{m}</option>)}
           </select>
         </div>
+        
+        {/* LIVE badge */}
+        {connected && (
+          <div className="ml-auto flex items-center">
+            <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#10B981]/10 border border-[#10B981]/30">
+              <div className="w-2 h-2 rounded-full bg-[#10B981] animate-pulse" />
+              <span className="text-[11px] font-bold text-[#10B981] uppercase tracking-wider">LIVE DATA STREAM</span>
+            </div>
+          </div>
+        )}
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-10 gap-6">

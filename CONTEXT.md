@@ -83,4 +83,31 @@ The platform has been streamlined into 7 core modules, removing all personal hea
 
 ---
 
-*Last updated: Phase 24 — WHO Integration — 2026-05-15*
+## Phase 25: Realtime Intelligence & Monetization (2026-05-17)
+
+### New Services & Architecture
+- **WebSocket Realtime Architecture**: Migrated to a pub/sub WebSocket architecture (`ws://localhost:8080/ws/realtime`).
+  - `ConnectionManager` handles multiple client connections.
+  - `RealtimeDataService` background task fetches and broadcasts data every 30 seconds.
+  - Channels: `kpis`, `heatmap_points`, `predictions`, `alerts`, `who_outbreaks`.
+- **WHO Service Enhancements (`who_service.py`)**:
+  - `get_disease_types()`: Extracts unique diseases with 5-minute cache.
+  - `get_outbreaks_by_disease(disease)`: Filters feed by specific pathogen.
+- **Anthropic Claude Integration (`useChatBot.ts`)**: Context-aware floating assistant using `claude-sonnet-4-20250514`.
+
+### New API Endpoints
+| Endpoint | Service | Description |
+|---|---|---|
+| `GET /api/who/disease-types` | Backend | Returns unique WHO diseases |
+| `GET /api/who/outbreaks-by-disease` | Backend | Returns filtered WHO outbreaks |
+| `WS /ws/realtime` | Backend | Realtime data broadcast channel |
+
+### Frontend Enhancements
+- **Global `useRealtimeSocket` Hook**: Auto-reconnects with exponential backoff and manages pub/sub message handlers.
+- **Dashboard**: Replaced probability bar chart with `DiseaseSelector` component. Subscribes to realtime KPIs.
+- **Outbreak Map**: Realtime heatmap points from WHO feed + static data. Pulsing "LIVE" badge and auto-updating timestamps.
+- **Predictions & Alerts**: Subscribed to realtime `predictions` and `alerts` channels respectively.
+- **ChatBot Context Provider**: Global chat panel accessible across all pages, with deep-linking to specific features.
+- **Upgrade Page**: Subscription tiers (Observer, Analyst, Sentinel) with monthly/annual billing toggles.
+
+*Last updated: Phase 25 — Realtime Intelligence — 2026-05-17*

@@ -5,8 +5,9 @@ Predictive Biomedical & Public Health Intelligence Platform
 
 import os
 import asyncio
+from contextlib import asynccontextmanager
 from dotenv import load_dotenv
-from fastapi import FastAPI
+from fastapi import FastAPI, WebSocket, WebSocketDisconnect
 from fastapi.middleware.cors import CORSMiddleware
 from app.api.data import router as data_router
 from app.api.predictions import router as predictions_router
@@ -24,14 +25,31 @@ from app.api.who import router as who_router
 from app.api.kpi import router as kpi_router
 
 from app.services.alert_engine import AlertEngine
+from app.services.realtime_service import connection_manager, realtime_service
 from app.database import SessionLocal
 
 load_dotenv()
+
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    """Application lifespan: start background tasks on startup, clean up on shutdown."""
+    # Start background alert scanner
+    alert_task = asyncio.create_task(run_alert_scanner())
+    # Start realtime WebSocket broadcast service
+    realtime_task = asyncio.create_task(realtime_service.start())
+    yield
+    # Shutdown
+    realtime_service.stop()
+    alert_task.cancel()
+    realtime_task.cancel()
+
 
 app = FastAPI(
     title="Helix Backend",
     description="Predictive Biomedical & Public Health Intelligence Platform — Core API",
     version="0.1.0",
+    lifespan=lifespan,
 )
 
 # CORS — allow all origins for hackathon development
@@ -71,9 +89,50 @@ async def run_alert_scanner():
         
         await asyncio.sleep(300) # Run every 5 minutes
 
-@app.on_event("startup")
-async def startup_event():
-    asyncio.create_task(run_alert_scanner())
+
+@app.websocket("/ws/realtime")
+async def websocket_realtime(websocket: WebSocket):
+    """WebSocket endpoint for realtime data streaming."""
+    await connection_manager.connect(websocket)
+    try:
+        # Send initial data snapshot on connect
+        import json
+        from datetime import datetime
+        from app.services.who_service import get_cached
+
+        now = datetime.utcnow().isoformat()
+        try:
+            who_cache = await get_cached()
+            outbreaks = who_cache.get("data", [])
+        except Exception:
+            outbreaks = []
+
+        # Send initial WHO data
+        await websocket.send_text(json.dumps({
+            "type": "who_outbreaks",
+            "payload": {"outbreaks": outbreaks, "count": len(outbreaks)},
+            "timestamp": now,
+            "source": "who_service",
+        }))
+
+        # Send initial heatmap points
+        heatmap_points = realtime_service._generate_heatmap_points(outbreaks)
+        await websocket.send_text(json.dumps({
+            "type": "heatmap_points",
+            "payload": {"points": heatmap_points},
+            "timestamp": now,
+            "source": "heatmap_aggregator",
+        }))
+
+        # Keep connection alive
+        while True:
+            # Wait for client messages (ping/pong keep-alive)
+            await websocket.receive_text()
+    except WebSocketDisconnect:
+        connection_manager.disconnect(websocket)
+    except Exception:
+        connection_manager.disconnect(websocket)
+
 
 @app.get("/health")
 async def health_check():

@@ -1,6 +1,10 @@
 """
 WHOService — Fetches and normalises WHO Disease Outbreak News.
 Cache TTL: 15 minutes.  Falls back to MOCK_DATA on any network error.
+
+Phase 1 additions:
+  - get_disease_types(): extracts unique disease names, cached 5 min
+  - get_outbreaks_by_disease(disease): filters cached outbreaks by name
 """
 
 import logging
@@ -69,6 +73,10 @@ MOCK_DATA: List[Dict] = [
 # Simple in-memory cache
 _cache: Dict = {"data": [], "fetched_at": None}
 _CACHE_TTL_MINUTES = 15
+
+# Separate cache for disease types (5-minute TTL)
+_disease_cache: Dict = {"diseases": [], "fetched_at": None}
+_DISEASE_CACHE_TTL_MINUTES = 5
 
 
 class WHOService:
@@ -162,3 +170,36 @@ async def get_cached() -> Dict:
         data = await service.get_normalized_outbreaks()
         _cache = {"data": data, "fetched_at": now}
     return _cache
+
+
+async def get_disease_types() -> Dict:
+    """
+    Extract all unique disease names from cached WHO outbreaks.
+    Cached separately with a 5-minute TTL.
+    """
+    global _disease_cache
+    now = datetime.utcnow()
+    if (
+        _disease_cache["fetched_at"] is None
+        or now - _disease_cache["fetched_at"] > timedelta(minutes=_DISEASE_CACHE_TTL_MINUTES)
+    ):
+        cache = await get_cached()
+        outbreaks = cache.get("data", [])
+        diseases = sorted(set(
+            item["disease"] for item in outbreaks
+            if item.get("disease") and item["disease"] != "Unknown"
+        ))
+        _disease_cache = {"diseases": diseases, "fetched_at": now}
+    return _disease_cache
+
+
+async def get_outbreaks_by_disease(disease: str) -> List[Dict]:
+    """Filter the cached outbreaks by disease name (case-insensitive)."""
+    cache = await get_cached()
+    outbreaks = cache.get("data", [])
+    if not disease or disease.lower() == "all diseases":
+        return outbreaks
+    return [
+        item for item in outbreaks
+        if item.get("disease", "").lower() == disease.lower()
+    ]
